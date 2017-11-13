@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+
+	Options -Indexes
+
+	RewriteEngine on
+
+	ErrorDocument 404  /404.php
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^(.*)$ index.php [PT,L]
+
+	
+
+</IfModule>
