@@ -1,6 +1,6 @@
 <?php
 
-class account extends Model
+class accountController extends Controller
 {
 
     private $upload;
@@ -8,7 +8,7 @@ class account extends Model
     public function __construct()
     {
         parent::__construct();
-        $this->upload = new UploadController();
+        $this->upload = new uploadController();
     }
 
     public function index()
