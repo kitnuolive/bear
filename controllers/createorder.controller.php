@@ -1,6 +1,6 @@
 <?php
 
-class account extends Model
+class createorder extends Model
 {
 
     private $upload;
