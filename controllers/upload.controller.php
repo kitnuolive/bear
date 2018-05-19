@@ -32,6 +32,28 @@ class uploadController extends controller
         }
     }
 
+    public function uploadFile($fileupload)
+    {
+        if ($fileupload['file']['tmp_name'])
+        {
+            $count_file = count($fileupload['file']['tmp_name']);
+            $type = pathinfo($fileupload['file']['name'], PATHINFO_EXTENSION);
+            for ($i = 0; $i < $count_file; $i++)
+            {
+                $file = md5(time() . $fileupload['file']['name']) . "." . $type;
+                if (move_uploaded_file($fileupload['file']['tmp_name'], ROOT . DS . "assets/upload/order/{$file}"))
+                {
+                    $path_file = "/upload/order/{$file}";
+                }
+            }
+            return $path_file;
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+
     public function moveFile($filename)
     {
         $pAdmin = NULL;
@@ -83,6 +105,11 @@ class uploadController extends controller
             unlink($file_path);
             return TRUE;
         }
+    }
+
+    public function convertSVGToPNG($path)
+    {
+        
     }
 
 }
