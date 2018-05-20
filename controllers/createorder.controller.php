@@ -22,19 +22,20 @@ class createorderController extends Controller
 //        var_dump($_FILES['file']);
         $result = NULL;
         $error = NULL;
-        if (empty($_FILES['file']))
+        $post = isset($_POST['data']) ? json_decode($_POST['data']) : $post = null;
+        if (empty($post))
         {
-            $error = 'No file data.';
+            $error = 'No post data.';
         }
         else
         {
+
 //            var_dump($_FILES['file']);
             //gen order number
-            $path = $this->upload->uploadFile($_FILES);
-            $_FILES['file'] = $_FILES['filePng'];
-            $pathpng = $this->upload->uploadFile($_FILES);
+//            $path = $this->upload->uploadFile($_FILES);
+            $path = 'order path';
             $orderClass = new order();
-            $ordernumber = $orderClass->genOrderNumber($path);
+            $ordernumber = $orderClass->genOrderNumber();
 
             $order_id = $ordernumber->id;
             $order_number = $ordernumber->number;
@@ -43,20 +44,45 @@ class createorderController extends Controller
             $a = (int) substr($order_number, 0, 2);
             $b = (int) substr($order_number, 2, 2);
             $c = substr($order_number, 4);
-            $numberForPDF = $eng[$a] . $eng[$b] . $c;
+            $orderNumberUser = $eng[$a] . $eng[$b] . $c;
 
+            //save account
+            //select account
+            $accountClass = new account();
+            $obj = new stdClass();
+            $obj->user_account_email = $post->user_account_email;
+            $accList = $accountClass->accountList($obj);
+            $user_account_id = NULL;
+            if (!empty($accList->view[0]->user_account_id))
+            {
+                $user_account_id = $accList->view[0]->user_account_id;
+            }
 
+            $objAcc = new stdClass();
+            $objAcc->user_account_id = $user_account_id;
+            $objAcc->user_account_email = $post->user_account_email;
+            $objAcc->user_account_tel = $post->user_account_tel;
+            $objAcc->user_account_name = $post->user_account_email;
+            $date = date("Y-m-d H:i:s");
+            if (empty($user_account_id))
+            {
+                $objAcc->create_date = $date;
+            }
+            $objAcc->last_update = $date;
 
-            //gen pdf
-            $data = new stdClass();
-            $data->number = $numberForPDF;
-            $data->pic = $pathpng;
-            $pdf = $this->genPdf($data);
-
-            var_dump($pdf);
+            $user_account_id = $accountClass->accountUpdate($objAcc);
 
             //save order
-            //send email
+            $objOrder = new stdClass();
+            $objOrder->bear_order_id = $order_id;
+            $objOrder->bear_order_status = 1;
+            $objOrder->user_account_id = $user_account_id->user_account_id;
+            $objOrder->bear_order_path = $path;
+            $objOrder->create_date = $date;
+
+            $orderClass->orderUpdate($objOrder);
+            $result = new stdClass();
+            $result->orderNumber = $orderNumberUser;
         }
 
         $return = new stdClass();

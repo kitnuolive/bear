@@ -24,7 +24,7 @@ class order extends Model
         return $arr;
     }
 
-    public function genOrderNumber($path)
+    public function genOrderNumber()
     {
         $sql = "SELECT `bear_order_number` FROM `bear_order` ORDER BY `bear_order_number` DESC";
         $stmt = $this->db->connection->prepare($sql);
@@ -38,11 +38,12 @@ class order extends Model
         }
         else
         {
+
             $row = $stmt->fetch();
             if (!$row)
             {
-                $number = "000001";
-                $sql = "INSERT INTO `bear_order`(`bear_order_number`,`bear_order_path`) VALUES ('{$number}','{$path}')";
+                $number = "00000001";
+                $sql = "INSERT INTO `bear_order`(`bear_order_number`) VALUES ('{$number}')";
 //                echo $sql;
                 $stmt = $this->db->connection->prepare($sql);
                 $query = $stmt->execute();
@@ -88,7 +89,7 @@ class order extends Model
 
                 $number = $a . $b . $c;
 
-                $sql = "INSERT INTO `bear_order`(`bear_order_number`,`bear_order_path`) VALUES ('{$number}','{$path}')";
+                $sql = "INSERT INTO `bear_order`(`bear_order_number`) VALUES ('{$number}')";
 //                echo $sql;
                 $stmt = $this->db->connection->prepare($sql);
                 $query = $stmt->execute();
@@ -111,6 +112,54 @@ class order extends Model
         $return->number = $number;
 
         return $return;
+    }
+
+    public function orderUpdate($obj)
+    {
+        $field = NULL;
+        $data = array();
+        $dataRow = $this->orderData();
+        foreach ($dataRow as $key => $DBFieldName)
+        {
+            if (isset($obj->$key))
+            {
+                $field[] = "`$DBFieldName`=:{$DBFieldName}";
+                $data[":{$DBFieldName}"] = $obj->$key;
+            }
+        }
+        if (!empty($field))
+        {
+            $field = implode(',', $field);
+        }
+        if (empty($obj->bear_order_id))
+        {
+            $sql = "INSERT INTO `bear_order` SET {$field}";
+        }
+        else
+        {
+            $sql = "UPDATE `bear_order` SET {$field} WHERE `bear_order_id` = '{$obj->bear_order_id}'";
+        }
+        $stmt = $this->db->connection->prepare($sql);
+        $query = $stmt->execute($data);
+        $result = new stdClass();
+        if (!$query)
+        {
+            $error = $stmt->errorInfo();
+            $result->error = $error[2];
+        }
+        else
+        {
+            if (empty($obj->bear_order_id))
+            {
+                $bear_order_id = $this->db->connection->LastInsertId();
+            }
+            else
+            {
+                $bear_order_id = $obj->bear_order_id;
+            }
+        }
+        $result->bear_order_id = $bear_order_id;
+        return $result;
     }
 
 }
