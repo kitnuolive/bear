@@ -1,0 +1,474 @@
+.mobile-menu,menu{
+		display: none;
+	}
+@media (min-width: 1400px) {
+    .product_intro_item{
+	  width: 250px;
+	  height: 250px;
+	}
+	.product_intro_box {
+	  width: 846px;
+	}
+}
+@media (max-width: 1024px) {
+	h4 {
+	  font-size: 11px;
+	}
+	p {
+	   font-size: 12px;
+  		line-height: 17px;
+	 }
+	 .list_item a{
+	 	font-size: 12px;
+	 }
+    .container {
+	  width: 1024px;
+	}
+	.footer {
+	  margin: 0 10px;
+	 line-height: 18px;
+	}
+	.bear_box_55per {
+	  width: 60%;
+	}
+	.bear_box_45per {
+	  width: 40%;
+	}
+	.bear_box_detail_bg {
+	  padding-bottom: 25px;
+	}
+	.bear_box_img {
+	   height: 305px;
+	}
+	.bear_box_img img{
+		height: 100%;
+		width: auto;
+	}
+	.box_height_380 {
+	  height: 340px;
+	  overflow: hidden;
+	}
+	.magin_tb_35 {
+	  margin-top: 25px;
+	  margin-bottom: 25px;
+	}
+	#contact-area textarea {
+	  height: 95px;
+	}
+	.thumnail_pro {
+	  width: 180px;
+	}
+	.product_item{
+	  height: 180px;
+	}
+	.label-radio{
+		font-size: 12px;
+	}
+	.label-checkbox{
+		font-size: 11px;
+	}
+	.list{
+		margin: 0 7px;
+	}
+	.box_cat_product, .box_filter_product {
+	  margin-left: 50px;
+	}
+	.currency {
+	  margin-right: 50px;
+	}
+	.header-gift{
+		height: 395px;
+	}
+}
+@media (max-width: 992px) {
+    .container{
+    	width: 100%;
+    }
+    .navbar-nav>li {
+	  margin: 0 10px;
+	}
+	.box_cat_product, .box_filter_product {
+	  margin-left: 20px;
+	}
+	.currency {
+	  margin-right: 20px;
+	}
+	#header-gift #slides{
+	  height: 360px !important;
+	}	
+	#header-gift > #slides>.slides-container {
+	  display: block !important;
+	  list-style: none;
+  	  padding-left: 0;
+	}	
+	#header-gift >#slides>.slides-container li img{
+	  width: 110%;
+	}
+	.slide-detail ,.header-detail{
+	  padding: 20px 45px !important;
+	}
+	.bear_box_55per {
+	  width: 100%;
+	}
+	.bear_box_45per {
+	  width: 100%;
+	  margin-top: 10px;
+	}
+	.bear_box_45per .box {
+	  float: left;
+	  padding-left:0;
+	}
+	.bear_box_45per .box2 {
+	  padding-left: 0;
+	}
+	.bear_box_img {
+	  height: 237px;
+	  overflow: hidden;
+	}
+	.bear_box_img img{
+	  width: 100%;
+	  height: auto;;
+	}
+	.two_tree_columns {
+	  width: 60%;
+	}
+	.one_tree_columns {
+	  width: 40%;
+	}
+	.magin_t_55 {
+	  margin-top: 40px;
+	}
+	
+	.magin_tb_35 {
+	  margin-top: 25px;
+	  margin-bottom: 25px;
+	}
+	.box_height_380 {
+	  height: 300px;
+	  overflow: hidden;
+	}
+	.box_height_380 .img-responsive {
+	  width: auto; 
+	  height: 100%;
+	}
+	.modal-content{
+		width: 100%;
+	}
+	.modal-body img{
+		width: 100%;
+	}
+
+	#contact-wrap {
+	  font-family: Copperplate-Lig;
+	  font-size:12px;
+	  font-weight:300;
+	  padding:20px;
+	  color:#fff;
+	  overflow:auto; 
+		float:left;
+	}
+
+	#contact-area {
+	  margin-left:3px;
+	  width: 100%;
+	}
+
+	#contact-area input, #contact-area textarea {
+	  
+	  margin-bottom:5px;
+	}
+
+	#contact-area textarea {
+	  height: 40px;
+	}
+
+
+	#contact-area input.submit-button {
+	  font-family: Copperplate-Lig;
+	  font-size:12px;
+	  font-weight:300;
+	  text-transform:uppercase;
+	  width: 100px;
+	  float: left;
+	  background-color:transparent;
+	  border-top: 1px solid #8a5d3b;
+	  border-left: 1px solid #8a5d3b;
+	  border-bottom: 1px solid #8a5d3b;
+	  border-right: 1px solid #8a5d3b;
+	  
+	      -moz-transition:all 0.1s ease-in-out;
+	  -webkit-transition:all 0.1s ease-in-out;
+	  -o-transition:all 0.1s ease-in-out;
+	  -ms-transition:all 0.1s ease-in-out;
+	  transition:all 0.1s ease-in-out;
+	}
+	button {
+	  padding: 3px 11px;
+	}
+	::-webkit-input-placeholder {
+	  color: #8a5d3b;
+
+	  font-size:12px;
+	}
+
+	:-moz-placeholder { /* Firefox 18- */
+	  color: #8a5d3b; 
+
+	  font-size:12px;
+	}
+
+	::-moz-placeholder {  /* Firefox 19+ */
+	  color: #8a5d3b;
+
+	  font-size:12px;
+	}
+
+	:-ms-input-placeholder {  
+	   color: #8a5d3b;  
+
+	  font-size:12px;
+	}
+
+	.header-gift{
+		height: 355px;
+	}
+
+
+}
+@media (max-width: 767px) {
+	.header-gift{
+		height: 295px;
+	}
+	.slide-detail .content ,.header-detail .content{
+	  width: 415px;
+	}
+	.half ,.w_20,.w_80,.two_tree_columns,.one_tree_columns{
+	  width:100%;
+	}
+	.box_cat_product, .box_filter_product {
+	  display: none;
+	}
+	.thumnail_pro {
+	  width: 43%;
+	}
+	.box_height_380 {
+	  height: auto;  
+	  overflow: visible;
+	}
+	.box_detail {
+	  padding-bottom: 25px;
+	}
+	.slide-detail h1 ,.header-detail h1{
+		font-size: 30px;
+	}
+	.slide-detail,.header-detail {
+	  top: 10px !important;
+	  padding: 20px 5px !important;
+	}	
+	#slides{
+	  height: 360px !important;
+	}	
+	#slides>.slides-container {
+	  display: block !important;
+	  list-style: none;
+  	  padding-left: 0;
+	}	
+	#slides>.slides-container li img{
+	  margin-top: 200px !important;
+	  width: 150%;
+	  margin-left: -50%;
+	}
+	.copyright{
+		width: 100%;
+		text-align: center;
+	}
+	.link_box{
+	  width: 100%;
+	}
+	.social_box{
+	  width: 100%;
+	  
+	}
+	.product_intro_box{
+		width: 100%;
+	}
+	.product_intro_item{
+		width: 240px;
+		height: 240px;
+		float: none;
+		margin: 15px auto;
+	}
+	.w_20{
+		display: none;
+	}
+	.thumnail_pro,.thumnail_bear{
+		width: 240px;
+		float: none;
+		margin: 15px auto;
+	}
+	.product_item,.thumnail_bear .product_item{
+		height: 240px;
+	}
+	.thumnail_bear .product_item .product_name {
+	  top: -40px;
+	}
+	.box_headder {
+	  text-align: center;
+	  padding: 15px;
+	}
+	footer{
+		position: inherit !important;
+	}
+	/*Header----------------------------------------*/
+	.navbar-nav{
+		display: none;
+	}
+	.mobile-menu{
+		float: left;
+  		margin: 2px 5px;
+		display: block;
+	}
+	.menu-text{
+		font-family: FirminDidURW-Rom;
+	  	text-transform: uppercase;
+	  	color: rgba(117, 76, 40, 0.9);
+	}
+	.menu-anchor {
+		margin-top: -5px;
+		width: 40px;
+		height: 32px;
+		float: left;
+		position: relative;
+		text-indent: -9999px;
+		overflow: hidden;
+		cursor: pointer;
+	}
+	.menu-anchor:before {
+		content: "";
+		display: block;
+		margin: 7px auto;
+		width: 70%;
+		height: 0.25em;
+		background: #835E3D;
+		box-shadow: 
+		0 .45em 0 0 #835E3D,
+		0 .9em 0 0 #835E3D;
+	}
+
+	.menu-active .menu-anchor {background: rgba(250, 235, 215, 0.49)}
+
+	menu {
+		display: block;
+		font-family: Copperplate-Lig;
+		position: fixed;
+		top: 100px;
+		left: 0;
+		z-index: 1;
+		width: 220px;
+		height: 100%;
+		padding-left:0;
+		margin: 0;
+		background: rgba(250, 235, 215, 0.49);
+		box-shadow: inset -5px -10px 10px 0 rgba(0,0,0,.09)
+	}
+	menu ul{
+	  padding-left: 0;
+	}
+	menu li{
+	  list-style: none;
+	  float: left;
+	  margin:0 25px;
+	  width: 100%;
+	}
+	menu li>a{
+	  color: #8a5d3b;
+	  font-size: 14px;
+	  text-decoration:none;
+	  text-transform: lowercase;
+	}
+	menu li>a:hover,
+	menu li.active{
+	   font-weight: bold;
+	   background-color: transparent;
+	}
+
+
+	/*
+		Aqui você esconde o menu para fora da tela 
+		O valor é exatamente a largura da sidebar
+	*/
+	menu {
+		-webkit-transform: translateX(-260px);
+		-moz-transform: translateX(-260px);
+		-ms-transform: translateX(-260px);
+		transform: translateX(-260px);
+	}
+
+	/*
+		Essa é a posição original do HEADER e do MAIN
+	*/
+	section, footer,.menu{
+		-webkit-transform: translateX(0);
+		-moz-transform: translateX(0);
+		-ms-transform: translateX(0);
+		transform: translateX(0);
+	}
+
+	/*
+	   Com a classe menu-active na tag HTML
+	*/
+	.menu-active menu {
+		-webkit-transform: translateX(0);
+		-moz-transform: translateX(0);
+		-ms-transform: translateX(0);
+		transform: translateX(0);
+	}
+
+	.menu-active section, 
+	.menu-active footer,
+	.menu-active .menu {
+		-webkit-transform: translateX(220px);
+		-moz-transform: translateX(220px);
+		-ms-transform: translateX(220px);
+		transform: translateX(220px);
+	}
+
+}
+@media (max-width: 600px) {
+	.slide-detail .content ,.header-detail .content{
+	  width: 90%;
+	}
+	.header-detail .content{
+	  height: 60vh;
+	}
+	.header-detail h1 span {
+	  padding: 0 20px;
+	}
+	.header-detail p {
+	  padding: 0 20px;
+	}
+	.header-detail a {
+	  padding: 0 20px 10px;
+	}
+	.header-gift {
+	  height: 342px;
+	}
+	.header-gift img {
+	  z-index: -1;
+	  width: 179%;
+	  height: auto;
+	  float: right;
+	  margin-top: 120px;
+	  margin-right: -76px;
+	}
+	.header-about{
+	  height: auto;
+	  max-height: 80vh;
+	}
+	.header-about img {
+	  max-width: 300%;
+	  margin-top: -23px;
+	  margin-right: -177px;
+	  opacity: 0.5;
+	}
+}
