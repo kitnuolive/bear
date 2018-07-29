@@ -94,6 +94,19 @@ class createorderController extends Controller
         exit();
     }
 
+    public function sendEmail()
+    {
+        //mail
+        require_once ROOT . DS . 'models' . DS . strtolower('mailer') . '.php';
+        $mailer = new mailer();
+        $mail[] = 'kitnumaster@gmail.com';
+        $mailMsg = 'test email>';
+        $file[] = null;
+        $resultmail = $mailer->sendMail('test', $mail, null, null, $mailMsg, null);
+        Result::setResult('result', $resultmail);
+        Result::showResult();
+    }
+
     public function genPdf($data)
     {
         $root = ROOT;
