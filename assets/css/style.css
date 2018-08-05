@@ -88,24 +88,26 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .container{
+    width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 768px){
+  .container {
       width: 1024px;
-      margin-left: auto;
-      margin-right: auto;
-  }
-/*@media (min-width: 1280px) {
-  .container{
-      width: 1280px;
-      margin-left: auto;
-      margin-right: auto;
   }
 }
-@media (max-width: 1279px) {
-  .container{
+@media (min-width: 992px){
+  .container {
       width: 1024px;
-      margin-left: auto;
-      margin-right: auto;
   }
-}*/
+}
+@media (min-width: 1200px){
+  .container {
+      width: 1024px;
+  }
+}
 .hide{
   display: none;
 }
@@ -385,7 +387,7 @@ section{
 }
 footer {
   font-family: Copperplate-Lig;
-  position: fixed;
+  /*position: fixed;*/
   float: left;
   width: 100%;
   margin-top: 10px;
@@ -395,7 +397,7 @@ footer {
 .footer{
   float: none;
   margin: 0;
-  table-layout: fixed;
+  /*table-layout: fixed;*/
   padding: 0 5px;
   height: 30px;
 }
@@ -816,11 +818,26 @@ button{
   border-radius: 5px;
   padding: 5px 15px;
   cursor: pointer;
-  margin: 0 5px;
+  margin: 0;
 }
 button:hover{
   background-color: #8a5d3b;
   color: #FCF4EA;
+}
+button.btn-brown{
+  background-color: #754729;
+  border: 1px solid #754729;
+  font-family: Copperplate-Lig;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius:0;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin: 0;
+}
+button.btn-brown:hover{
+  background-color:transparent;
+  color: #754729;
 }
 hr{
   /* IE9 SVG, needs conditional override of 'filter' to 'none' */
@@ -1888,6 +1905,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#543715', end
   color: rgba(117, 76, 40, 0.9);
   text-decoration: underline;
 }
+.btn-link.select{
+  font-weight: bold;
+}
 .btn-link:hover , .btn-link:active{
   font-weight: bold;
 }
@@ -2182,7 +2202,7 @@ select .select_design{
 /* The actual popup */
 .popup .popuptext {
     visibility: hidden;
-    width: 160px;
+    /*width: 160px;*/
     background-color: #555;
     color: #fff;
     text-align: center;
@@ -2191,7 +2211,7 @@ select .select_design{
     position: absolute;
     z-index: 1;
     bottom: 125%;
-    left: 50%;
+    left:0;
     margin-left: -80px;
 }
 
@@ -2225,19 +2245,19 @@ select .select_design{
     to {opacity:1 ;}
 }
 .btn-reun{
-  font-size: 8px;
-  background-color: transparent;
-  border: 1px solid #8a5d3b;
-  font-family: Copperplate-Lig;
-  color: #8a5d3b;
-  /*font-weight: bold;*/
-  width: 35%;
-  height: 30px;
-  padding: 5px 5px;
-  cursor: pointer;
-  margin: 0 5px;
-  border-radius: 0px;
-}
+      font-size: 8px;
+    background-color: transparent;
+    border: 1px solid #8a5d3b;
+    font-family: Copperplate-Lig;
+    color: #8a5d3b;
+    /* font-weight: bold; */
+    width: 39%;
+    height: 40px;
+    padding: 5px 5px;
+    cursor: pointer;
+    margin: 0 5px;
+    border-radius: 0px;
+  }
 .btn-re{
   background-color: transparent;
   border: 1px solid #8a5d3b;
@@ -2245,6 +2265,7 @@ select .select_design{
   color: #8a5d3b;
   /*font-weight: bold;*/
   border-radius: 0px;
+    height: 40px;
   padding: 5px 15px;
   cursor: pointer;
   margin: 0 5px;
@@ -2257,9 +2278,23 @@ select .select_design{
   color: #8a5d3b;
   /*font-weight: bold;*/
   border-radius: 20px;
-  padding: 5px 15px;
+  padding: 5px;
   cursor: pointer;
   margin: 0 5px;
+}
+.btn-type span{
+  font-size: 12px;
+}
+.btn-type i{    
+  font-size: 24px;
+  line-height: 19px;
+}
+.btn-type.align-text{
+  padding: 7px 34px 2px;
+}
+.btn-type.align-text i{
+  font-size: 19px;
+  line-height: 18px;
 }
 .btn-frame{
   width: 80%;
@@ -2296,15 +2331,17 @@ select .select_design{
 }
 
 .select_design{
-  background-color: transparent;
-  border: 1px solid #8a5d3b;
-  font-family: Copperplate-Lig;
-  color: #8a5d3b;
-  /*font-weight: bold;*/
-  border-radius: 20px;
-  padding: 5px 15px;
-  cursor: pointer;
-  margin: 0 5px;
+    background-color: transparent;
+    border: 1px solid #8a5d3b;
+    font-family: Copperplate-Lig;
+    color: #8a5d3b;
+    /* font-weight: bold; */
+    border-radius: 20px;
+    padding: 10px 25px;
+    cursor: pointer;
+    margin: 0 5px;
+    width: 300px;
+    display: inline-block;
 }
 
 .ex3 {
