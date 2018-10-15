@@ -3,13 +3,102 @@ var Canvas = {
     context : null,
     init: function() {
       this.bindEvents();
-      this.addIcon();
+      //this.fabric();
+       
     },
     bindEvents: function() {         
       $('#canvas-tool').on('click', '.step-head',this.selectStep);
       $('#frame-panel').on('click', '.frame',this.selectFrame);
       $('#reset_btn').on('click',this.selectFrame);
       $('#complete_btn').on('click',this.genSVG);
+
+      $('#sticker-panel').on('click', '.sticker',this.selectIcon);
+
+      
+    },
+    fabric: function() { 
+      var canvas = new fabric.Canvas('myCanvas');
+
+          // var bgImg = new fabric.Image();
+          // bgImg.setSrc('/assets/images/persoanlisation/SVG/WHITE-SVG-01.svg', function () {
+          //   bgImg.set({
+          //     top: 0,
+          //     left: 0,
+          //     scaleX: canvas.getWidth()/bgImg.width,
+          //     scaleY: canvas.getHeight()/bgImg.height,
+          //     backgroundImageOpacity: 1,
+          //     backgroundImageStretch: true,
+          //     originX: 'left',
+          //     originY: 'top'
+          //   });
+          // });
+
+          // canvas.setBackgroundImage(bgImg);
+          var textbox = new fabric.Textbox('fill your message here.', {
+              fontFamily: 'Copperplate-Lig',
+                          fontSize: 32,
+                          stroke: '#939393',
+                          fill: '#b3b3b3',
+                          strokeWidth: 1,
+                          left: 50,
+                           top: 50
+            });
+            canvas.add(textbox).setActiveObject(textbox);
+
+            fabric.Image.fromURL('/assets/images/persoanlisation/SVG/icon02.png', function(myImg) {
+             //i create an extra var for to change some image properties
+             var img1 = myImg.set({ left: 250, top: 100 ,width:65,height:65});
+             canvas.add(img1); 
+            });
+
+          
+          // canvas.add(new fabric.Rect({ left: 110, top: 110, fill: '#f0f', width: 50, height: 50 }));
+          // canvas.add(new fabric.Rect({ left: 50, top: 50, fill: '#77f', width: 40, height: 40 }));
+
+          canvas.forEachObject(function(o){ 
+            o.hasBorders = true,
+            o.hasControls = true,
+            o.transparentCorners = false,
+            o.borderColor = '#754729',
+            o.cornerColor = '#754729',
+            o.cornerSize =  8,
+            o.setControlVisible('mt',false),
+            o.setControlVisible('mb',false);
+          });
+
+          canvas.hoverCursor = 'pointer';
+
+          function animate(e, dir) {
+            if (e.target) {
+              fabric.util.animate({
+                startValue: e.target.get('angle'),
+                endValue: e.target.get('angle') + (dir ? 5 : -5),
+                duration: 100,
+                onChange: function(value) {
+                  e.target.setAngle(value);
+                  canvas.renderAll();
+                },
+                onComplete: function() {
+                  e.target.setCoords();
+                }
+              });
+              fabric.util.animate({
+                startValue: e.target.get('scaleX'),
+                endValue: e.target.get('scaleX') + (dir ? 0.02 : -0.02),
+                duration: 100,
+                onChange: function(value) {
+                  e.target.scale(value);
+                  canvas.renderAll();
+                },
+                onComplete: function() {
+                  e.target.setCoords();
+                }
+              });
+            }
+          }
+          canvas.on('mouse:down', function(e) { animate(e, 1); });
+          canvas.on('mouse:up', function(e) { animate(e, 0); });
+          this.__canvases.push(canvas);
     },
     selectStep: function() {    
       var step = $(this).parents(".step");   
@@ -33,13 +122,39 @@ var Canvas = {
       else{
         $('#frame-panel').find(".frame").eq(0).addClass("select");
       }
-      Canvas.drawPhoto(src);
+      var bgImg = new fabric.Image();
+          bgImg.setSrc(src, function () {
+            bgImg.set({
+              top: 0,
+              left: 0,
+              scaleX: canvas.getWidth()/bgImg.width,
+              scaleY: canvas.getHeight()/bgImg.height,
+              backgroundImageOpacity: 1,
+              backgroundImageStretch: true,
+              originX: 'left',
+              originY: 'top'
+            });
+          });
+
+          canvas.setBackgroundImage(bgImg);
+      // Canvas.drawPhoto(src);
+    },
+    selectIcon: function() {           
+      var src = $(this).find("img").attr("src");
+      
+      var imgElement = $(this).find("img");
+      var imgInstance = new fabric.Image(imgElement, {
+        left: 100,
+        top: 100,
+      });
+      canvas.add(imgInstance);
+      // Canvas.drawPhoto(src);
     },
     drawPhoto: function(photo) {
-      Canvas.canvas  = document.getElementById('myCanvas');
-      Canvas.context = Canvas.canvas.getContext('2d');
+      canvas  = document.getElementById('myCanvas');
+      Canvas.context = canvas.getContext('2d');
      
-      Canvas.context.clearRect(0, 0, Canvas.canvas.width, Canvas.canvas.height);
+      Canvas.context.clearRect(0, 0, canvas.width, canvas.height);
       document.getElementById('canvasImg').src = "";
       if(photo != null){
         var imageObj = new Image();
@@ -49,9 +164,47 @@ var Canvas = {
         imageObj.src = photo;
       }
     },
+    control: function(){
+      var canvas = canvas = new fabric.Canvas('c');
+
+        var rect = new fabric.Rect({
+          left: 150,
+          top: 200,
+          originX: 'left',
+          originY: 'top',
+          width: 150,
+          height: 120,
+          angle: -10,
+          fill: 'rgba(255,0,0,0.5)',
+          transparentCorners: false
+        });
+
+        canvas.add(rect).setActiveObject(rect);
+
+        canvas.item(0)["hasControls"] = true;
+        canvas.item(0)["hasBorders"] = true;
+        canvas.item(0)["hasRotatingPoint"] = true;
+        canvas.item(0)["visible"] = true;
+        canvas.item(0)["selectable"] = true;
+        canvas.item(0)["evented"] = true;
+
+        canvas.item(0)["borderColor"] = "#000000";
+        canvas.item(0)["cornerColor"] = "#000000";
+        canvas.item(0)["cornerStrokeColor"] = "#000000";
+        canvas.item(0)["cornerStyle1"] = "circle";
+        canvas.item(0)["setControlVisible"]("tl",true);
+        canvas.item(0)["setControlVisible"]("ml",false);
+        canvas.item(0)["setControlVisible"]("bl",true);
+        canvas.item(0)["setControlVisible"]("mb",false);
+        canvas.item(0)["setControlVisible"]("br",true);
+        canvas.item(0)["setControlVisible"]("mr",false);
+        canvas.item(0)["setControlVisible"]("tr",true);
+        canvas.item(0)["setControlVisible"]("mt",false);
+        canvas.item(0)["setControlVisible"]("mtr",true);
+      },
     addIcon: function(Icon) {
-      Canvas.canvas  = document.getElementById('myCanvas');
-      Canvas.context = Canvas.canvas.getContext('2d');
+      canvas  = document.getElementById('myCanvas');
+      Canvas.context = canvas.getContext('2d');
       var imageObj = new Image();
       var imageIcon = new Image();
 
@@ -226,25 +379,25 @@ var Canvas = {
       imageObj2.src = '/assets/images/persoanlisation/SVG/icon.svg';
     },
     genSVG: function(){
-        var dataURL = Canvas.canvas.toDataURL("image/png");
+        var dataURL = canvas.toDataURL("image/png");
         console.log(dataURL);
 
-      // set canvasImg image src to dataURL
-      // so it can be saved as an image
-      document.getElementById('canvasImg').src = dataURL;
-      var image = dataURL.replace("image/png", "image/octet-stream");
-      // window.location.href=image;
+        // set canvasImg image src to dataURL
+        // so it can be saved as an image
+        document.getElementById('canvasImg').src = dataURL;
+        var image = dataURL.replace("image/png", "image/octet-stream");
+        // window.location.href=image;
 
-       $("svg").attr({ version: '1.1' , xmlns:"http://www.w3.org/2000/svg"});
+         $("svg").attr({ version: '1.1' , xmlns:"http://www.w3.org/2000/svg"});
 
-     var svg = $("#myCanvas").html();
-     var b64 = Base64.encode(svg); // or use btoa if supported
+       var svg = $("#myCanvas").html();
+       var b64 = Base64.encode(svg); // or use btoa if supported
 
-     // Works in recent Webkit(Chrome)
-     $("body").append($("<img src='data:image/svg+xml;base64,\n"+b64+"' alt='file.svg'/>"));
+       // Works in recent Webkit(Chrome)
+       $("body").append($("<img src='data:image/svg+xml;base64,\n"+b64+"' alt='file.svg'/>"));
 
-     // Works in Firefox 3.6 and Webit and possibly any browser which supports the data-uri
-     $("body").append($("<a href-lang='image/svg+xml' href='data:image/svg+xml;base64,\n"+b64+"' title='file.svg'>Download</a>"));
-        }
+       // Works in Firefox 3.6 and Webit and possibly any browser which supports the data-uri
+       $("body").append($("<a href-lang='image/svg+xml' href='data:image/svg+xml;base64,\n"+b64+"' title='file.svg'>Download</a>"));
+          }
 };
 Canvas.init();

@@ -71,7 +71,7 @@
     <section class="container">        
         <div class="row">
             <div class="canvas-wrapper">
-                <div class="canvas-select">
+                <div class="canvas-select" style="display: none;">
                   <a href="#" class="btn-select"><i class="fa fa-caret-left"></i></a>
                   <span class="select_design text-center">
                     anniversary #01
@@ -79,11 +79,14 @@
                   <a href="#" class="btn-select"><i class="fa fa-caret-right"></i></a>
                 </div>
 
-                <div class="canvas-bg">
+                <div class="canvas-bg" style="margin-top: 75px;">
                   <canvas id="myCanvas"  width="412" height="265" style="margin: 15px;"></canvas>
                 </div>
 
-                <div class="tool-menu text-center" style="margin-top: 20px;">
+                <div>
+                  <h4 class="text-center" style="font-family: Copperplate-Lig;"> Code : BD78622CD</h4>
+                </div>
+                <div class="tool-menu text-center" style="margin-top: 20px;display: none;">
                       <div class="col-md-4" style="margin-top: 5%;">
                         <button class="btn-re" data-src="null" id="reset_btn"> <i class="icon ion-ios-refresh"></i> RESET</button>
                       </div>
@@ -107,7 +110,24 @@
             </div>
 
             <div class="tool-wrapper">
-                <div class="canvas-tool open" id="canvas-tool">
+                <div class="canvas-comfirm" style=" margin-top: 50px;">
+                  <form>
+                    <div class="form-group">
+                       <input type="text" name="" class="form-control input-circle" placeholder="First name :" required="">
+                    </div>
+                    <div class="form-group">
+                       <input type="text" name="" class="form-control input-circle" placeholder="Last name :" required="">
+                    </div>
+                    <hr style="width: 100%;">
+                    <div class="form-group">
+                       <input type="text" name="" class="form-control input-circle" placeholder="Email :" required="">
+                    </div>
+                    <div class="form-group">
+                       <input type="text" name="" class="form-control input-circle" placeholder="RE-Enter Email :" required="">
+                    </div>
+                  </form>
+                </div>
+                <div class="canvas-tool" id="canvas-tool" style="display: none;">
                     <div class="step" mode="1">
                         <div class="step-head">
                             <div class="img">
@@ -124,9 +144,44 @@
                                <i class="icon ion-ios-remove-circle-outline select"></i>
                             </div>
                         </div>
-                        <div class="step-detail">
+                        <div class="step-detail" style="display: none;">
+                          <div class="row" style="margin-top: 10px;margin-bottom: 0;">
+                            <div class="col-md-12" style="font-family: Copperplate-Lig;color: #8a5d3b;">
+                                <div class="scroll text-center">
+                                    <div>SELECT DESIGN #</div>
+                                    <hr style="width: 100%;margin: 10px 0;">
+                                        <div>anniversary</div>
+                                    <hr style="width: 100%;margin: 10px 0;">
+                                        <div>beawelry classic</div>
+                                    <hr style="width: 100%;margin: 10px 0;">
+                                        <div>birthday</div>
+                                    <hr style="width: 100%;margin: 10px 0;">
+                                        <div>couple</div>
+                                    <hr style="width: 100%;margin: 10px 0;">
+                                        <div>encouragement</div>
+                                    <hr style="width: 100%;margin: 10px 0;">
+                                        <div>graduation</div>
+                                    <hr style="width: 100%;margin: 10px 0;">
+                                        <div>new born</div>
+                                    <hr style="width: 100%;margin: 10px 0;">
+                                        <div>sorry</div>
+                                    <hr style="width: 100%;margin: 10px 0;">
+                                    <div>wedding & engagement</div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="step-detail" style="display: none;">
                             <div class="row" style="margin-top: 10px;margin-bottom: 0;">
                               <div class="col-md-12">
+                                  <div class="text-center">
+                                    <div class="select_design text-center">
+                                      anniversary
+                                    </div>
+                                  </div>
+                                  <hr style="width: 100%;margin: 10px 0;">
+                              </div>
+                              <div class="col-md-12" style="display: none;">
                                   <div class="text-center">
                                     <select class="select_design text-center">
                                       <option value="0">SELECT DESIGN #</option>
@@ -144,7 +199,7 @@
                                   <hr style="width: 100%;margin: 10px 0;">
                               </div>
                               <div class="col-md-6" style="padding-right: 0;padding-left: 30px;">
-                                <button class="btn-link select">CUSTOMIZE DESIGNS</button>
+                                <button class="btn-link select">CUSTOMISE DESIGNS</button>
                               </div>
                               <div class="col-md-6" style="border-left: 1px solid #ddd;">
                                 <button class="btn-link">FINISHED DESIGNS</button>
@@ -189,7 +244,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="step select" mode="2">
+                    <div class="step" mode="2">
                         <div class="step-head">
                             <div class="img">
                                 <img src="/assets/images/persoanlisation/icon-active.png" class="icon-active">
@@ -205,19 +260,19 @@
                                <i class="icon ion-ios-remove-circle-outline select"></i>
                             </div>
                         </div>
-                        <div class="step-detail">
+                        <div class="step-detail" style="height: 325px;">
                             <div class="row" style="margin-top: 20px">
                               <div class="col-md-12">
-                                <div class="form-group" style="padding:  15px;margin-bottom: 0;">
-                                  <textarea id="inputText" class="form-control" placeholder="TYPE YOUR MESSEAGE HERE..." rows="5"></textarea>
-                                </div>
-                                 
+                                <h5 style="padding-left: 15px;font-weight: 500;text-transform:  uppercase;">
+                                   << Click on text for edit
+                                </h5>
+
                               </div>
-                            </div>
+                            </div><hr style="width: 100%;margin: 10px 0;">
                             <div class="row" style="margin-top: 20px">
                               <div class="col-md-12">
                                 <!-- 2.1 -->
-                                <div class="col-md-6" style="padding-right: 5px;margin-bottom: 10px">
+                                <div class="col-md-6" style="padding-left: 5px;margin-bottom: 10px">
                                   <div class="btn-type text-center">
                                     <span>LANGUAGE :</span><span>EN</span>
                                     <i class="fa fa-question-circle pull-right"></i>
@@ -225,7 +280,18 @@
                                 </div>
                                 <div class="col-md-6"  style="padding-left: 5px;margin-bottom: 10px">
                                   <div class="btn-type text-center">
-                                    <span>FONT :</span><span>ABC</span>
+                                    <select class="select_design text-center" style="width: 95%;border: none;">
+                                      <option value="">select font</option>
+                                      <option value="Copperplate-Lig">Copperplate-Lig</option>
+                                      <option value="2">beawelry classic</option>
+                                      <option value="3">birthday</option>
+                                      <option value="4">couple</option>
+                                      <option value="5">encouragement</option>
+                                      <option value="6">graduation</option>
+                                      <option value="7">new born</option>
+                                      <option value="8">sorry</option>
+                                      <option value="9">wedding & engagement</option>
+                                    </select>
                                   </div>
                                 </div>
                               </div>
@@ -237,35 +303,21 @@
                             <div class="row">  
                               <div class="col-md-12">
                                 <!-- 2.2 -->
-                                <div class="col-md-6"  style="padding-right: 5px;margin-bottom: 10px">
-                                  <div class="btn-type text-center">
-                                    <i class="fa fa-minus-circle pull-left"></i>
-                                    <span>TEXT SIZE :</span><span>15</span>
-                                    <i class="fa fa-plus-circle pull-right"></i>
-                                  </div>
-                                </div>
                                 <div class="col-md-6" style="padding-left: 5px;margin-bottom: 10px">
-                                  <div class="btn-type text-center">
+                                  <div class="btn-type text-center" style="margin-bottom: 10px;">
                                     <i class="fa fa-minus-circle pull-left"></i>
                                     <span>LETTER SPACE :</span><span>15</span>
                                     <i class="fa fa-plus-circle pull-right"></i>
                                   </div>
-                                </div>
-                                <!-- 2.3 -->
-                                <div class="col-md-6" style="padding-right: 5px;margin-bottom: 10px">
-
-                                  <div class="btn-type text-center align-text">
-                                    <i class="fa fa-align-left pull-left"></i>
-                                    <i class="fa fa-align-center"></i>
-                                    <i class="fa fa-align-right pull-right"></i>
-                                  </div>
-                                </div>
-                                <div class="col-md-6" style="padding-left: 5px;margin-bottom: 10px">
-
-                                  <div class="btn-type text-center">
+                                  <div class="btn-type text-center" style="margin-bottom: 10px;">
                                     <i class="fa fa-minus-circle pull-left"></i>
                                     <span>LINE HEIGHT :</span><span>15</span>
                                     <i class="fa fa-plus-circle pull-right"></i>
+                                  </div>
+                                  <div class="btn-type text-center align-text" style="margin-bottom: 10px;">
+                                    <i class="fa fa-align-left pull-left"></i>
+                                    <i class="fa fa-align-center"></i>
+                                    <i class="fa fa-align-right pull-right"></i>
                                   </div>
                                 </div>
                               </div>
@@ -282,7 +334,7 @@
                                 <!-- <img src="/assets/images/persoanlisation/logo3-active.png" class="active"> -->
                             </div>
                             <div class="title">
-                                ADD ICONS TO YOUR DESIGN
+                                ADD STICKER TO YOUR DESIGN
                             </div>
                             <div class="icon-box">
                                <i class="icon ion-ios-add-circle-outline normal"></i>
@@ -297,33 +349,19 @@
                                   </div>
                                   <hr style="width: 100%;margin: 10px 0;display: none;">
                                   <div class="select-sticker"> 
-                                    <div class="sticker select">
-                                      <div class="inner">
-                                        <img src="/assets/images/persoanlisation/SVG/icon.svg">
+                                    <div class="sticker select" style="width: auto;">
+                                      <div class="inner" style="padding: 5px 15px;">
+                                        <i class="icon ion-md-close-circle-outline"></i> Delete selected icon
                                       </div>
                                     </div>
-                                    <div class="sticker">
-                                      <div class="inner">
-                                        <img src="/assets/images/persoanlisation/SVG/icon.svg">
-                                      </div>
-                                    </div>
-                                    <div class="sticker">
-                                      <div class="inner">
-                                        <img src="/assets/images/persoanlisation/SVG/icon.svg">
-                                      </div>
-                                    </div>
-                                    <div class="sticker">
-                                      <div class="inner">
-                                        <img src="/assets/images/persoanlisation/SVG/icon.svg">
-                                      </div>
-                                    </div>
+                                    
                                   </div>
                               </div>
                             </div>
                             <div class="row">
                               <div class="col-md-12">
                                   <hr style="width: 100%; margin: 10px 0;">
-                                  <div class="sticker-panel scroll">
+                                  <div class="sticker-panel scroll" id="sticker-panel">
                                     <div class="sticker">
                                       <div class="inner">
                                         <img src="/assets/images/persoanlisation/SVG/icon.svg">
@@ -331,42 +369,42 @@
                                     </div>
                                     <div class="sticker">
                                       <div class="inner">
-                                        <img src="/assets/images/persoanlisation/SVG/icon.svg">
+                                        <img src="/assets/images/persoanlisation/SVG/icon01.png">
+                                      </div>
+                                    </div>
+                                    <div class="sticker select">
+                                      <div class="inner">
+                                        <img src="/assets/images/persoanlisation/SVG/icon02.png" id="imgElement">
                                       </div>
                                     </div>
                                     <div class="sticker">
                                       <div class="inner">
-                                        <img src="/assets/images/persoanlisation/SVG/icon.svg">
+                                        <img src="/assets/images/persoanlisation/SVG/icon03.png">
                                       </div>
                                     </div>
                                     <div class="sticker">
                                       <div class="inner">
-                                        <img src="/assets/images/persoanlisation/SVG/icon.svg">
+                                        <img src="/assets/images/persoanlisation/SVG/icon04.png">
                                       </div>
                                     </div>
                                     <div class="sticker">
                                       <div class="inner">
-                                        <img src="/assets/images/persoanlisation/SVG/icon.svg">
+                                        <img src="/assets/images/persoanlisation/SVG/icon05.png">
                                       </div>
                                     </div>
                                     <div class="sticker">
                                       <div class="inner">
-                                        <img src="/assets/images/persoanlisation/SVG/icon.svg">
+                                        <img src="/assets/images/persoanlisation/SVG/icon06.png">
                                       </div>
                                     </div>
                                     <div class="sticker">
                                       <div class="inner">
-                                        <img src="/assets/images/persoanlisation/SVG/icon.svg">
+                                        <img src="/assets/images/persoanlisation/SVG/icon07.png">
                                       </div>
                                     </div>
                                     <div class="sticker">
                                       <div class="inner">
-                                        <img src="/assets/images/persoanlisation/SVG/icon.svg">
-                                      </div>
-                                    </div>
-                                    <div class="sticker">
-                                      <div class="inner">
-                                        <img src="/assets/images/persoanlisation/SVG/icon.svg">
+                                        <img src="/assets/images/persoanlisation/SVG/icon08.png">
                                       </div>
                                     </div>
                                   </div>
@@ -376,7 +414,9 @@
                     </div>
                 </div>
                 <div class="btn-wrapper">
-                    <button class="btn-brown" style="width: 100%;" id="complete_btn">COMPLETE</button>  
+                    <a  href="/assets/images/persoanlisation/back-envelope-white-02.png" download class="btn-brown" style="width: 100%;border-radius: 0;height: 40px;margin-bottom: 15px;background-color: #754729;border: 1px solid #754729;font-family: Copperplate-Lig;color: #ffffff;font-weight: bold;border-radius: 0;padding: 10px 15px;cursor: pointer;display: block;text-align: center;" id="complete_btn">DOWNLOAD FILE</a>  
+                    <button class="btn-outline" style="width: 100%;border-radius: 0;height: 40px;" id="complete_btn">SEND TO EMAIL</button>  
+                    <!-- <button class="btn-brown" style="width: 100%;" id="complete_btn">COMPLETE</button>   -->
                 </div>
             </div>
         </div>
