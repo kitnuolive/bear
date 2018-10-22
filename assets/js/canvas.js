@@ -1,23 +1,174 @@
 var Canvas = {
-    canvas : null,
+    myCanvas : null,
     context : null,
     init: function() {
       this.bindEvents();
-      //this.fabric();
+      this.fabric2();
+
+      // display/hide text controls
+      Canvas.myCanvas.on('object:selected', function(e) {
+        console.log(e.target);
+        if (e.target.type === 'i-text') {
+          $('#textControls').hidden = false;
+        }
+      });
+      Canvas.myCanvas.on('before:selection:cleared', function(e) {
+        if (e.target.type === 'i-text') {
+          $('#textControls').hidden = true;
+        }
+      });
        
     },
     bindEvents: function() {         
       $('#canvas-tool').on('click', '.step-head',this.selectStep);
       $('#frame-panel').on('click', '.frame',this.selectFrame);
       $('#reset_btn').on('click',this.selectFrame);
-      $('#complete_btn').on('click',this.genSVG);
 
       $('#sticker-panel').on('click', '.sticker',this.selectIcon);
 
+      $('#file').on('change',this.addImage);
+      $('#delSelect_btn').on('click',this.delSelect);
+      $('#sendFront_btn').on('click',this.sendFront);
+      $('#sendBack_btn').on('click',this.sendBack);
+      $('#clearAll_btn').on('click',this.clearAll);
+      $('#Addtext_btn').on('click',this.Addtext);
+
+      $('#font-family').on('change',this.setFontFamily);
+      $('#text-line-height').on('change',this.setLineHeight);
+      $('#text-align').on('change',this.setTextAlign);
+
+      // $('#lnkDownload').on('click',this.complete);
+      $('#complete_btn').on('click',this.complete);
       
     },
+    complete: function(e) { 
+      $("#tool,#myCanvas,#canvas-back,#canvas-select").hide();
+      $("#form-sendmail,#canvasImg,#number").show();
+        var href = Canvas.myCanvas.toDataURL({
+          format: 'png',
+          quality: 0.8
+        });
+
+        $("#canvasImg").attr("src",href); 
+        $("#lnkDownload").attr("href",href); 
+        $("#lnkDownload").attr("download",'custom.png'); 
+        // this.download = 'custom.png'
+    },
+    fabric2: function() { 
+      // Canvas.myCanvas = new fabric.Canvas('myCanvas');
+      Canvas.myCanvas = new fabric.Canvas("myCanvas", {
+            hoverCursor: 'pointer',
+            selection: true,
+            selectionBorderColor: 'green',
+            backgroundColor: null
+        });
+      Canvas.myCanvas.setHeight(265);
+      Canvas.myCanvas.setWidth(412);
+
+      Canvas.Addtext();
+
+      // Do some initializing stuff
+      fabric.Object.prototype.set({
+        transparentCorners: false,
+        rotatingPointOffset :30,
+        cornerStyle: 'circle',
+        cornerColor: '#22A7F0',
+        borderColor: '#22A7F0',
+        cornerSize: 12,
+        padding:5,
+        setControlsVisibility : ({
+            mt: false, // middle top disable
+            mb: false, // midle bottom
+            ml: false, // middle left
+            mr: false, // I think you get it
+        })
+      });
+
+      Canvas.myCanvas.forEachObject(function(o){ 
+        o.setControlVisible('mt',false),
+        o.setControlVisible('mb',false);
+      });
+
+    },
+    setFontFamily: function(e) {
+        Canvas.myCanvas.getActiveObject().setLineHeight(this.value);
+        Canvas.myCanvas.renderAll();
+    },
+    setLineHeight: function(e) {
+        Canvas.myCanvas.getActiveObject().setLineHeight(this.value);
+        Canvas.myCanvas.renderAll();
+    },
+    setTextAlign: function(e) {
+        Canvas.myCanvas.getActiveObject().setTextAlign(this.value);
+        Canvas.myCanvas.renderAll();
+    },
+    Addtext: function(e){
+        Canvas.myCanvas.add(new fabric.IText('TYPE YOUR MESSEAGE', {
+          fontFamily: 'Copperplate-Lig',
+            fontSize: 24,
+            stroke: '#939393',
+            fill: '#b3b3b3',
+            strokeWidth: 1,
+            left: 50,
+             top: 50
+        }));
+    },
+    addImage: function(e) {
+        var file = e.target.files[0];
+        alert(file);
+          var reader = new FileReader();
+          reader.onload = function(f) {
+            var data = f.target.result;
+            fabric.Image.fromURL(data, function(img) {
+              var oImg = img.set({
+                left: 0,
+                top: 0,
+                angle: 00,
+              }).scale(0.3);
+              Canvas.myCanvas.add(oImg).renderAll();
+              //var a = canvas.setActiveObject(oImg);
+              var dataURL = canvas.toDataURL({
+                format: 'png',
+                quality: 1
+              });
+            });
+          };
+          reader.readAsDataURL(file);
+    },
+    delSelect: function(e) {
+      var activeGroup = Canvas.myCanvas.getActiveGroup();
+        if (activeGroup) {
+          var activeObjects = activeGroup.getObjects();
+          for (let i in activeObjects) {
+            Canvas.myCanvas.remove(activeObjects[i]);
+          }
+          Canvas.myCanvas.discardActiveGroup();
+          Canvas.myCanvas.renderAll();
+        } else Canvas.myCanvas.getActiveObject().remove();
+    },
+    sendFront: function(e) {
+      var selectedObject;
+      Canvas.myCanvas.on('object:selected', function(event) {
+        selectedObject = event.target;
+      });
+      Canvas.myCanvas.bringToFront(selectedObject);
+    },
+    sendBack: function(e) {
+      var selectedObject;
+      Canvas.myCanvas.on('object:selected', function(event) {
+        selectedObject = event.target;
+      });
+      Canvas.myCanvas.sendToBack(selectedObject);
+    },
+    clearAll: function(e) {
+      setTimeout(function() {
+          location.reload()
+        }, 100);
+    },
     fabric: function() { 
-      var canvas = new fabric.Canvas('myCanvas');
+      Canvas.myCanvas = new fabric.Canvas('myCanvas');
+      Canvas.myCanvas.setHeight(265);
+      Canvas.myCanvas.setWidth(412);
 
           // var bgImg = new fabric.Image();
           // bgImg.setSrc('/assets/images/persoanlisation/SVG/WHITE-SVG-01.svg', function () {
@@ -43,19 +194,19 @@ var Canvas = {
                           left: 50,
                            top: 50
             });
-            canvas.add(textbox).setActiveObject(textbox);
+            Canvas.myCanvas.add(textbox).setActiveObject(textbox);
 
-            fabric.Image.fromURL('/assets/images/persoanlisation/SVG/icon02.png', function(myImg) {
-             //i create an extra var for to change some image properties
-             var img1 = myImg.set({ left: 250, top: 100 ,width:65,height:65});
-             canvas.add(img1); 
-            });
+            // fabric.Image.fromURL('/assets/images/persoanlisation/SVG/icon02.png', function(myImg) {
+            //  //i create an extra var for to change some image properties
+            //  var img1 = myImg.set({ left: 250, top: 100 ,width:65,height:65});
+            //  canvas.add(img1); 
+            // });
 
           
           // canvas.add(new fabric.Rect({ left: 110, top: 110, fill: '#f0f', width: 50, height: 50 }));
           // canvas.add(new fabric.Rect({ left: 50, top: 50, fill: '#77f', width: 40, height: 40 }));
 
-          canvas.forEachObject(function(o){ 
+          Canvas.myCanvas.forEachObject(function(o){ 
             o.hasBorders = true,
             o.hasControls = true,
             o.transparentCorners = false,
@@ -66,7 +217,7 @@ var Canvas = {
             o.setControlVisible('mb',false);
           });
 
-          canvas.hoverCursor = 'pointer';
+          Canvas.myCanvas.hoverCursor = 'pointer';
 
           function animate(e, dir) {
             if (e.target) {
@@ -76,7 +227,7 @@ var Canvas = {
                 duration: 100,
                 onChange: function(value) {
                   e.target.setAngle(value);
-                  canvas.renderAll();
+                  Canvas.myCanvas.renderAll();
                 },
                 onComplete: function() {
                   e.target.setCoords();
@@ -88,7 +239,7 @@ var Canvas = {
                 duration: 100,
                 onChange: function(value) {
                   e.target.scale(value);
-                  canvas.renderAll();
+                  Canvas.myCanvas.renderAll();
                 },
                 onComplete: function() {
                   e.target.setCoords();
@@ -96,9 +247,9 @@ var Canvas = {
               });
             }
           }
-          canvas.on('mouse:down', function(e) { animate(e, 1); });
-          canvas.on('mouse:up', function(e) { animate(e, 0); });
-          this.__canvases.push(canvas);
+          // Canvas.myCanvas.on('mouse:down', function(e) { animate(e, 1); });
+          // Canvas.myCanvas.on('mouse:up', function(e) { animate(e, 0); });
+          // this.__canvases.push(Canvas.myCanvas);
     },
     selectStep: function() {    
       var step = $(this).parents(".step");   
@@ -115,6 +266,7 @@ var Canvas = {
     },
     selectFrame: function() {           
       var src = $(this).attr("data-src");
+      var srcObj = $(this).find("img").attr("src");
       $('.frame').removeClass("select");
       if (!$(this).hasClass("btn-re")) {
         $(this).addClass("select");
@@ -122,32 +274,34 @@ var Canvas = {
       else{
         $('#frame-panel').find(".frame").eq(0).addClass("select");
       }
-      var bgImg = new fabric.Image();
-          bgImg.setSrc(src, function () {
-            bgImg.set({
-              top: 0,
-              left: 0,
-              scaleX: canvas.getWidth()/bgImg.width,
-              scaleY: canvas.getHeight()/bgImg.height,
-              backgroundImageOpacity: 1,
-              backgroundImageStretch: true,
-              originX: 'left',
-              originY: 'top'
-            });
-          });
 
-          canvas.setBackgroundImage(bgImg);
-      // Canvas.drawPhoto(src);
+        // fabric.Image.fromURL(src, function($img) { 
+        //         $img.set({width: Canvas.myCanvas.width, height: Canvas.myCanvas.height, originX: 'left', originY: 'top'});
+        //         Canvas.myCanvas.setBackgroundImage($img, Canvas.myCanvas.renderAll.bind(Canvas.myCanvas), {width: Canvas.myCanvas.width, height: Canvas.myCanvas.height, originX: 'left', originY: 'top'});
+
+        // });
+
+      fabric.Image.fromURL(src, function(img) {
+        img.set({width: Canvas.myCanvas.width, height: Canvas.myCanvas.height, originX: 'left', originY: 'top'});
+         // add background image
+         Canvas.myCanvas.setBackgroundImage(img, Canvas.myCanvas.renderAll.bind(Canvas.myCanvas), {
+            scaleX: parseFloat(Canvas.myCanvas.width) / parseFloat(img.width),
+            scaleY: parseFloat(Canvas.myCanvas.height) / parseFloat(img.height),
+         });
+      });
     },
     selectIcon: function() {           
       var src = $(this).find("img").attr("src");
       
       var imgElement = $(this).find("img");
-      var imgInstance = new fabric.Image(imgElement, {
-        left: 100,
-        top: 100,
-      });
-      canvas.add(imgInstance);
+      fabric.Image.fromURL(src, function(img) {
+          var oImg = img.set({
+            left: 250,
+            top: 50,
+            angle: 00,
+          }).scale(1);
+          Canvas.myCanvas.add(oImg).renderAll();
+        });
       // Canvas.drawPhoto(src);
     },
     drawPhoto: function(photo) {
