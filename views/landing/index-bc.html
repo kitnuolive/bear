@@ -11,7 +11,7 @@
 
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
 
   <title>Beawelry wishes to help you express your emotions to your loved ones for all your special occasions</title>
 
@@ -20,7 +20,7 @@
   <link href="/assets/css/style.css" rel="stylesheet">
   <link href="/assets/css/responsive.css" rel="stylesheet">
   <link href="/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
-  <link href="https://unpkg.com/ionicons@4.2.5/dist/css/ionicons.min.css" rel="stylesheet">
+  <!-- <link href="https://unpkg.com/ionicons@4.2.5/dist/css/ionicons.min.css" rel="stylesheet">÷\ -->
   <link href="/assets/css/canvas.css" rel="stylesheet">
 
 
@@ -37,10 +37,13 @@
     <menu>
         <ul>
           <li>
-            <a href="#">Product</a>
+            <a href="#">Gallery</a>
           </li>
           <li>
-            <a href="#">My personalisation</a>
+            <a href="https://www.beawelry.com/personalisation/">Online Shop</a>
+          </li>
+          <li>
+            <a href="#">How to</a>
           </li>
           <li>
             <a href="#">Contact Us</a>
@@ -50,12 +53,15 @@
     <nav class="menu">
         <div class="container">
             <ul class="navbar-nav">
-                <li>
-                    <a href="#">Product</a>
-                </li>
-                <li>
-                    <a href="#">My personalisation</a>
-                </li>
+              <li>
+                <a href="#">Gallery</a>
+              </li>
+                  <li>
+                    <a href="https://www.beawelry.com/personalisation/">Online Shop</a>
+                  </li>
+                  <li>
+                    <a href="#">How to</a>
+                  </li>
                 <li>
                     <a href="#">Contact Us</a>
                 </li>
@@ -71,7 +77,7 @@
     <section class="container">        
         <div class="row">
             <div class="canvas-wrapper">
-                <div class="canvas-select">
+                <div class="canvas-select" id="canvas-select">
                   <a href="#" class="btn-select"><i class="fa fa-caret-left"></i></a>
                   <span class="select_design text-center">
                     anniversary #01
@@ -79,11 +85,12 @@
                   <a href="#" class="btn-select"><i class="fa fa-caret-right"></i></a>
                 </div>
 
-                <div class="canvas-bg">
-                  <canvas id="myCanvas"  width="412" height="265" style="margin: 15px;"></canvas>
+                <div class="canvas-bg" style="position: relative;">
+                  <canvas id="myCanvas"></canvas>
+                 <img src="" id="canvasImg" style="position: absolute;top: 15px;">
                 </div>
 
-                <div class="tool-menu text-center" style="margin-top: 20px;">
+                <div class="tool-menu text-center" id="canvas-back" style="margin-top: 20px;">
                       <div class="col-md-4" style="margin-top: 5%;">
                         <button class="btn-re" data-src="null" id="reset_btn"> <i class="icon ion-ios-refresh"></i> RESET</button>
                       </div>
@@ -103,11 +110,15 @@
 
                 </div>
 
-                <img src="" id="canvasImg">
+
+
+                <div style="display: none;" id="number">
+                  <h4 class="text-center" style="font-family: Copperplate-Lig;"> Code : BD78622CD</h4>
+                </div>
             </div>
 
-            <div class="tool-wrapper">
-                <div class="canvas-tool open" id="canvas-tool">
+            <div class="tool-wrapper" id="tool">    
+                <div class="canvas-tool" id="canvas-tool">
                     <div class="step" mode="1">
                         <div class="step-head">
                             <div class="img">
@@ -124,9 +135,47 @@
                                <i class="icon ion-ios-remove-circle-outline select"></i>
                             </div>
                         </div>
+                        <div class="step-detail" style="display: none;" mode="1">
+                          <div class="row" style="margin-top: 10px;margin-bottom: 0;">
+                            <div class="col-md-12" style="font-family: Copperplate-Lig;color: #8a5d3b;">
+                                <div class="scroll text-center">
+                                    <div>SELECT DESIGN #</div>
+                                    <hr style="width: 100%;margin: 10px 0;">
+                                        <div>anniversary</div>
+                                    <hr style="width: 100%;margin: 10px 0;">
+                                        <div>beawelry classic</div>
+                                    <hr style="width: 100%;margin: 10px 0;">
+                                        <div>birthday</div>
+                                    <hr style="width: 100%;margin: 10px 0;">
+                                        <div>couple</div>
+                                    <hr style="width: 100%;margin: 10px 0;">
+                                        <div>encouragement</div>
+                                    <hr style="width: 100%;margin: 10px 0;">
+                                        <div>graduation</div>
+                                    <hr style="width: 100%;margin: 10px 0;">
+                                        <div>new born</div>
+                                    <hr style="width: 100%;margin: 10px 0;">
+                                        <div>sorry</div>
+                                    <hr style="width: 100%;margin: 10px 0;">
+                                    <div>wedding & engagement</div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
                         <div class="step-detail">
                             <div class="row" style="margin-top: 10px;margin-bottom: 0;">
                               <div class="col-md-12">
+                                  <div class="text-center">
+                                    <div class="select_design">
+                                        <label style="font-weight: normal;margin-bottom: 0;color: #8a5d3b;" title="Add an image" class="myFile"><span class="mdi mdi-image"><i class="icon ion-ios-add-circle-outline normal"></i> Add Photo</span>&nbsp;<input style="display: none;" type="file" id="file" /></label>
+                                    </div>
+                                    <div class="select_design text-center" style="display: none;">
+                                      anniversary
+                                    </div>
+                                  </div>
+                                  <hr style="width: 100%;margin: 10px 0;">
+                              </div>
+                              <div class="col-md-12" style="display: none;">
                                   <div class="text-center">
                                     <select class="select_design text-center">
                                       <option value="0">SELECT DESIGN #</option>
@@ -144,7 +193,7 @@
                                   <hr style="width: 100%;margin: 10px 0;">
                               </div>
                               <div class="col-md-6" style="padding-right: 0;padding-left: 30px;">
-                                <button class="btn-link select">CUSTOMIZE DESIGNS</button>
+                                <button class="btn-link select">CUSTOMISE DESIGNS</button>
                               </div>
                               <div class="col-md-6" style="border-left: 1px solid #ddd;">
                                 <button class="btn-link">FINISHED DESIGNS</button>
@@ -154,12 +203,12 @@
                               <div class="col-md-12">
                                   <hr style="width: 100%; margin: 10px 0;">
                                   <div class="frame-panel scroll" id="frame-panel">
-                                    <div class="frame" data-src="null">
+                                    <div class="frame select" data-src="null">
                                       <div class="inner">
                                         <img src="/assets/images/persoanlisation/png/WHITE-PNG-00.png">
                                       </div>
                                     </div>
-                                    <div class="frame select" data-src="/assets/images/persoanlisation/SVG/WHITE-SVG-01.svg">
+                                    <div class="frame" data-src="/assets/images/persoanlisation/SVG/WHITE-SVG-01.svg">
                                       <div class="inner">
                                         <img src="/assets/images/persoanlisation/png/WHITE-PNG-01.png">
                                       </div>
@@ -189,7 +238,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="step select" mode="2">
+                    <div class="step" mode="2">
                         <div class="step-head">
                             <div class="img">
                                 <img src="/assets/images/persoanlisation/icon-active.png" class="icon-active">
@@ -198,26 +247,24 @@
                                 <!-- <img src="/assets/images/persoanlisation/logo2-active.png" class="active"> -->
                             </div>
                             <div class="title">
-                                TYPE YOUR MESSEAGE
+                                MESSEAGE SETTING
                             </div>
                             <div class="icon-box">
                                <i class="icon ion-ios-add-circle-outline normal"></i>
                                <i class="icon ion-ios-remove-circle-outline select"></i>
                             </div>
                         </div>
-                        <div class="step-detail">
+                        <div class="step-detail"  id="text-controls textControls" style="height: 325px;">
                             <div class="row" style="margin-top: 20px">
                               <div class="col-md-12">
-                                <div class="form-group" style="padding:  15px;margin-bottom: 0;">
-                                  <textarea id="inputText" class="form-control" placeholder="TYPE YOUR MESSEAGE HERE..." rows="5"></textarea>
-                                </div>
-                                 
+                                 <button style="font-weight: normal;margin-bottom: 0;color: #8a5d3b;" title="Add an image" class="select_design" id="Addtext_btn"><span class="mdi mdi-image"><i class="icon ion-ios-add-circle-outline normal"></i> Add Text</span></button>
+
                               </div>
-                            </div>
+                            </div><hr style="width: 100%;margin: 10px 0;">
                             <div class="row" style="margin-top: 20px">
                               <div class="col-md-12">
                                 <!-- 2.1 -->
-                                <div class="col-md-6" style="padding-right: 5px;margin-bottom: 10px">
+                                <div class="col-md-6" style="padding-left: 5px;margin-bottom: 10px">
                                   <div class="btn-type text-center">
                                     <span>LANGUAGE :</span><span>EN</span>
                                     <i class="fa fa-question-circle pull-right"></i>
@@ -225,7 +272,24 @@
                                 </div>
                                 <div class="col-md-6"  style="padding-left: 5px;margin-bottom: 10px">
                                   <div class="btn-type text-center">
-                                    <span>FONT :</span><span>ABC</span>
+                                    <select class="select_design text-center" id="font-family" style="width: 95%;border: none;">
+                                      <option value="">select font</option>
+                                      <option value="Copperplate-Lig">Copperplate-Lig</option>
+                                      <option value="arial">Arial</option>
+                                        <option value="HelveticaNeue" selected>Helvetica Neue</option>
+                                        <option value="myriad pro">Myriad Pro</option>
+                                        <option value="delicious">Delicious</option>
+                                        <option value="verdana">Verdana</option>
+                                        <option value="georgia">Georgia</option>
+                                        <option value="courier">Courier</option>
+                                        <option value="comic sans ms">Comic Sans MS</option>
+                                        <option value="impact">Impact</option>
+                                        <option value="monaco">Monaco</option>
+                                        <option value="optima">Optima</option>
+                                        <option value="hoefler text">Hoefler Text</option>
+                                        <option value="plaster">Plaster</option>
+                                        <option value="engagement">Engagement</option>
+                                    </select>
                                   </div>
                                 </div>
                               </div>
@@ -237,39 +301,50 @@
                             <div class="row">  
                               <div class="col-md-12">
                                 <!-- 2.2 -->
-                                <div class="col-md-6"  style="padding-right: 5px;margin-bottom: 10px">
-                                  <div class="btn-type text-center">
+                                <div class="col-md-12" style="padding-left: 5px;margin-bottom: 10px">
+                                  <div class="btn-type text-center" style="margin-bottom: 10px;">
                                     <i class="fa fa-minus-circle pull-left"></i>
-                                    <span>TEXT SIZE :</span><span>15</span>
+                                    <span>LETTER SPACE :</span><input type="number" name="text-line-height" id="text-line-height" class="input-number" value="15">
                                     <i class="fa fa-plus-circle pull-right"></i>
                                   </div>
-                                </div>
-                                <div class="col-md-6" style="padding-left: 5px;margin-bottom: 10px">
-                                  <div class="btn-type text-center">
+                                  <div class="btn-type text-center" style="margin-bottom: 10px;">
                                     <i class="fa fa-minus-circle pull-left"></i>
-                                    <span>LETTER SPACE :</span><span>15</span>
+                                    <span>LINE HEIGHT :</span><input type="number" name="text-line-height" id="text-line-height" class="input-number" value="15">
                                     <i class="fa fa-plus-circle pull-right"></i>
                                   </div>
-                                </div>
-                                <!-- 2.3 -->
-                                <div class="col-md-6" style="padding-right: 5px;margin-bottom: 10px">
-
-                                  <div class="btn-type text-center align-text">
+                                  <div class="btn-type text-center align-text" style="margin-bottom: 10px;">
                                     <i class="fa fa-align-left pull-left"></i>
                                     <i class="fa fa-align-center"></i>
                                     <i class="fa fa-align-right pull-right"></i>
                                   </div>
                                 </div>
-                                <div class="col-md-6" style="padding-left: 5px;margin-bottom: 10px">
-
-                                  <div class="btn-type text-center">
-                                    <i class="fa fa-minus-circle pull-left"></i>
-                                    <span>LINE HEIGHT :</span><span>15</span>
-                                    <i class="fa fa-plus-circle pull-right"></i>
-                                  </div>
-                                </div>
                               </div>
-                                
+                            </div>
+                            <div style="display: none;">
+                                <input type="color" id="text-color" size="10">
+                                <select id="text-align">
+                                    <option value="left">Align Left</option>
+                                    <option value="center">Align Center</option>
+                                    <option value="right">Align Right</option>
+                                    <option value="justify">Align Justify</option>
+                                  </select>
+                                <label for="text-stroke-color">Stroke C:</label>
+                                <input type="color" id="text-stroke-color">
+                                <label for="text-stroke-width">Stroke W:</label>
+                                <input type="number" value="1" min="1" max="5" id="text-stroke-width">
+                                <label for="text-font-size">Font S:</label>
+                                <input type="number" min="12" max="120" step="1" id="text-font-size">
+                                <label for="text-line-height">Line H:</label>
+                                <input type="number" min="0" max="10" step="0.1" id="text-line-height">
+                                <label for="text-bg-color">BG Color:</label>
+                                <input type="color" id="text-bg-color" size="10">
+                                <label for="text-lines-bg-color">BG Text Color:</label>
+                                <input type="color" id="text-lines-bg-color" size="10">
+                                <input type='checkbox' name='fonttype' id="text-cmd-bold"> <b>B</b>
+                                <input type='checkbox' name='fonttype' id="text-cmd-italic"> <em>I</em>
+                                <input type='checkbox' name='fonttype' id="text-cmd-underline"> Underline
+                                <input type='checkbox' name='fonttype' id="text-cmd-linethrough"> Linethrough
+                                <input type='checkbox' name='fonttype' id="text-cmd-overline"> Overline
                             </div>
                         </div>
                     </div>
@@ -282,7 +357,7 @@
                                 <!-- <img src="/assets/images/persoanlisation/logo3-active.png" class="active"> -->
                             </div>
                             <div class="title">
-                                ADD ICONS TO YOUR DESIGN
+                                ADD STICKER TO YOUR DESIGN
                             </div>
                             <div class="icon-box">
                                <i class="icon ion-ios-add-circle-outline normal"></i>
@@ -297,26 +372,33 @@
                                   </div>
                                   <hr style="width: 100%;margin: 10px 0;display: none;">
                                   <div class="select-sticker"> 
-                                    <div class="sticker select">
-                                      <div class="inner">
-                                        <img src="/assets/images/persoanlisation/SVG/icon.svg">
+                                    <div class="sticker select" style="width: auto;">
+                                      <div class="inner" style="margin-right: 5px;padding: 5px 15px;width: 145px;float: left;">
+                                        <a href="javascript:;" id="delSelect_btn">
+                                            <i class="icon ion-md-close-circle-outline"></i> Delete selected
+                                        </a>
+                                        </div>
+
+                                      <div class="inner" style="margin-right: 5px;padding: 5px 15px;width: 65px;float: left;">
+                                        <a href="javascript:;" id="sendFront_btn">
+                                            Front
+                                        </a>
+                                    </div>
+
+                                      <div class="inner" style="margin-right: 5px;padding: 5px 15px;width: 65px;float: left;">
+                                        <a href="javascript:;" id="sendBack_btn">
+                                            Back
+                                        </a>
+                                      </div>
+
+
+                                      <div class="inner" style="display:none;margin-right: 5px;padding: 5px 15px;width: 85px;float: left;">
+                                        <a href="javascript:;" id="clearAll_btn">
+                                            Clear all
+                                        </a>
                                       </div>
                                     </div>
-                                    <div class="sticker">
-                                      <div class="inner">
-                                        <img src="/assets/images/persoanlisation/SVG/icon.svg">
-                                      </div>
-                                    </div>
-                                    <div class="sticker">
-                                      <div class="inner">
-                                        <img src="/assets/images/persoanlisation/SVG/icon.svg">
-                                      </div>
-                                    </div>
-                                    <div class="sticker">
-                                      <div class="inner">
-                                        <img src="/assets/images/persoanlisation/SVG/icon.svg">
-                                      </div>
-                                    </div>
+                                    
                                   </div>
                               </div>
                             </div>
@@ -331,42 +413,42 @@
                                     </div>
                                     <div class="sticker">
                                       <div class="inner">
-                                        <img src="/assets/images/persoanlisation/SVG/icon.svg">
+                                        <img src="/assets/images/persoanlisation/SVG/icon01.png">
                                       </div>
                                     </div>
                                     <div class="sticker">
                                       <div class="inner">
-                                        <img src="/assets/images/persoanlisation/SVG/icon.svg">
+                                        <img src="/assets/images/persoanlisation/SVG/icon02.png" id="imgElement">
                                       </div>
                                     </div>
                                     <div class="sticker">
                                       <div class="inner">
-                                        <img src="/assets/images/persoanlisation/SVG/icon.svg">
+                                        <img src="/assets/images/persoanlisation/SVG/icon03.png">
                                       </div>
                                     </div>
                                     <div class="sticker">
                                       <div class="inner">
-                                        <img src="/assets/images/persoanlisation/SVG/icon.svg">
+                                        <img src="/assets/images/persoanlisation/SVG/icon04.png">
                                       </div>
                                     </div>
                                     <div class="sticker">
                                       <div class="inner">
-                                        <img src="/assets/images/persoanlisation/SVG/icon.svg">
+                                        <img src="/assets/images/persoanlisation/SVG/icon05.png">
                                       </div>
                                     </div>
                                     <div class="sticker">
                                       <div class="inner">
-                                        <img src="/assets/images/persoanlisation/SVG/icon.svg">
+                                        <img src="/assets/images/persoanlisation/SVG/icon06.png">
                                       </div>
                                     </div>
                                     <div class="sticker">
                                       <div class="inner">
-                                        <img src="/assets/images/persoanlisation/SVG/icon.svg">
+                                        <img src="/assets/images/persoanlisation/SVG/icon07.png">
                                       </div>
                                     </div>
                                     <div class="sticker">
                                       <div class="inner">
-                                        <img src="/assets/images/persoanlisation/SVG/icon.svg">
+                                        <img src="/assets/images/persoanlisation/SVG/icon08.png">
                                       </div>
                                     </div>
                                   </div>
@@ -375,9 +457,34 @@
                         </div>
                     </div>
                 </div>
-                <div class="btn-wrapper">
-                    <button class="btn-brown" style="width: 100%;" id="complete_btn">COMPLETE</button>  
+                <div class="btn-wrapper" >
+                    <button class="btn-brown" style="width: 100%;" id="complete_btn">COMPLETE</button>
                 </div>
+            </div>
+            <div class="tool-wrapper" id="form-sendmail"  style="display: none;">
+                <div class="canvas-comfirm" style=" margin-top: 50px;">
+                  <form>
+                    <div class="form-group">
+                       <input type="text" name="" class="form-control input-circle" placeholder="First name :" required="">
+                    </div>
+                    <div class="form-group">
+                       <input type="text" name="" class="form-control input-circle" placeholder="Last name :" required="">
+                    </div>
+                    <hr style="width: 100%;">
+                    <div class="form-group">
+                       <input type="text" name="" class="form-control input-circle" placeholder="Email :" required="">
+                    </div>
+                    <div class="form-group">
+                       <input type="text" name="" class="form-control input-circle" placeholder="RE-Enter Email :" required="">
+                    </div>
+                  </form>
+                </div>
+                <div class="btn-wrapper">
+                    <a  href="/assets/images/persoanlisation/back-envelope-white-02.png" download class="btn-brown" style="width: 100%;border-radius: 0;height: 40px;margin-bottom: 15px;background-color: #754729;border: 1px solid #754729;font-family: Copperplate-Lig;color: #ffffff;font-weight: bold;border-radius: 0;padding: 10px 15px;cursor: pointer;display: block;text-align: center;" id="lnkDownload">DOWNLOAD FILE</a>  
+                    <button class="btn-outline" style="width: 100%;border-radius: 0;height: 40px;" id="complete_btn">SEND TO EMAIL</button>  
+                    <!--    -->
+                </div>
+
             </div>
         </div>
      </section>
@@ -408,9 +515,9 @@
 </footer>
 
     <!-- jQuery Version 1.11.0 -->
-    <script src="assets/js/jquery-1.11.0.js"></script>
+    <script src="assets/js/jquery-3.1.1.min.js"></script>
   <script src="assets/js/jquery.easing.1.3.js"></script>
-  <script src="https://cdn.rawgit.com/konvajs/konva/2.1.7/konva.min.js"></script>
+  <!-- <script src="https://cdn.rawgit.com/konvajs/konva/2.1.7/konva.min.js"></script> -->
   <script src="assets/js/jquery.animate-enhanced.min.js"></script>
   <script src="assets/js/fabric.min.js"></script>
   <script src="assets/js/base64.js"></script>
