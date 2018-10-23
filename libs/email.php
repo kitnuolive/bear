@@ -38,8 +38,8 @@ class Email extends Model
         $fieldCountPage = "email_id";
         $showOutput = 10;
         $orderBy = "email_id";
-        $typeSearch = ['emailId' => 'emailId'
-        ];
+        $typeSearch = array('emailId' => 'emailId'
+        );
         /* test */
         $result = Model::listDb($obj, $fieldDB, $typeSearch, $tableName, $orderBy, NULL, $showOutput, $page, $fieldCountPage);
 
