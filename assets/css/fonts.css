@@ -1,0 +1,64 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 2883025, 2014-09-14T04:22:41-0400
+ *
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are
+ * explicitly restricted from using the Licensed Webfonts(s).
+ *
+ * You may obtain a valid license at the URLs below.
+ *
+ * Webfont: Copperplate Light by URW++
+ * URL: http://www.myfonts.com/fonts/urw/copperplate/t-light/
+ * Copyright: (URW)++,Copyright 2006 by (URW)++ Design &amp; Development
+ *
+ * Webfont: Firmin Didot URW Roman by URW++
+ * URL: http://www.myfonts.com/fonts/urw/firmin-didot/urw-t-roman/
+ * Copyright: Copyright 2010 URW++ Design &amp; Development Hamburg
+ *
+ *
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=2883025
+ * Licensed pageviews: 10,000
+ *
+ * © 2014 MyFonts Inc
+*/
+
+
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("//hello.myfonts.net/count/2bfdd1");
+
+@font-face {font-family: 'Copperplate-Lig';src: url('../fonts/2BFDD1_0_0.eot');src: url('fonts/2BFDD1_0_0.eot?#iefix') format('embedded-opentype'),url('fonts/2BFDD1_0_0.woff') format('woff'),url('fonts/2BFDD1_0_0.ttf') format('truetype'),url('fonts/2BFDD1_0_0.svg#wf') format('svg');}
+@font-face {font-family: 'FirminDidURW-Rom';src: url('../fonts/2BFDD1_1_0.eot');src: url('fonts/2BFDD1_1_0.eot?#iefix') format('embedded-opentype'),url('fonts/2BFDD1_1_0.woff') format('woff'),url('fonts/2BFDD1_1_0.ttf') format('truetype'),url('fonts/2BFDD1_1_0.svg#wf') format('svg');}
+
+@font-face {
+  font-family: 'Libre Baskerville';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Libre Baskerville'), local('LibreBaskerville-Regular'), url(http://fonts.gstatic.com/s/librebaskerville/v4/pR0sBQVcY0JZc_ciXjFsK5Rby8KfwQsaipLBqMCVNtM.woff) format('woff');
+}
+@font-face {
+  font-family: 'Libre Baskerville';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Libre Baskerville Italic'), local('LibreBaskerville-Italic'), url(http://fonts.gstatic.com/s/librebaskerville/v4/QHIOz1iKF3bIEzRdDFaf5dgliI79_bmRXH6crmREtCo.woff) format('woff');
+}
+
+.copperplate-lig {
+  font-family: Copperplate-Lig;
+  font-weight: normal;
+  font-style: normal;
+}
+.didot-rom {
+  font-family: FirminDidURW-Rom;
+  font-weight: normal;
+  font-style: normal;
+}
+.libre-baskerville {
+  font-family: Libre Baskerville;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.italic {
+  font-style: italic;
+}
