@@ -1,10 +1,11 @@
+
 var Canvas = {
     myCanvas : null,
+    viewCanvas : null,
     context : null,
     init: function() {
       this.bindEvents();
-      this.fabric2();
-
+      this.fabricMyCanvas();
       // display/hide text controls
       Canvas.myCanvas.on('object:selected', function(e) {
           var step = $(".step[mode=2]");   
@@ -55,7 +56,7 @@ var Canvas = {
       $('#complete_btn').on('click',this.complete);
       
     },
-    fabric2: function() { 
+    fabricMyCanvas: function() { 
       // Canvas.myCanvas = new fabric.Canvas('myCanvas');
       Canvas.myCanvas = new fabric.Canvas("myCanvas", {
             hoverCursor: 'pointer',
@@ -85,6 +86,90 @@ var Canvas = {
         o.setControlVisible('ml',false),
         o.setControlVisible('mr',false);
       });
+
+      Canvas.viewCanvas = new fabric.Canvas("myCanvas", {
+            hoverCursor: 'pointer',
+            selection: true,
+            selectionBorderColor: 'green',
+            backgroundColor: null
+        });
+      Canvas.viewCanvas.setHeight(600);
+      Canvas.viewCanvas.setWidth(500);
+    },
+    fabricViewCanvas: function(href,text_code) { 
+      Canvas.viewCanvas = new fabric.Canvas("viewCanvas", {
+            hoverCursor: 'pointer',
+            selection: true,
+            selectionBorderColor: 'green',
+            backgroundColor: "#ffffff"
+        });
+      Canvas.viewCanvas.setHeight(600);
+      Canvas.viewCanvas.setWidth(500);
+
+        var src = "/assets/images/canvas_logo.png";
+        fabric.Image.fromURL(src, function(img) {
+          var oImg = img.set({
+            left: 200,
+            top: 30,
+            angle: 00
+          }).scale(1);
+          Canvas.viewCanvas.add(oImg).renderAll();
+        });
+        Canvas.viewCanvas.add(new fabric.IText('personalisation', {
+          fontFamily: 'Copperplate-Lig',
+            fontSize: 18,
+            fill: '#754729',
+            left: 170,
+            top: 80
+        }));
+
+        var src = "/assets/images/persoanlisation/back-envelope-white.png";
+        fabric.Image.fromURL(src, function(img) {
+          var oImg = img.set({
+            left: 20,
+            top: 120,
+            angle: 00
+          }).scale(1);
+          Canvas.viewCanvas.add(oImg).renderAll();
+        });
+
+        Canvas.viewCanvas.add(new fabric.IText('beawelry ® 2018 ©', {
+          fontFamily: 'Copperplate-Lig',
+            fontSize: 12,
+            fill: '#754729',
+            left: 20,
+            top: 570
+        }));
+
+        fabric.Image.fromURL(href, function(img) {
+          var oImg = img.set({
+            left: 30,
+            top: 130,
+            angle: 00
+          }).scale(1);
+          Canvas.viewCanvas.add(oImg).renderAll();
+        });
+
+        /* Code */
+        Canvas.viewCanvas.add(new fabric.IText('code :' + text_code, {
+          fontFamily: 'Copperplate-Lig',
+            fontSize: 18,
+            fill: '#754729',
+            left: 150,
+            top: 420
+        }));
+
+        setTimeout(function(){ 
+            var saveImage = Canvas.viewCanvas.toDataURL({
+              format: 'png',
+              quality: 0.8
+            });
+
+            $("#lnkDownload").attr("href",saveImage); 
+            $("#lnkDownload").attr("download",'personalisation_' + text_code+ '.png');             
+         }, 1000);
+        setTimeout(function(){ $("#lnkDownload").trigger( "click" ); }, 1100); 
+
     },
     selectnNextFrame: function(e) {
       $box = $(this).parents("#canvas-select");
@@ -128,17 +213,11 @@ var Canvas = {
       Canvas.setCharSpacing();
     },
     complete: function(e) { 
-      $("#tool,#myCanvas,#canvas-back,#canvas-select").hide();
-      $("#form-sendmail,#canvasImg,#number").show();
         var href = Canvas.myCanvas.toDataURL({
           format: 'png',
           quality: 0.8
         });
-
-        $("#canvasImg").attr("src",href); 
-        $("#lnkDownload").attr("href",href); 
-        $("#lnkDownload").attr("download",'custom.png'); 
-        // this.download = 'custom.png'
+        Canvas.fabricViewCanvas(href , "df12000246");
     },
     resetCanvas: function() { 
       Canvas.myCanvas.clear();
