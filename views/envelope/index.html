@@ -87,7 +87,6 @@
 
                 <div class="canvas-bg" style="position: relative;">
                   <canvas id="myCanvas"></canvas>
-                 <img src="" id="canvasImg" style="position: absolute;top: 15px;left: 15px;">
                 </div>
 
                 <div style="display: none;">
@@ -117,12 +116,6 @@
                        
                      </div>
 
-                </div>
-
-
-
-                <div style="display: none;" id="number">
-                  <h4 class="text-center" style="font-family: Copperplate-Lig;"> Code : BD78622CD</h4>
                 </div>
             </div>
 
@@ -431,7 +424,6 @@
                 </div>
                 <div class="btn-wrapper" >
                     <button class="btn-brown" style="width: 100%;" id="complete_btn">COMPLETE</button>
-                    <a  href="" download class="btn-brown" id="lnkDownload">DOWNLOAD FILE</a> 
                 </div>
             </div>
             <div class="tool-wrapper" id="form-sendmail"  style="display: none;">
@@ -464,32 +456,72 @@
 
 
 
- <footer>
-  <div class="container">
-    <div class="footer">
-      <div class="copyright">beawelry ® 2018 © </div>
-      <div class="social_box">
-        <ul class="social-footer">
-          <li>
-            <a href="https://www.facebook.com/Beawelry" target="_blank" title="Beawelry's facebook">
-              <i class="fa fa-facebook"></i>
-            </a>
-          </li>
-          <li>
-            <a href="http://instagram.com/beawelry" title="Beawelry's instagram">
-              <i class="fa fa-instagram"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
+   <footer>
+    <div class="container">
+      <div class="footer">
+        <div class="copyright">beawelry ® 2018 © </div>
+        <div class="social_box">
+          <ul class="social-footer">
+            <li>
+              <a href="https://www.facebook.com/Beawelry" target="_blank" title="Beawelry's facebook">
+                <i class="fa fa-facebook"></i>
+              </a>
+            </li>
+            <li>
+              <a href="http://instagram.com/beawelry" title="Beawelry's instagram">
+                <i class="fa fa-instagram"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
 
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
+
+    <div class="modal modal-scroll center fade" id="complete_modal" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body" style="padding : 0px;">
+                    <div class="row">
+                      <div class="col-md-6">                          
+                          <img src="" id="canvasImg" style="width: 100%;height: auto">
+                      </div>
+                      <div class="col-md-6">
+                          <h3>ยินดีด้วย คุณสร้างเสร็จแล้ว</h3>
+                          <h4>ขั้นตอนต่อไป คือ</h4>
+                          <ul style="text-align: -webkit-auto;list-style: none;padding-left: 0;">
+                            <li> 1. เข้าเว็บ bewelry.com</li>
+                            <li> 2. เลือกสินค่าที่ต้องการ</li>
+                            <li> 3. อัปโหลดรูปที่ทำเสร็จ</li>
+                            <li> 4. สั้งซื้อสินค้า</li>
+                            <li> 5. รอรับของที่บ้านได้เลย</li>
+                          </ul>  
+
+                          <div>
+                            <div class="">
+                              <a  href="" download id="lnkDownload" class="btn-outline" >DOWNLOAD FILE</a> 
+                            </div>   
+
+                            <div class="" style="margin-top: 15px;">
+
+                              <button class="btn-outline"  data-dismiss="modal" aria-hidden="true">ทำต่อ</button> 
+                              <button class="btn-outline" id="renew_btn">เริ่มใหม่</button> 
+                            </div> 
+                          </div>
+                                                    
+                          
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- jQuery Version 1.11.0 -->
     <script src="assets/js/jquery-3.1.1.min.js"></script>
   <script src="assets/js/jquery.easing.1.3.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
   <!-- <script src="https://cdn.rawgit.com/konvajs/konva/2.1.7/konva.min.js"></script> -->
   <script src="assets/js/jquery.animate-enhanced.min.js"></script>
   <script src="assets/js/fabric.min.js"></script>

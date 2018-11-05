@@ -166,9 +166,13 @@ var Canvas = {
             });
 
             $("#lnkDownload").attr("href",saveImage); 
-            $("#lnkDownload").attr("download",'personalisation_' + text_code+ '.png');             
+            $("#lnkDownload").attr("download",'personalisation_' + text_code+ '.png');   
+            $("#canvasImg").attr("src",saveImage); 
+            $("#canvasImg").attr("alt",'personalisation_' + text_code);            
          }, 1000);
         setTimeout(function(){ $("#lnkDownload").trigger( "click" ); }, 1100); 
+
+        $("#complete_modal").modal("show");
 
     },
     selectnNextFrame: function(e) {
