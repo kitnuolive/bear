@@ -26,7 +26,7 @@ class App
     public static function run($uri)
     {
         $errpage = Config::get('Error_page');
-        //self::$db = new DB(Config::get('db.host'), Config::get('db.user'), Config::get('db.password'), Config::get('db.db_name'));
+        self::$db = new DB(Config::get('db.host'), Config::get('db.user'), Config::get('db.password'), Config::get('db.db_name'));
         self::$router = new Router($uri);
         $classname = self::$router->getController();
         $layout = self::$router->getRoute();
