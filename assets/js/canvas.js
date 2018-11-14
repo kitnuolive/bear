@@ -4,51 +4,13 @@ var Canvas = {
     viewCanvas : null,
     context : null,
     current :null,
-    list : [],
+    mods : 0,
+    counter:0,
     state : [],
-    index : 0,
-    index2 : 0,
-    action  : false,
-    refresh : true,
     init: function() {
       this.bindEvents();
       this.fabricMyCanvas();
       // display/hide text controls
-      Canvas.myCanvas.on('object:selected', function(e) {
-        var step = $(".step");
-        $("#canvas-tool").addClass("open");
-
-        if (e.target.type === 'i-text') {
-          step.removeClass("select");
-          $(".step[mode=2]").addClass("select");
-        }
-        else if (e.target.type === 'image') {
-            // $('#textControls').hidden = true;
-          step.removeClass("select");
-          $(".step[mode=3]").addClass("select");
-        }
-        else{
-          step.removeClass("select");
-          $(".step[mode=1]").addClass("select");
-        }
-      });
-      Canvas.myCanvas.on('before:selection:cleared', function(e) {
-        var step = $(".step");  
-        if (e.target.type === 'i-text') {
-          // $('#textControls').hidden = true;
-          step.removeClass("select");
-          $(".step[mode=1]").addClass("select");
-        }
-        else if (e.target.type === 'image') {
-            // $('#textControls').hidden = true;
-          step.removeClass("select");
-          $(".step[mode=1]").addClass("select");
-        }
-        else{
-          step.removeClass("select");
-          $(".step[mode=1]").addClass("select");
-        }
-      });
        
     },
     bindEvents: function() {         
@@ -110,53 +72,58 @@ var Canvas = {
         o.setControlVisible('mr',false);
       });
 
-      Canvas.myCanvas.on("object:added", function (e) {
-          var object = e.target;
-          console.log('object:modified');
-
-          if (Canvas.action === true) {
-              Canvas.state = [Canvas.state [Canvas.index2]];
-              Canvas.list = [Canvas.list[Canvas.index2]];
-
-              Canvas.action = false;
-              console.log(Canvas.state);
-              Canvas.index = 1;
-          }
-          object.saveState();
-
-          console.log(object.originalState);
-          Canvas.state[Canvas.index] = JSON.stringify(object.originalState);
-          Canvas.list[Canvas.index] = object;
-          Canvas.index++;
-          Canvas.index2 = Canvas.index - 1;
-
-
-
-          Canvas.refresh = true;
+      Canvas.myCanvas.on(
+          'object:modified', function () {
+          updateModifications(true);
+      },
+          'object:added', function () {
+          updateModifications(true);   
       });
 
-      Canvas.myCanvas.on("object:modified", function (e) {
-          var object = e.target;
-          console.log('object:modified');
-
-          if (Canvas.action === true) {
-              Canvas.state = [Canvas.state[Canvas.index2]];
-              Canvas.list = [Canvas.list[Canvas.index2]];
-
-              Canvas.action = false;
-              console.log(Canvas.state);
-              Canvas.index = 1;
+      function updateModifications(savehistory) {
+          if (savehistory === true) {
+              //myjson = JSON.stringify(canvas);
+              var myjson = Canvas.myCanvas.toJSON();
+              Canvas.state.push(myjson);
           }
+      }
 
-          object.saveState();
+      Canvas.myCanvas.on('object:selected', function(e) {
+        var step = $(".step");
+        $("#canvas-tool").addClass("open");
 
-          Canvas.state[Canvas.index] = JSON.stringify(object.originalState);
-          Canvas.list[Canvas.index] = object;
-          Canvas.index++;
-          Canvas.index2 = Canvas.index - 1;
-
-          console.log(Canvas.state);
-          Canvas.refresh = true;
+        console.log("selected :" +e.target.type);
+        if (e.target.type === 'i-text') {
+          step.removeClass("select");
+          $(".step[mode=2]").addClass("select");
+        }
+        else if (e.target.type === 'image') {
+            // $('#textControls').hidden = true;
+          step.removeClass("select");
+          $(".step[mode=3]").addClass("select");
+        }
+        else{
+          step.removeClass("select");
+          $(".step[mode=1]").addClass("select");
+        }
+      });
+      Canvas.myCanvas.on('before:selection:cleared', function(e) {
+        var step = $(".step");  
+        console.log("cleared :" +e.target.type);
+        if (e.target.type === 'i-text') {
+          // $('#textControls').hidden = true;
+          step.removeClass("select");
+          $(".step[mode=1]").addClass("select");
+        }
+        else if (e.target.type === 'image') {
+            // $('#textControls').hidden = true;
+          step.removeClass("select");
+          $(".step[mode=1]").addClass("select");
+        }
+        else{
+          step.removeClass("select");
+          $(".step[mode=1]").addClass("select");
+        }
       });
 
       Canvas.viewCanvas = new fabric.Canvas("viewCanvas", {
@@ -248,42 +215,26 @@ var Canvas = {
 
     },
     undo: function(e) {
-      if (Canvas.index <= 0) {
-          Canvas.index = 0;
-          return;
+     if (Canvas.mods < Canvas.state.length) {
+          Canvas.myCanvas.clear().renderAll();
+          Canvas.myCanvas.loadFromJSON(Canvas.state[Canvas.state.length - 1 - Canvas.mods - 1]);
+          Canvas.myCanvas.renderAll();
+          //console.log("geladen " + (state.length-1-mods-1));
+          //console.log("state " + state.length);
+          Canvas.mods += 1;
+          //console.log("mods " + mods);
       }
-
-      if (Canvas.refresh === true) {
-          Canvas.index--;
-          Canvas.refresh = false;
-      }
-
-      console.log('undo');
-
-      Canvas.index2 = Canvas.index - 1;
-      Canvas.current = Canvas.list[Canvas.index2];
-      Canvas.current.setOptions(JSON.parse(Canvas.state[Canvas.index2]));
-
-      Canvas.index--;
-      Canvas.current.setCoords();
-      Canvas.canvas.renderAll();
-      Canvas.action = true;
     },
     redo: function(e) {
-      Canvas.action = true;
-      if (Canvas.index >= Canvas.state.length - 1) {
-          return;
+      if (Canvas.mods > 0) {
+          Canvas.myCanvas.clear().renderAll();
+          Canvas.myCanvas.loadFromJSON(Canvas.state[Canvas.state.length - 1 - Canvas.mods + 1]);
+          Canvas.myCanvas.renderAll();
+          //console.log("geladen " + (state.length-1-mods+1));
+          Canvas.mods -= 1;
+          //console.log("state " + state.length);
+          //console.log("mods " + mods);
       }
-
-      console.log('redo');
-
-      Canvas.index2 = Canvas.index + 1;
-      Canvas.current = Canvas.list[Canvas.index2];
-      Canvas.current.setOptions(JSON.parse(Canvas.state[Canvas.index2]));
-
-      Canvas.index++;
-      Canvas.current.setCoords();
-      Canvas.canvas.renderAll();
     },
     selectnNextFrame: function(e) {
       $box = $(this).parents("#canvas-select");
@@ -335,8 +286,10 @@ var Canvas = {
     },
     resetCanvas: function() { 
       Canvas.myCanvas.clear();
-      Canvas.Addtext();
-    },    setFontFamily: function(e) {
+      Canvas.state = [];
+      Canvas.myCanvas.Addtext();
+    },    
+    setFontFamily: function(e) {
         Canvas.myCanvas.getActiveObject().set("fontFamily", $(this).val());
         Canvas.myCanvas.renderAll();
     },
