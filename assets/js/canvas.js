@@ -107,6 +107,7 @@ var Canvas = {
           $(".step[mode=1]").addClass("select");
         }
       });
+
       Canvas.myCanvas.on('before:selection:cleared', function(e) {
         var step = $(".step");  
         console.log("cleared :" +e.target.type);
@@ -287,7 +288,7 @@ var Canvas = {
     resetCanvas: function() { 
       Canvas.myCanvas.clear();
       Canvas.state = [];
-      Canvas.myCanvas.Addtext();
+      Canvas.Addtext();
     },    
     setFontFamily: function(e) {
         Canvas.myCanvas.getActiveObject().set("fontFamily", $(this).val());
@@ -342,6 +343,9 @@ var Canvas = {
     delSelect: function(e) {
       if (Canvas.myCanvas.getActiveObject()) {          
         Canvas.myCanvas.remove(Canvas.myCanvas.getActiveObject());
+
+        var myjson = Canvas.myCanvas.toJSON();
+        Canvas.state.push(myjson);
       }
     },
     selectStep: function() {    
