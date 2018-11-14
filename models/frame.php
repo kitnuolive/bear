@@ -6,6 +6,8 @@ class Frame extends Model
     function frameCategoryDataRow()
     {
         $dataRow = array('frame_category_id' => 'frame_category_id',
+            'frame_category_code' => 'frame_category_code',
+            'frame_category_branch_id' => 'frame_category_branch_id',
             'frame_category_name' => 'frame_category_name',
             'frame_category_posotion' => 'frame_category_posotion');
 
@@ -41,8 +43,7 @@ class Frame extends Model
                 {
                     $value[] = "{$DBFieldName} = :{$key}";
                     $data[":{$key}"] = "{$obj->$key}";
-                }
-                else
+                } else
                 {
                     $value[] = "{$DBFieldName} LIKE :{$key}";
                     $data[":{$key}"] = "%{$obj->$key}%";
@@ -86,8 +87,7 @@ class Frame extends Model
             $error = $stmt->errorInfo();
             $result[] = new stdClass();
             $result[0]->error = $error[2];
-        }
-        else
+        } else
         {
             $i = 0;
             while ($row = $stmt->fetch())
@@ -147,8 +147,7 @@ class Frame extends Model
                 {
                     $value[] = "{$DBFieldName} = :{$key}";
                     $data[":{$key}"] = "{$obj->$key}";
-                }
-                else
+                } else
                 {
                     $value[] = "{$DBFieldName} LIKE :{$key}";
                     $data[":{$key}"] = "%{$obj->$key}%";
@@ -192,8 +191,7 @@ class Frame extends Model
             $error = $stmt->errorInfo();
             $result[] = new stdClass();
             $result[0]->error = $error[2];
-        }
-        else
+        } else
         {
             $i = 0;
             while ($row = $stmt->fetch())
@@ -212,10 +210,11 @@ class Frame extends Model
         $return->row_total = $c_page;
         return $return;
     }
-    
+
     function stickerCategoryDataRow()
     {
         $dataRow = array('sticker_category_id' => 'sticker_category_id',
+            'sticker_category_branch_id'=>'sticker_category_branch_id',
             'sticker_category_name' => 'sticker_category_name',
             'sticker_category_position' => 'sticker_category_position');
 
@@ -251,8 +250,7 @@ class Frame extends Model
                 {
                     $value[] = "{$DBFieldName} = :{$key}";
                     $data[":{$key}"] = "{$obj->$key}";
-                }
-                else
+                } else
                 {
                     $value[] = "{$DBFieldName} LIKE :{$key}";
                     $data[":{$key}"] = "%{$obj->$key}%";
@@ -296,8 +294,7 @@ class Frame extends Model
             $error = $stmt->errorInfo();
             $result[] = new stdClass();
             $result[0]->error = $error[2];
-        }
-        else
+        } else
         {
             $i = 0;
             while ($row = $stmt->fetch())
@@ -316,7 +313,7 @@ class Frame extends Model
         $return->row_total = $c_page;
         return $return;
     }
-    
+
     function stickerListDataRow()
     {
         $dataRow = array('sticker_list_id' => 'sticker_list_id',
@@ -357,8 +354,7 @@ class Frame extends Model
                 {
                     $value[] = "{$DBFieldName} = :{$key}";
                     $data[":{$key}"] = "{$obj->$key}";
-                }
-                else
+                } else
                 {
                     $value[] = "{$DBFieldName} LIKE :{$key}";
                     $data[":{$key}"] = "%{$obj->$key}%";
@@ -402,8 +398,7 @@ class Frame extends Model
             $error = $stmt->errorInfo();
             $result[] = new stdClass();
             $result[0]->error = $error[2];
-        }
-        else
+        } else
         {
             $i = 0;
             while ($row = $stmt->fetch())
