@@ -15,24 +15,38 @@ var Canvas = {
       this.fabricMyCanvas();
       // display/hide text controls
       Canvas.myCanvas.on('object:selected', function(e) {
-          var step = $(".step[mode=2]");   
+        var step = $(".step");
+        $("#canvas-tool").addClass("open");
+
         if (e.target.type === 'i-text') {
-              $(".step").removeClass("select");
-            $("#canvas-tool").addClass("open");
-            step.addClass("select");
+          step.removeClass("select");
+          $(".step[mode=2]").addClass("select");
         }
-        else{
+        else if (e.target.type === 'image') {
             // $('#textControls').hidden = true;
           step.removeClass("select");
           $(".step[mode=3]").addClass("select");
         }
+        else{
+          step.removeClass("select");
+          $(".step[mode=1]").addClass("select");
+        }
       });
       Canvas.myCanvas.on('before:selection:cleared', function(e) {
-          var step = $(".step[mode=2]");  
+        var step = $(".step");  
         if (e.target.type === 'i-text') {
           // $('#textControls').hidden = true;
           step.removeClass("select");
-          $(".step[mode=3]").addClass("select");
+          $(".step[mode=1]").addClass("select");
+        }
+        else if (e.target.type === 'image') {
+            // $('#textControls').hidden = true;
+          step.removeClass("select");
+          $(".step[mode=1]").addClass("select");
+        }
+        else{
+          step.removeClass("select");
+          $(".step[mode=1]").addClass("select");
         }
       });
        
@@ -341,7 +355,7 @@ var Canvas = {
         Canvas.myCanvas.renderAll();
     },
     Addtext: function(e){
-        Canvas.myCanvas.add(new fabric.IText('TYPE YOUR MESSEAGE', {
+        Canvas.myCanvas.add(new fabric.IText('TYPE YOUR MESSAGE', {
           fontFamily: 'Copperplate-Lig',
             fontSize: 24,
             stroke: '#939393',
