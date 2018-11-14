@@ -3,6 +3,13 @@ var Canvas = {
     myCanvas : null,
     viewCanvas : null,
     context : null,
+    current :null,
+    list : [],
+    state : [],
+    index : 0,
+    index2 : 0,
+    action  : false,
+    refresh : true,
     init: function() {
       this.bindEvents();
       this.fabricMyCanvas();
@@ -54,6 +61,8 @@ var Canvas = {
 
       // $('#lnkDownload').on('click',this.complete);
       $('#complete_btn').on('click',this.complete);
+      $('#undo_btn').on('click',this.undo);
+      $('#redo_btn').on('click',this.redo);
       
     },
     fabricMyCanvas: function() { 
@@ -87,7 +96,56 @@ var Canvas = {
         o.setControlVisible('mr',false);
       });
 
-      Canvas.viewCanvas = new fabric.Canvas("myCanvas", {
+      Canvas.myCanvas.on("object:added", function (e) {
+          var object = e.target;
+          console.log('object:modified');
+
+          if (Canvas.action === true) {
+              Canvas.state = [Canvas.state [Canvas.index2]];
+              Canvas.list = [Canvas.list[Canvas.index2]];
+
+              Canvas.action = false;
+              console.log(Canvas.state);
+              Canvas.index = 1;
+          }
+          object.saveState();
+
+          console.log(object.originalState);
+          Canvas.state[Canvas.index] = JSON.stringify(object.originalState);
+          Canvas.list[Canvas.index] = object;
+          Canvas.index++;
+          Canvas.index2 = Canvas.index - 1;
+
+
+
+          Canvas.refresh = true;
+      });
+
+      Canvas.myCanvas.on("object:modified", function (e) {
+          var object = e.target;
+          console.log('object:modified');
+
+          if (Canvas.action === true) {
+              Canvas.state = [Canvas.state[Canvas.index2]];
+              Canvas.list = [Canvas.list[Canvas.index2]];
+
+              Canvas.action = false;
+              console.log(Canvas.state);
+              Canvas.index = 1;
+          }
+
+          object.saveState();
+
+          Canvas.state[Canvas.index] = JSON.stringify(object.originalState);
+          Canvas.list[Canvas.index] = object;
+          Canvas.index++;
+          Canvas.index2 = Canvas.index - 1;
+
+          console.log(Canvas.state);
+          Canvas.refresh = true;
+      });
+
+      Canvas.viewCanvas = new fabric.Canvas("viewCanvas", {
             hoverCursor: 'pointer',
             selection: true,
             selectionBorderColor: 'green',
@@ -174,6 +232,44 @@ var Canvas = {
 
         $("#complete_modal").modal("show");
 
+    },
+    undo: function(e) {
+      if (Canvas.index <= 0) {
+          Canvas.index = 0;
+          return;
+      }
+
+      if (Canvas.refresh === true) {
+          Canvas.index--;
+          Canvas.refresh = false;
+      }
+
+      console.log('undo');
+
+      Canvas.index2 = Canvas.index - 1;
+      Canvas.current = Canvas.list[Canvas.index2];
+      Canvas.current.setOptions(JSON.parse(Canvas.state[Canvas.index2]));
+
+      Canvas.index--;
+      Canvas.current.setCoords();
+      Canvas.canvas.renderAll();
+      Canvas.action = true;
+    },
+    redo: function(e) {
+      Canvas.action = true;
+      if (Canvas.index >= Canvas.state.length - 1) {
+          return;
+      }
+
+      console.log('redo');
+
+      Canvas.index2 = Canvas.index + 1;
+      Canvas.current = Canvas.list[Canvas.index2];
+      Canvas.current.setOptions(JSON.parse(Canvas.state[Canvas.index2]));
+
+      Canvas.index++;
+      Canvas.current.setCoords();
+      Canvas.canvas.renderAll();
     },
     selectnNextFrame: function(e) {
       $box = $(this).parents("#canvas-select");

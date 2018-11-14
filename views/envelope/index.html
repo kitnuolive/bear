@@ -89,9 +89,9 @@
                   <canvas id="myCanvas"></canvas>
                 </div>
 
-                <div style="display: none;">
+                <!-- <div style="display: none;">
                   <canvas id="viewCanvas"></canvas>
-                </div>
+                </div> -->
 
                 <div class="tool-menu text-center" id="canvas-back" style="margin-top: 20px;">                      
                       <div class="col-md-4" style="margin-top:15px;">
@@ -104,8 +104,8 @@
 
                      <div class="col-md-8">
                           <div class="row" style="margin-bottom: 10px">
-                                <button class="btn-reun col-md-6"> <i class="icon ion-ios-undo"></i> UNDO</button>
-                              <button class="btn-reun col-md-6"> <i class="icon ion-ios-redo"></i> REDO</button> 
+                                <button class="btn-reun col-md-6" id="undo_btn"> <i class="icon ion-ios-undo"></i> UNDO</button>
+                              <button class="btn-reun col-md-6" id="redo_btn"> <i class="icon ion-ios-redo"></i> REDO</button> 
                        
                           </div>
                           <div class="row" style="margin-bottom: 10px">
@@ -506,7 +506,7 @@
                             <div class="" style="margin-top: 15px;">
 
                               <button class="btn-outline"  data-dismiss="modal" aria-hidden="true">ทำต่อ</button> 
-                              <button class="btn-outline" id="renew_btn">เริ่มใหม่</button> 
+                              <a href="/envelope" class="btn-outline" id="renew_btn">เริ่มใหม่</a> 
                             </div> 
                           </div>
                                                     
