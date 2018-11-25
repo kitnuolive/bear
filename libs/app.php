@@ -23,7 +23,7 @@ class App
         return self::$router;
     }
 
-    public static function run($uri)
+    public static function run($uri, $m)
     {
         $errpage = Config::get('Error_page');
         self::$db = new DB(Config::get('db.host'), Config::get('db.user'), Config::get('db.password'), Config::get('db.db_name'));
@@ -63,8 +63,7 @@ class App
             if ($session)
             {
                 $layout = 'adminindex';
-            }
-            else
+            } else
             {
                 echo 404;
                 Router::redirect($errpage);
@@ -76,18 +75,16 @@ class App
             $controller_object->$controller_method();
             $view_object = new View(null, VIEW_PATH . DS . $adminlogin . '.html');
             $content = $view_object->render();
-        }
-        else
+        } else
         {
 
             if (method_exists($controller_object, $controller_method))
             {
 //                echo $controller_method;
                 $view_path = $controller_object->$controller_method();
-                $view_object = new View($controller_object->getData(), $view_path);
+                $view_object = new View($controller_object->getData(), $view_path, $m);
                 $content = $view_object->render();
-            }
-            else
+            } else
             {
                 echo 404;
                 Router::redirect($errpage);
@@ -103,8 +100,7 @@ class App
 //            echo $layout_path . "<P>";
             $layout_view_object = new View(compact('content'), $layout_path);
             echo $layout_view_object->render();
-        }
-        else
+        } else
         {
             echo $content;
         }

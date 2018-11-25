@@ -6,7 +6,7 @@ class View
     protected $data;
     protected $path;
 
-    protected static function getDefaultViewPath()
+    protected static function getDefaultViewPath($m)
     {
         $router = App::getRouter();
         if (!$router)
@@ -16,10 +16,20 @@ class View
 
         $controller_dir = $router->getController();
         $template_name = $router->getMethodPrefix() . $router->getAction() . '.html';
+        if (!empty($m))// mobile
+        {
+            if (is_file(VIEW_PATH_MOBILE . DS . $controller_dir . DS . $template_name))
+            {
+                return VIEW_PATH_MOBILE . DS . $controller_dir . DS . $template_name;
+            } else
+            {
+                return VIEW_PATH . DS . $controller_dir . DS . $template_name;
+            }
+        }
         return VIEW_PATH . DS . $controller_dir . DS . $template_name;
     }
 
-    public function __construct($data = array(), $path = null)
+    public function __construct($data = array(), $path = null, $m = NULL)
     {
 
 //        var_dump($data);
@@ -28,7 +38,7 @@ class View
 //        echo "<P>";
         if (!$path)
         {
-            $path = self::getDefaultViewPath();
+            $path = self::getDefaultViewPath($m);
         }
         if (!file_exists($path))
         {
