@@ -320,6 +320,7 @@ class Frame extends Model
             'sticker_category_id' => 'sticker_category_id',
             'sticker_list_name' => 'sticker_list_name',
             'sticker_list_pic' => 'sticker_list_pic',
+            'sticker_list_pic_svg' => 'sticker_list_pic_svg',
             'sticker_list_position' => 'sticker_list_position');
 
         return $dataRow;
