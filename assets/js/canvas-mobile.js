@@ -49,8 +49,8 @@ var Canvas = {
             selectionBorderColor: 'green',
             backgroundColor: null
         });
-      Canvas.myCanvas.setHeight(265);
-      Canvas.myCanvas.setWidth(412);
+      Canvas.myCanvas.setHeight(198);
+      Canvas.myCanvas.setWidth(300);
 
       Canvas.Addtext();
 
@@ -313,11 +313,11 @@ var Canvas = {
     Addtext: function(e){
         Canvas.myCanvas.add(new fabric.IText('TYPE YOUR MESSAGE', {
           fontFamily: 'Copperplate-Lig',
-            fontSize: 24,
+            fontSize: 20,
             stroke: '#aeaeaf',
             fill: '#ffffff',
             strokeWidth: 1,
-            left: 50,
+            left: 20,
              top: 50
         }));
     },
@@ -352,15 +352,17 @@ var Canvas = {
     },
     selectStep: function() {    
       var step = $(this).parents(".step");   
-      var mode = step.attr("mode");   
-      if (step.hasClass("select")) {
-        step.removeClass("select");
+      var mode = $(this).attr("mode");   
+      $(".step-head").removeClass("select");
+      $(".step[mode=1]").find(".step-head[mode='"+mode+"']").addClass("select");
+      if ($(".step[mode='"+mode+"']").hasClass("select")) {
+        $(".step[mode='"+mode+"']").removeClass("select");
         $("#canvas-tool").removeClass("open");
       }
       else{
         $(".step").removeClass("select");
         $("#canvas-tool").addClass("open");
-        step.addClass("select");
+        $(".step[mode='"+mode+"']").addClass("select");
       }
     },
     selectFrame: function(e) {    
@@ -409,8 +411,8 @@ var Canvas = {
       var imgElement = $(this).find("img");
       fabric.Image.fromURL(src, function(img) {
         var oImg = img.set({
-          left: 250,
-          top: 50,
+          left: 50,
+          top: 80,
           angle: 00,
         }).scale(1);
         Canvas.myCanvas.add(oImg).renderAll();
