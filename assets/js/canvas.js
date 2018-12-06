@@ -135,6 +135,8 @@ var Canvas = {
         });
       Canvas.viewCanvas.setHeight(600);
       Canvas.viewCanvas.setWidth(500);
+
+      updateModifications(true);  
     },
     fabricViewCanvas: function(href,text_code) { 
       Canvas.viewCanvas = new fabric.Canvas("viewCanvas", {
