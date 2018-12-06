@@ -97,7 +97,7 @@ var Canvas = {
           step.removeClass("select");
           $(".step[mode=2]").addClass("select");
         }
-        else if (e.target.type === 'image') {
+        else if (e.target.type === 'group') {
             // $('#textControls').hidden = true;
           step.removeClass("select");
           $(".step[mode=3]").addClass("select");
@@ -412,8 +412,8 @@ var Canvas = {
       {
         var loadedObjects = new fabric.Group(group);
         loadedObjects.set({
-          left: 0,
-          top: 0
+          left: 50,
+          top: 100
         }).scale(10);
         Canvas.myCanvas.add(loadedObjects);
         Canvas.myCanvas.renderAll();
