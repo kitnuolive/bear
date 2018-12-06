@@ -311,15 +311,15 @@ var Canvas = {
         Canvas.myCanvas.renderAll();
     },
     Addtext: function(e){
-        Canvas.myCanvas.add(new fabric.IText('TYPE YOUR MESSAGE', {
+        Canvas.myCanvas.add(new fabric.IText('MESSAGE', {
           fontFamily: 'Copperplate-Lig',
-            fontSize: 20,
-            stroke: '#aeaeaf',
+            fontSize: 40,
+            stroke: '#999999',
             fill: '#ffffff',
             strokeWidth: 1,
-            left: 20,
-             top: 50
-        }));
+            left: 40,
+             top: 40
+        }).setShadow({ color: 'rgba(0,0,0,0.3)' }));
     },
     addImage: function(e) {
         var file = e.target.files[0];
