@@ -49,8 +49,8 @@ var Canvas = {
             selectionBorderColor: 'green',
             backgroundColor: null
         });
-      Canvas.myCanvas.setHeight(198);
-      Canvas.myCanvas.setWidth(300);
+      Canvas.myCanvas.setHeight(192);
+      Canvas.myCanvas.setWidth(290);
 
       Canvas.Addtext();
 
@@ -406,6 +406,32 @@ var Canvas = {
       });
     },
     selectIcon: function() {           
+      var src = $(this).attr("data-src");
+      // var src = $(this).find("img").attr("src");
+      console.log(src);
+      var group = [];
+      fabric.loadSVGFromURL(src,function(objects,options)
+      {
+        var loadedObjects = new fabric.Group(group);
+        loadedObjects.set({
+          left: 0,
+          top: 0
+        }).scale(8);
+        Canvas.myCanvas.add(loadedObjects);
+        Canvas.myCanvas.renderAll();
+        Canvas.myCanvas.forEachObject(function(o){ 
+          o.setControlVisible('mt',false),
+          o.setControlVisible('mb',false);
+          o.setControlVisible('ml',false),
+          o.setControlVisible('mr',false);
+        });
+      },
+      function(item, object) {
+        object.set('id', item.getAttribute('id'));
+        group.push(object);
+      });      
+    },
+    selectIconOld: function() {           
       var src = $(this).find("img").attr("src");
       
       var imgElement = $(this).find("img");

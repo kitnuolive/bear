@@ -404,26 +404,30 @@ var Canvas = {
       });
     },
     selectIcon: function() {           
-      var src = $(this).find("img").attr("src");
-      
-      var imgElement = $(this).find("img");
-      fabric.Image.fromURL(src, function(img) {
-        var oImg = img.set({
-          left: 250,
-          top: 50,
-          angle: 00,
-        }).scale(1);
-        Canvas.myCanvas.add(oImg).renderAll();
+      var src = $(this).attr("data-src");
+      // var src = $(this).find("img").attr("src");
+      console.log(src);
+      var group = [];
+      fabric.loadSVGFromURL(src,function(objects,options)
+      {
+        var loadedObjects = new fabric.Group(group);
+        loadedObjects.set({
+          left: 0,
+          top: 0
+        }).scale(10);
+        Canvas.myCanvas.add(loadedObjects);
+        Canvas.myCanvas.renderAll();
         Canvas.myCanvas.forEachObject(function(o){ 
           o.setControlVisible('mt',false),
           o.setControlVisible('mb',false);
           o.setControlVisible('ml',false),
           o.setControlVisible('mr',false);
         });
-      });
-      // Canvas.drawPhoto(src);
-
-      
+      },
+      function(item, object) {
+        object.set('id', item.getAttribute('id'));
+        group.push(object);
+      });      
     }
 };
 Canvas.init();
