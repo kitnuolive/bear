@@ -10,6 +10,7 @@ var Canvas = {
     init: function() {
       this.bindEvents();
       this.fabricMyCanvas();
+      this.fabricViewCanvas("","ddd");
       // display/hide text controls
        
     },
@@ -137,8 +138,10 @@ var Canvas = {
       Canvas.viewCanvas.setWidth(500);
 
       updateModifications(true);  
+      Canvas.fabricViewCanvas("","ddd");
     },
     fabricViewCanvas: function(href,text_code) { 
+      console.log(href,text_code);
       Canvas.viewCanvas = new fabric.Canvas("viewCanvas", {
             hoverCursor: 'pointer',
             selection: true,
@@ -171,7 +174,7 @@ var Canvas = {
             left: 20,
             top: 120,
             angle: 00
-          }).scale(1);
+          }).scale(.7);
           Canvas.viewCanvas.add(oImg).renderAll();
         });
 
@@ -269,10 +272,10 @@ var Canvas = {
       var max = parseFloat($input.attr("max"));
 
       if (mode == "minus" && old > min) {
-        $input.val(old-1);
+        $input.val(old-0.2);
       }
       else if (mode == "plus" && old < max) {
-        $input.val(old+1);
+        $input.val(old+0.2);
       }else{
         $input.val(old);
       }
@@ -311,14 +314,14 @@ var Canvas = {
         Canvas.myCanvas.renderAll();
     },
     Addtext: function(e){
-        Canvas.myCanvas.add(new fabric.IText('MESSAGE', {
+        Canvas.myCanvas.add(new fabric.IText('YOUR MESSAGE', {
           fontFamily: 'Copperplate-Lig',
-            fontSize: 50,
+            fontSize: 34,
             stroke: '#999999',
             fill: '#ffffff',
             strokeWidth: 1,
             left: 50,
-             top: 50
+            top: 50
         }).setShadow({ color: 'rgba(0,0,0,0.3)' }));
     },
     addImage: function(e) {

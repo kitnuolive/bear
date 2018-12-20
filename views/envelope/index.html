@@ -72,6 +72,8 @@
                 <a href="/contactus">Contact Us</a>
             </li>
         </ul>
+      </div>
+    </nav>
     
 
     <section class="container">        
@@ -86,18 +88,19 @@
                 </div>
 
                 <div class="canvas-bg" style="position: relative;">
-                  <canvas id="myCanvas"></canvas>
+                  <canvas id="myCanvas"  width="412" height="265"></canvas>
                 </div>
 
-                <!-- <div style="display: none;">
+                <div style="display: block;">
                   <canvas id="viewCanvas"></canvas>
-                </div> -->
+                </div>
 
                 <div class="tool-menu text-center" id="canvas-back" style="margin-top: 20px;">                      
                       <div class="col-md-4" style="margin-top:15px;">
                        <div class="popup" onclick="myFunction()">
                        <img src="/assets/images/persoanlisation/frontview.png" style="width: 60px; height: auto;">
-                       <br>FRONT VIEW
+                       <br>
+                          <p>FRONT VIEW</p>
                          <span class="popuptext" id="myPopup"><img src="/assets/images/persoanlisation/frontview.png" style="width: 300px; height: auto;"></span>
                        </div>
                      </div>
@@ -269,22 +272,15 @@
                                 <div class="col-md-12"  style="margin-bottom: 10px">
                                   <div class="btn-type text-center">
                                     <select class="select_design text-center" id="font-family" style="width: 95%;border: none;padding: 0;">
-                                      <option value="">select font</option>
-                                      <option value="Copperplate-Lig" selected>Copperplate-Lig</option>
-                                      <option value="arial">Arial</option>
+                                      <optgroup label="Thai">
+                                        <option value="Quark">Quark</option>
+                                      </optgroup>
+                                      <optgroup label="English">
+                                        <option value="Copperplate-Lig" selected>Copperplate Lig</option>
+                                        <option value="Great Vibes">Great Vibes</option>
+                                        <option value="Libre Baskerville">Libre Baskerville</option>
                                         <option value="HelveticaNeue">Helvetica Neue</option>
-                                        <option value="myriad pro">Myriad Pro</option>
-                                        <option value="delicious">Delicious</option>
-                                        <option value="verdana">Verdana</option>
-                                        <option value="georgia">Georgia</option>
-                                        <option value="courier">Courier</option>
-                                        <option value="comic sans ms">Comic Sans MS</option>
-                                        <option value="impact">Impact</option>
-                                        <option value="monaco">Monaco</option>
-                                        <option value="optima">Optima</option>
-                                        <option value="hoefler text">Hoefler Text</option>
-                                        <option value="plaster">Plaster</option>
-                                        <option value="engagement">Engagement</option>
+                                      </optgroup>
                                     </select>
                                   </div>
                                 </div>
@@ -300,12 +296,12 @@
                                 <div class="col-md-12" style="padding-left: 5px;margin-bottom: 10px">
                                   <div class="btn-type number-box text-center" style="margin-bottom: 10px;">
                                     <i class="fa fa-minus-circle pull-left" mode="minus"></i>
-                                    <span style="width: 120px;float: left; margin: 3px 15px;text-align: left;">LETTER SPACE :</span><input type="number" name="text-line-height" id="text-space" class="input-number" value="1" min="1" max="5"><span> em</span>
+                                    <span style="width: 120px;float: left; margin: 3px 15px;text-align: left;">LETTER SPACE :</span><input type="number" name="text-line-height" id="text-space" class="input-number" value="0.2" min="0.2" max="2"><span> em</span>
                                     <i class="fa fa-plus-circle pull-right" mode="plus"></i>
                                   </div>
                                   <div class="btn-type number-box text-center" style="margin-bottom: 10px;">
                                     <i class="fa fa-minus-circle pull-left" mode="minus"></i>
-                                    <span style="width: 120px;float: left; margin: 3px 15px;text-align: left;">LINE HEIGHT :</span><input type="number" name="text-line-height" id="text-line-height" class="input-number" value="1" min="1" max="40"><span> em</span>
+                                    <span style="width: 120px;float: left; margin: 3px 15px;text-align: left;">LINE HEIGHT :</span><input type="number" name="text-line-height" id="text-line-height" class="input-number" value="0.2" min="0.2" max="2"><span> em</span>
                                     <i class="fa fa-plus-circle pull-right" mode="plus"></i>
                                   </div>
                                   <div class="btn-type text-center align-text" id="text-align" style="margin-bottom: 10px;">
