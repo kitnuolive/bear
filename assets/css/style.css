@@ -172,10 +172,12 @@ p.text_justify {
 }
 /*Header----------------------------------------*/
 nav.menu{
-  height: 25px;
-  background-color: rgba(250, 235, 215, 0.49);
+  height: 33px;
+  background-color: #fff5f0;
   text-align: center;
-  padding: 3px 0 2px;
+  padding: 6px 0 2px;
+  border-top: 1px solid #F7EBE3;
+  border-bottom: 1px solid #F7EBE3;
 }
 nav.slide{
     height: 30px;

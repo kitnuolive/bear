@@ -23,7 +23,6 @@
   <!-- <link href="https://unpkg.com/ionicons@4.2.5/dist/css/ionicons.min.css" rel="stylesheet">÷\ -->
   <link href="/assets/css/canvas-mobile.css" rel="stylesheet">
 
-
 </head>
 
 <body>
@@ -73,6 +72,8 @@
             </li>
         </ul>
     
+      </div>
+    </nav>
 
     <section class="container">        
         <div class="row">
@@ -89,9 +90,9 @@
                   <canvas id="myCanvas" width="290" height="192"></canvas>
                 </div>
 
-                <!-- <div style="display: none;">
+                <div style="display: none;">
                   <canvas id="viewCanvas"></canvas>
-                </div> -->
+                </div>
 
                 <div class="tool-menu text-center" id="canvas-back" style="margin-top: 20px;">                      
                       <div class="col-md-4" style="margin-top:15px;">
@@ -285,22 +286,15 @@
                                 <div class="col-md-12"  style="margin-bottom: 10px">
                                   <div class="btn-type text-center">
                                     <select class="select_design text-center" id="font-family" style="width: 95%;border: none;padding: 0;">
-                                      <option value="">select font</option>
-                                      <option value="Copperplate-Lig" selected>Copperplate-Lig</option>
-                                      <option value="arial">Arial</option>
+                                      <optgroup label="Thai">
+                                        <option value="Quark">Quark</option>
+                                      </optgroup>
+                                      <optgroup label="English">
+                                        <option value="Copperplate-Lig" selected>Copperplate Lig</option>
+                                        <option value="Great Vibes">Great Vibes</option>
+                                        <option value="Libre Baskerville">Libre Baskerville</option>
                                         <option value="HelveticaNeue">Helvetica Neue</option>
-                                        <option value="myriad pro">Myriad Pro</option>
-                                        <option value="delicious">Delicious</option>
-                                        <option value="verdana">Verdana</option>
-                                        <option value="georgia">Georgia</option>
-                                        <option value="courier">Courier</option>
-                                        <option value="comic sans ms">Comic Sans MS</option>
-                                        <option value="impact">Impact</option>
-                                        <option value="monaco">Monaco</option>
-                                        <option value="optima">Optima</option>
-                                        <option value="hoefler text">Hoefler Text</option>
-                                        <option value="plaster">Plaster</option>
-                                        <option value="engagement">Engagement</option>
+                                      </optgroup>
                                     </select>
                                   </div>
                                 </div>
@@ -488,14 +482,14 @@
                           <img src="" id="canvasImg" style="width: 100%;height: auto">
                       </div>
                       <div class="col-md-6">
-                          <h3>ยินดีด้วย คุณสร้างเสร็จแล้ว</h3>
-                          <h4>ขั้นตอนต่อไป คือ</h4>
+                          <h3 class="copperplate-lig">ยินดีด้วย คุณสร้างเสร็จแล้ว</h3>
+                          <h4 class="copperplate-lig">ขั้นตอนต่อไป คือ</h4>
                           <ul style="text-align: -webkit-auto;list-style: none;padding-left: 0;">
-                            <li> 1. เข้าเว็บ bewelry.com</li>
-                            <li> 2. เลือกสินค่าที่ต้องการ</li>
-                            <li> 3. อัปโหลดรูปที่ทำเสร็จ</li>
-                            <li> 4. สั้งซื้อสินค้า</li>
-                            <li> 5. รอรับของที่บ้านได้เลย</li>
+                            <li class="libre-baskerville"> 1. เข้าเว็บ bewelry.com</li>
+                            <li class="libre-baskerville"> 2. เลือกสินค่าที่ต้องการ</li>
+                            <li class="libre-baskerville"> 3. อัปโหลดรูปที่ทำเสร็จ</li>
+                            <li class="libre-baskerville"> 4. สั้งซื้อสินค้า</li>
+                            <li class="libre-baskerville"> 5. รอรับของที่บ้านได้เลย</li>
                           </ul>  
 
                           <div>

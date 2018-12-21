@@ -215,7 +215,6 @@ var Canvas = {
         setTimeout(function(){ $("#lnkDownload").trigger( "click" ); }, 1100); 
 
         $("#complete_modal").modal("show");
-
     },
     undo: function(e) {
      if (Canvas.mods < Canvas.state.length) {
@@ -269,10 +268,10 @@ var Canvas = {
       var max = parseFloat($input.attr("max"));
 
       if (mode == "minus" && old > min) {
-        $input.val(old-1);
+        $input.val(old-0.2);
       }
       else if (mode == "plus" && old < max) {
-        $input.val(old+1);
+        $input.val(old+0.2);
       }else{
         $input.val(old);
       }
@@ -311,14 +310,14 @@ var Canvas = {
         Canvas.myCanvas.renderAll();
     },
     Addtext: function(e){
-        Canvas.myCanvas.add(new fabric.IText('MESSAGE', {
+        Canvas.myCanvas.add(new fabric.IText('YOUR MESSAGE', {
           fontFamily: 'Copperplate-Lig',
-            fontSize: 40,
+            fontSize: 26,
             stroke: '#999999',
             fill: '#ffffff',
             strokeWidth: 1,
-            left: 40,
-             top: 40
+            left: 30,
+            top: 40
         }).setShadow({ color: 'rgba(0,0,0,0.3)' }));
     },
     addImage: function(e) {

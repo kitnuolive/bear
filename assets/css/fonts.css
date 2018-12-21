@@ -27,10 +27,58 @@
 /* @import must be at top of file, otherwise CSS will not work */
 @import url("//hello.myfonts.net/count/2bfdd1");
 
-@font-face {font-family: 'Copperplate-Lig';src: url('../fonts/2BFDD1_0_0.eot');src: url('fonts/2BFDD1_0_0.eot?#iefix') format('embedded-opentype'),url('fonts/2BFDD1_0_0.woff') format('woff'),url('fonts/2BFDD1_0_0.ttf') format('truetype'),url('fonts/2BFDD1_0_0.svg#wf') format('svg');}
-@font-face {font-family: 'FirminDidURW-Rom';src: url('../fonts/2BFDD1_1_0.eot');src: url('fonts/2BFDD1_1_0.eot?#iefix') format('embedded-opentype'),url('fonts/2BFDD1_1_0.woff') format('woff'),url('fonts/2BFDD1_1_0.ttf') format('truetype'),url('fonts/2BFDD1_1_0.svg#wf') format('svg');}
+@font-face {
+  font-family: 'Copperplate-Lig';
+  src: url('../fonts/2BFDD1_0_0.eot');
+  src: url('fonts/2BFDD1_0_0.eot?#iefix') format('embedded-opentype'),
+       url('fonts/2BFDD1_0_0.woff') format('woff'),
+       url('fonts/2BFDD1_0_0.ttf') format('truetype'),
+       url('fonts/2BFDD1_0_0.svg#wf') format('svg');}
+@font-face {
+  font-family: 'FirminDidURW-Rom';
+  src: url('../fonts/2BFDD1_1_0.eot');
+  src: url('fonts/2BFDD1_1_0.eot?#iefix') format('embedded-opentype'),
+        url('fonts/2BFDD1_1_0.woff') format('woff'),
+        url('fonts/2BFDD1_1_0.ttf') format('truetype'),
+        url('fonts/2BFDD1_1_0.svg#wf') format('svg');}
 
 @font-face {
+  font-family: 'Quark';
+  src: url('../fonts⁩/Thai⁩/Quark⁩/Quark-Bold.eot');
+  src: url('fonts⁩/Thai⁩/Quark⁩/Quark-Bold.eot?#iefix') format('embedded-opentype'),
+      url('fonts⁩/Thai⁩/Quark⁩/Quark-Bold.woff2') format('woff2'),
+      url('fonts⁩/Thai⁩/Quark⁩/Quark-Bold.woff') format('woff'),
+      url('fonts⁩/Thai⁩/Quark⁩/Quark-Bold.ttf') format('truetype'),
+      url('fonts⁩/Thai⁩/Quark⁩/Quark-Bold.svg#Quark-Bold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Great Vibes';
+  src: url('../⁨fonts⁩/English⁩/GreatVibes⁩/GreatVibes-Regular.eot');
+  src: url('fonts⁩/English⁩/GreatVibes⁩/GreatVibes-Regular.eot?#iefix') format('embedded-opentype'),
+      url('fonts⁩/English⁩/GreatVibes⁩/GreatVibes-Regular.woff2') format('woff2'),
+      url('fonts⁩/English⁩/GreatVibes⁩/GreatVibes-Regular.woff') format('woff'),
+      url('fonts⁩/English⁩/GreatVibes⁩/GreatVibes-Regular.ttf') format('truetype'),
+      url('fonts⁩/English⁩/GreatVibes⁩/GreatVibes-Regular.svg#GreatVibes-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Libre Baskerville';
+  src: url('../⁨fonts⁩/English⁩/Libre_Baskerville⁩/LibreBaskerville-Bold.eot');
+  src: url('fonts⁩/English⁩/Libre_Baskerville⁩/LibreBaskerville-Bold.eot?#iefix') format('embedded-opentype'),
+      url('fonts⁩/English⁩/Libre_Baskerville⁩/LibreBaskerville-Bold.woff2') format('woff2'),
+      url('fonts⁩/English⁩/Libre_Baskerville⁩/LibreBaskerville-Bold.woff') format('woff'),
+      url('fonts⁩/English⁩/Libre_Baskerville⁩/LibreBaskerville-Bold.ttf') format('truetype'),
+      url('fonts⁩/English⁩/Libre_Baskerville⁩/LibreBaskerville-Bold.svg#LibreBaskerville-Bold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* @font-face {
   font-family: 'Libre Baskerville';
   font-style: normal;
   font-weight: 400;
@@ -41,7 +89,7 @@
   font-style: italic;
   font-weight: 400;
   src: local('Libre Baskerville Italic'), local('LibreBaskerville-Italic'), url(http://fonts.gstatic.com/s/librebaskerville/v4/QHIOz1iKF3bIEzRdDFaf5dgliI79_bmRXH6crmREtCo.woff) format('woff');
-}
+} */
 
 .copperplate-lig {
   font-family: Copperplate-Lig;
