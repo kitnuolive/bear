@@ -17,6 +17,33 @@ class createorderController extends Controller
         exit();
     }
 
+    public function downloadOrder()
+    {
+
+        $result = NULL;
+        $error = NULL;
+//        $data = 'data:image/png;base64,AAAFBfj42Pj4';
+        $post = isset($_POST['data']) ? json_decode($_POST['data']) : $post = null;
+//        print_r($_POST);
+//        print_r($_FILES);
+        if (empty($post))
+        {
+            $error = 'No post data.';
+        } else
+        {
+            $id = $post->bear_order_id;
+            $orderClass = new order();
+            $orderClass->downloadOrder($id);
+            $return = new stdClass();
+            $return->result = true;
+            $return->error = $error;
+            echo json_encode($return);
+            exit();
+        }
+        
+        exit();
+    }
+
     public function updateOrder()
     {
         $result = NULL;
