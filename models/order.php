@@ -11,6 +11,10 @@ class order extends Model
             'bear_order_number' => 'bear_order_number',
             'user_account_id' => 'user_account_id',
             'bear_order_path' => 'bear_order_path',
+            'bear_order_path_svg'=>'bear_order_path_svg',
+            'frame_list_id'=>'frame_list_id',
+            'frame_category_id'=>'frame_category_id',
+            'sticker_list_id'=>'sticker_list_id',
             'create_date' => 'create_date'
         );
 
