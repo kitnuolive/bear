@@ -91,7 +91,7 @@
                   <canvas id="myCanvas"  width="412" height="265"></canvas>
                 </div>
 
-                <div style="display: block;">
+                <div style="display: none;">
                   <canvas id="viewCanvas"></canvas>
                 </div>
 
@@ -100,7 +100,7 @@
                        <div class="popup" onclick="myFunction()">
                        <img src="/assets/images/persoanlisation/frontview.png" style="width: 60px; height: auto;">
                        <br>
-                          <p>FRONT VIEW</p>
+                          <p style="margin-top:10px;">FRONT VIEW</p>
                          <span class="popuptext" id="myPopup"><img src="/assets/images/persoanlisation/frontview.png" style="width: 300px; height: auto;"></span>
                        </div>
                      </div>
@@ -114,7 +114,7 @@
                           <div class="row" style="margin-bottom: 10px">
                             <button class="btn-reun col-md-6" data-src="null" id="reset_btn"> <i class="icon ion-ios-refresh"></i> RESET</button>
 
-                            <button class="btn-reun col-md-6" data-src="null" id="delSelect_btn"> <i class="icon ion-md-close-circle-outline"></i> DELETE SELECTED</button>
+                            <button class="btn-reun col-md-6" data-src="null" id="delSelect_btn"> <i class="icon ion-md-close-circle-outline"></i> DELETE</button>
                           </div>
                        
                      </div>
@@ -482,28 +482,31 @@
                       <div class="col-md-6">                          
                           <img src="" id="canvasImg" style="width: 100%;height: auto">
                       </div>
-                      <div class="col-md-6">
-                          <h3>ยินดีด้วย คุณสร้างเสร็จแล้ว</h3>
-                          <h4>ขั้นตอนต่อไป คือ</h4>
-                          <ul style="text-align: -webkit-auto;list-style: none;padding-left: 0;">
-                            <li> 1. เข้าเว็บ bewelry.com</li>
-                            <li> 2. เลือกสินค่าที่ต้องการ</li>
-                            <li> 3. อัปโหลดรูปที่ทำเสร็จ</li>
-                            <li> 4. สั้งซื้อสินค้า</li>
-                            <li> 5. รอรับของที่บ้านได้เลย</li>
-                          </ul>  
+                      <div class="col-md-6 text-center content-wrapper">
+                        <div class="content-wrapper">
+                            <h3>Congratulations, you're done.</h3>
+                            <h4>Next steps</h4>
+                            <ul style="text-align: -webkit-auto;list-style: none;padding-left: 0;">
+                              <li> 1. เข้าเว็บ bewelry.com</li>
+                              <li> 2. เลือกสินค่าที่ต้องการ</li>
+                              <li> 3. อัปโหลดรูปที่ทำเสร็จ</li>
+                              <li> 4. สั้งซื้อสินค้า</li>
+                              <li> 5. รอรับของที่บ้านได้เลย</li>
+                            </ul>  
 
-                          <div>
-                            <div class="">
-                              <a  href="" download id="lnkDownload" class="btn-outline" >DOWNLOAD FILE</a> 
-                            </div>   
+                            <div style="margin-top:10px;">
+                              <div class="">
+                                <a  href="" download id="lnkDownload" class="btn-outline" >DOWNLOAD FILE</a> 
+                              </div>   
 
-                            <div class="" style="margin-top: 15px;">
+                              <div class="" style="margin-top: 15px;">
 
-                              <button class="btn-outline"  data-dismiss="modal" aria-hidden="true">ทำต่อ</button> 
-                              <a href="/envelope" class="btn-outline" id="renew_btn">เริ่มใหม่</a> 
-                            </div> 
-                          </div>
+                                <button class="btn-outline"  data-dismiss="modal" aria-hidden="true">ทำต่อ</button> 
+                                <a href="/envelope" class="btn-outline" id="renew_btn">เริ่มใหม่</a> 
+                              </div> 
+                            </div>
+                        </div>
+                          
                                                     
                           
                       </div>
@@ -522,6 +525,7 @@
   <script src="assets/js/fabric.min.js"></script>
   <script src="assets/js/base64.js"></script>
   <script src="assets/js/canvas.js"></script>
+  <script src="assets/js/canvas-action.js"></script>
   <script>
 
     $(document).ready(function(){

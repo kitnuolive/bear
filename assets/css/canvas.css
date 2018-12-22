@@ -311,3 +311,7 @@ line-height: 35px;
     background: transparent;
     border: none;
 }
+
+.content-wrapper{
+	padding: 25px 15px;
+  }
