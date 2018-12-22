@@ -11,6 +11,10 @@ class order extends Model
             'bear_order_number' => 'bear_order_number',
             'user_account_id' => 'user_account_id',
             'bear_order_path' => 'bear_order_path',
+            'bear_order_path_svg' => 'bear_order_path_svg',
+            'frame_list_id' => 'frame_list_id',
+            'frame_category_id' => 'frame_category_id',
+            'sticker_list_id' => 'sticker_list_id',
             'create_date' => 'create_date'
         );
 
@@ -35,8 +39,7 @@ class order extends Model
             $error = $stmt->errorInfo();
             $result[] = new stdClass();
             $result[0]->error = $error[2];
-        }
-        else
+        } else
         {
 
             $row = $stmt->fetch();
@@ -53,13 +56,11 @@ class order extends Model
                     $error = $stmt->errorInfo();
                     $result[] = new stdClass();
                     $result[0]->error = $error[2];
-                }
-                else
+                } else
                 {
                     $id = $this->db->connection->LastInsertId();
                 }
-            }
-            else
+            } else
             {
                 $n = $row['bear_order_number'];
                 $a = (int) substr($n, 0, 2);
@@ -73,13 +74,11 @@ class order extends Model
                     {
                         $b = 0;
                         $a += 1;
-                    }
-                    else
+                    } else
                     {
                         $b += 1;
                     }
-                }
-                else
+                } else
                 {
                     $c += 1;
                 }
@@ -99,8 +98,7 @@ class order extends Model
                     $error = $stmt->errorInfo();
                     $result[] = new stdClass();
                     $result[0]->error = $error[2];
-                }
-                else
+                } else
                 {
                     $id = $this->db->connection->LastInsertId();
                 }
@@ -134,8 +132,7 @@ class order extends Model
         if (empty($obj->bear_order_id))
         {
             $sql = "INSERT INTO `bear_order` SET {$field}";
-        }
-        else
+        } else
         {
             $sql = "UPDATE `bear_order` SET {$field} WHERE `bear_order_id` = '{$obj->bear_order_id}'";
         }
@@ -146,20 +143,31 @@ class order extends Model
         {
             $error = $stmt->errorInfo();
             $result->error = $error[2];
-        }
-        else
+        } else
         {
             if (empty($obj->bear_order_id))
             {
                 $bear_order_id = $this->db->connection->LastInsertId();
-            }
-            else
+            } else
             {
                 $bear_order_id = $obj->bear_order_id;
             }
         }
         $result->bear_order_id = $bear_order_id;
         return $result;
+    }
+
+    public function downloadOrder($id)
+    {
+        $sql = "UPDATE `bear_order` SET download_count = download_count+1 WHERE `bear_order_id` = '{$id}'";
+        $stmt = $this->db->connection->prepare($sql);
+        $stmt->execute();
+        
+        $sql = "INSERT INTO `order_download_log` (`id`, `bear_order_id`, `download_date`) VALUES (NULL, '{$id}', CURRENT_TIMESTAMP)";
+        $stmt = $this->db->connection->prepare($sql);
+        $stmt->execute();
+        
+        return true;
     }
 
 }

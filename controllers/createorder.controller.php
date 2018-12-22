@@ -17,6 +17,112 @@ class createorderController extends Controller
         exit();
     }
 
+    public function downloadOrder()
+    {
+
+        $result = NULL;
+        $error = NULL;
+//        $data = 'data:image/png;base64,AAAFBfj42Pj4';
+        $post = isset($_POST['data']) ? json_decode($_POST['data']) : $post = null;
+//        print_r($_POST);
+//        print_r($_FILES);
+        if (empty($post))
+        {
+            $error = 'No post data.';
+        } else
+        {
+            $id = $post->bear_order_id;
+            $orderClass = new order();
+            $orderClass->downloadOrder($id);
+            $return = new stdClass();
+            $return->result = true;
+            $return->error = $error;
+            echo json_encode($return);
+            exit();
+        }
+        
+        exit();
+    }
+
+    public function updateOrder()
+    {
+        $result = NULL;
+        $error = NULL;
+//        $data = 'data:image/png;base64,AAAFBfj42Pj4';
+        $post = isset($_POST['data']) ? json_decode($_POST['data']) : $post = null;
+//        print_r($_POST);
+//        print_r($_FILES);
+        if (empty($post))
+        {
+            $error = 'No post data.';
+        } else
+        {
+            $data = $post->png;
+            list($type, $data) = explode(';', $data);
+            list(, $data) = explode(',', $data);
+            $data = base64_decode($data);
+            $file = md5(time()) . ".png";
+            file_put_contents(ROOT . DS . "assets/upload/order/{$file}", $data);
+            $orderClass = new order();
+            $objOrder = new stdClass();
+            $objOrder->bear_order_id = $post->bear_order_id;
+            $objOrder->bear_order_path = "/upload/order/{$file}";
+            $order_update = $orderClass->orderUpdate($objOrder);
+//            print_r($order_update);
+            $result = new stdClass();
+            $result->bear_order_id = $order_update->bear_order_id;
+            $return = new stdClass();
+            $return->result = $result;
+            $return->error = $error;
+            echo json_encode($return);
+
+            exit();
+        }
+        exit();
+    }
+
+    public function genOrderNumber()
+    {
+
+        $result = NULL;
+        $error = NULL;
+//        $_POST['data'] = '{"bear_order_path_svg":"path","frame_category_id":"1","frame_list_id":"1","sticker_list_id":"1","frame_category_code":"ev"}';
+        $post = isset($_POST['data']) ? json_decode($_POST['data']) : $post = null;
+//        print_r($_POST);
+//        print_r($_FILES);
+        if (empty($post))
+        {
+            $error = 'No post data.';
+        } else
+        {
+            $path = $this->upload->uploadFile($_FILES);
+            $orderClass = new order();
+            $date = date("Y-m-d H:i:s");
+            //save order
+            $objOrder = new stdClass();
+            $objOrder->bear_order_number = $post->frame_category_code . time();
+            $objOrder->bear_order_status = 1;
+            $objOrder->bear_order_path_svg = $path;
+            $objOrder->frame_list_id = $post->frame_list_id;
+            $objOrder->sticker_list_id = $post->sticker_list_id;
+            $objOrder->frame_category_id = $post->frame_category_id;
+            $objOrder->create_date = $date;
+
+            $order_update = $orderClass->orderUpdate($objOrder);
+//            print_r($order_update);
+            $result = new stdClass();
+            $result->bear_order_id = $order_update->bear_order_id;
+            $result->bear_order_number = $objOrder->bear_order_number;
+            $return = new stdClass();
+            $return->result = $result;
+            $return->error = $error;
+            echo json_encode($return);
+
+            exit();
+        }
+        exit();
+    }
+
     public function createOrder()
     {
 //        var_dump($_FILES['file']);
@@ -26,8 +132,7 @@ class createorderController extends Controller
         if (empty($post))
         {
             $error = 'No post data.';
-        }
-        else
+        } else
         {
 
 //            var_dump($_FILES['file']);

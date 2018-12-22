@@ -21,9 +21,9 @@ $http = "http://";
 if (strpos($server, 'localhost') !== FALSE)
 {
     $serverUrl = "localhost";
-} else if (strpos($server, 'xxx') !== FALSE)
+} else if (strpos($server, 'lactoyen') !== FALSE)
 {
-    $serverUrl = "xxx";
+    $serverUrl = "lactoyen.com";
 }
 $M = null;
 $detect = new Mobile_Detect();
