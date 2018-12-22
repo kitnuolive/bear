@@ -7,6 +7,7 @@ class Frame extends Model
     {
         $dataRow = array('frame_category_id' => 'frame_category_id',
             'frame_category_code' => 'frame_category_code',
+            'frame_category_type'=>'frame_category_type',
             'frame_category_branch_id' => 'frame_category_branch_id',
             'frame_category_name' => 'frame_category_name',
             'frame_category_posotion' => 'frame_category_posotion');
