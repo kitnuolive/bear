@@ -114,6 +114,7 @@ class Frame extends Model
             'frame_category_id' => 'frame_category_id',
             'frame_list_name' => 'frame_list_name',
             'frame_list_pic' => 'frame_list_pic',
+            'frame_list_pic_svg' => 'frame_list_pic_svg',
             'frame_list_position' => 'frame_list_position');
 
         return $dataRow;
