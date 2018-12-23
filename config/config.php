@@ -6,7 +6,8 @@ Config::set('default_route', 'index');
 Config::set('default_action', 'index');
 Config::set('default_controller', 'landing');
 Config::set('routes', array(
-    'default' => ''
+    'default' => '',
+    'adminlogin' => 'system_',
 ));
 Config::set('routes_controller', array(
 ));
@@ -16,8 +17,9 @@ Config::set('path_default', array(
     ''
 ));
 
-Config::set('adminlogin', 'knsadminlogin'
+Config::set('adminlogin', 'adminlogin'
 );
 
 Config::set('admin_page', array(
+    'adminorder' => 'adminorder'
 ));

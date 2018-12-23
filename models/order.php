@@ -169,5 +169,98 @@ class order extends Model
         
         return true;
     }
+    
+    public function orderList($obj, $page = null)
+    {
+        if (empty($obj))
+        {
+            $obj = new stdClass();
+        }
+        $dataSearch = $this->orderData();
+        $orderType = 'ASC';
+        if (!empty($obj->order_type))
+        {
+            $orderType = $obj->order_type;
+        }
+        if (empty($obj->order_by))
+        {
+            $obj->order_by = 'bear_order_id';
+        }
+        $data = NULL;
+        foreach ($dataSearch as $key => $DBFieldName)
+        {
+            if ($obj->order_by == $key)
+            {
+                $orderBy = $DBFieldName;
+            }//sort
+            if (isset($obj->$key))
+            {
+                if ($key == 'bear_order_id' || $key == 'bear_order_id')
+                {
+                    $value[] = "{$DBFieldName} = :{$key}";
+                    $data[":{$key}"] = "{$obj->$key}";
+                } else
+                {
+                    $value[] = "{$DBFieldName} LIKE :{$key}";
+                    $data[":{$key}"] = "%{$obj->$key}%";
+                }
+            }//search
+        }
+        $where = null;
+        if (!empty($value))
+        {
+            $value = implode(') AND (', $value);
+            $where = "WHERE ({$value})";
+        }
+//        var_dump($value);
+//        var_dump($data);
+        /* all list */
+        $allList = (int) 0;
+        if (!empty($obj->allList))
+        {
+            $allList = (int) 1;
+        }
+//        var_dump($allList);
+        $show_output = 30;
+        (empty($page)) ? $page = 1 : NULL;
+        $page = ($page - 1) * $show_output;
+        $c_page = 0;
+        $sql_c = "SELECT SQL_CACHE count(`bear_order_id`) AS count FROM `bear_order` {$where}";
+//        var_dump($sql_c);
+        $stmt_c = $this->db->connection->prepare($sql_c);
+        $stmt_c->execute($data);
+        $row_c = $stmt_c->fetch();
+        $c_page = $row_c['count'];
+
+        $sql = "SELECT SQL_CACHE * "
+                . "FROM `bear_order` {$where} ORDER BY {$orderBy} {$orderType} LIMIT {$page},{$show_output}";
+//        echo $sql . "<br>";
+        $stmt = $this->db->connection->prepare($sql);
+        $query = $stmt->execute($data);
+        $result = null;
+        if (!$query)
+        {
+            $error = $stmt->errorInfo();
+            $result[] = new stdClass();
+            $result[0]->error = $error[2];
+        } else
+        {
+            $i = 0;
+            while ($row = $stmt->fetch())
+            {
+                $result[] = new stdClass();
+                foreach ($dataSearch as $key => $value)
+                {
+                    $result[$i]->$key = $row[$value];
+                }
+                ++$i;
+            }
+        }
+        $return = new stdClass();
+        $return->view = $result;
+        $return->next_page = ceil($c_page / 30);
+        $return->row_total = $c_page;
+        return $return;
+    }
 
 }

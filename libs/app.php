@@ -49,7 +49,7 @@ class App
         if (in_array($classname, $adminpage))
         {
 
-            $asid = Session::get('asid');
+            $asid = Session::get('adminSid');
 //            $asid = 1;
 //            echo $asid;
             if (empty($asid))
@@ -58,21 +58,22 @@ class App
                 Router::redirect($errpage);
                 die();
             }
-            $admin = new user();
-            $session = $admin->chkSession($asid);
-            if ($session)
-            {
-                $layout = 'adminindex';
-            } else
-            {
-                echo 404;
-                Router::redirect($errpage);
-                die();
-            }
+//            $admin = new user();
+//            $session = $admin->chkSession($asid);
+            $layout = 'adminindex';
+//            if ($session)
+//            {
+//                $layout = 'adminindex';
+//            } else
+//            {
+//                echo 404;
+//                Router::redirect($errpage);
+//                die();
+//            }
         }
         if ($adminlogin == strtolower(ucfirst($classname)))
         {
-            $controller_object->$controller_method();
+            $controller_object->system_index();
             $view_object = new View(null, VIEW_PATH . DS . $adminlogin . '.html');
             $content = $view_object->render();
         } else
