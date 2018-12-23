@@ -40,7 +40,7 @@ class createorderController extends Controller
             echo json_encode($return);
             exit();
         }
-        
+
         exit();
     }
 
@@ -95,14 +95,21 @@ class createorderController extends Controller
             $error = 'No post data.';
         } else
         {
-            $path = $this->upload->uploadFile($_FILES);
+//            $path = $this->upload->uploadFile($_FILES);
             $orderClass = new order();
             $date = date("Y-m-d H:i:s");
-            //save order
+//            
+            $data = $post->svg;
+            list($type, $data) = explode(';', $data);
+            list(, $data) = explode(',', $data);
+            $data = base64_decode($data);
+            $file = md5(time()) . ".svg";
+            file_put_contents(ROOT . DS . "assets/upload/order/{$file}", $data);
+
             $objOrder = new stdClass();
             $objOrder->bear_order_number = $post->frame_category_code . time();
             $objOrder->bear_order_status = 1;
-            $objOrder->bear_order_path_svg = $path;
+            $objOrder->bear_order_path_svg = "/upload/order/{$file}";
             $objOrder->frame_list_id = $post->frame_list_id;
             $objOrder->sticker_list_id = $post->sticker_list_id;
             $objOrder->frame_category_id = $post->frame_category_id;
