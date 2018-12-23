@@ -81,7 +81,7 @@
             <div class="canvas-wrapper">
                 <div class="canvas-select" id="canvas-select">
                   <a href="#" class="btn-select" mode="minus"><i class="fa fa-caret-left"></i></a>
-                  <span class="select_design text-center" current="1" min="1" max="6">
+                  <span class="select_design text-center" current="0" min="0" max="6">
                     blank
                   </span>
                   <a href="#" class="btn-select" mode="plus"><i class="fa fa-caret-right"></i></a>
@@ -91,7 +91,7 @@
                   <canvas id="myCanvas"  width="412" height="265"></canvas>
                 </div>
 
-                <div style="display: block;">
+                <div style="display: none;">
                   <canvas id="viewCanvas"></canvas>
                 </div>
 
@@ -100,7 +100,7 @@
                        <div class="popup" onclick="myFunction()">
                        <img src="/assets/images/persoanlisation/frontview.png" style="width: 60px; height: auto;">
                        <br>
-                          <p>FRONT VIEW</p>
+                          <p style="margin-top:10px;">FRONT VIEW</p>
                          <span class="popuptext" id="myPopup"><img src="/assets/images/persoanlisation/frontview.png" style="width: 300px; height: auto;"></span>
                        </div>
                      </div>
@@ -114,7 +114,7 @@
                           <div class="row" style="margin-bottom: 10px">
                             <button class="btn-reun col-md-6" data-src="null" id="reset_btn"> <i class="icon ion-ios-refresh"></i> RESET</button>
 
-                            <button class="btn-reun col-md-6" data-src="null" id="delSelect_btn"> <i class="icon ion-md-close-circle-outline"></i> DELETE SELECTED</button>
+                            <button class="btn-reun col-md-6" data-src="null" id="delSelect_btn"> <i class="icon ion-md-close-circle-outline"></i> DELETE</button>
                           </div>
                        
                      </div>
@@ -140,104 +140,51 @@
                                <i class="icon ion-ios-remove-circle-outline select"></i>
                             </div>
                         </div>
-                        <div class="step-detail" style="display: none;" mode="1">
+                        <div class="step-detail" id="frame_category" style="display: none;" >
                           <div class="row" style="margin-top: 10px;margin-bottom: 0;">
                             <div class="col-md-12" style="font-family: Copperplate-Lig;color: #8a5d3b;">
-                                <div class="scroll text-center">
+                                <div class="text-center">
                                     <div>SELECT DESIGN #</div>
-                                    <hr style="width: 100%;margin: 10px 0;">
-                                        <div>anniversary</div>
-                                    <hr style="width: 100%;margin: 10px 0;">
-                                        <div>beawelry classic</div>
-                                    <hr style="width: 100%;margin: 10px 0;">
-                                        <div>birthday</div>
-                                    <hr style="width: 100%;margin: 10px 0;">
-                                        <div>couple</div>
-                                    <hr style="width: 100%;margin: 10px 0;">
-                                        <div>encouragement</div>
-                                    <hr style="width: 100%;margin: 10px 0;">
-                                        <div>graduation</div>
-                                    <hr style="width: 100%;margin: 10px 0;">
-                                        <div>new born</div>
-                                    <hr style="width: 100%;margin: 10px 0;">
-                                        <div>sorry</div>
-                                    <hr style="width: 100%;margin: 10px 0;">
-                                    <div>wedding & engagement</div>
+                                    <ul  id="frame_category_ui" class="scroll">
+                                      <li>
+                                          <div>anniversary</div>
+                                      </li>
+                                      <li>
+                                          <div>beawelry classic</div>
+                                      </li>
+                                    </ul>
                                 </div>
                             </div>
                           </div>
                         </div>
-                        <div class="step-detail">
+                        <div class="step-detail" id="frame_List">
                             <div class="row" style="margin-top: 10px;margin-bottom: 0;">
                               <div class="col-md-12">
                                   <div class="text-center">
                                     <div class="select_design" style="display: none;">
                                         <label style="font-weight: normal;margin-bottom: 0;color: #8a5d3b;" title="Add an image" class="myFile"><span class="mdi mdi-image"><i class="icon ion-ios-add-circle-outline normal"></i> Add Photo</span>&nbsp;<input style="display: none;" type="file" id="file" /></label>
                                     </div>
-                                    <div class="select_design text-center">
-                                      anniversary
+                                    <div class="select_design text-center" id="frame_category_name">
+                                        BIRTHDAY
                                     </div>
                                   </div>
                                   <hr style="width: 100%;margin: 10px 0;">
                               </div>
-                              <div class="col-md-12" style="display: none;">
-                                  <div class="text-center">
-                                    <select class="select_design text-center">
-                                      <option value="0">SELECT DESIGN #</option>
-                                      <option value="1">anniversary</option>
-                                      <option value="2">beawelry classic</option>
-                                      <option value="3">birthday</option>
-                                      <option value="4">couple</option>
-                                      <option value="5">encouragement</option>
-                                      <option value="6">graduation</option>
-                                      <option value="7">new born</option>
-                                      <option value="8">sorry</option>
-                                      <option value="9">wedding & engagement</option>
-                                    </select>
-                                  </div>
-                                  <hr style="width: 100%;margin: 10px 0;">
+                              <div id="frame_category_mode">
+                                <div class="col-md-6" style="padding-right: 0;padding-left: 30px;">
+                                  <button class="btn-link select">CUSTOMISE DESIGNS</button>
+                                </div>
+                                <div class="col-md-6" style="border-left: 1px solid #ddd;">
+                                  <button class="btn-link">FINISHED DESIGNS</button>
+                                </div>
                               </div>
-                              <div class="col-md-6" style="padding-right: 0;padding-left: 30px;">
-                                <button class="btn-link select">CUSTOMISE DESIGNS</button>
-                              </div>
-                              <div class="col-md-6" style="border-left: 1px solid #ddd;">
-                                <button class="btn-link">FINISHED DESIGNS</button>
-                              </div>
+                              
                             </div>
                             <div class="row">
                               <div class="col-md-12">
                                   <hr style="width: 100%; margin: 10px 0;">
                                   <div class="frame-panel scroll" id="frame-panel">
-                                    <div class="frame select" num="0" data-src="null" name="blank">
-                                      <div class="inner">
-                                        <img src="/assets/images/persoanlisation/png/WHITE-PNG-00.png">
-                                      </div>
-                                    </div>
-                                    <div class="frame" num="2" name="anniversary #01" data-src="/assets/images/persoanlisation/SVG/cus-birthday-4-2.svg">
-                                      <div class="inner">
-                                        <img src="/assets/images/persoanlisation/png/cus-birthday-4-2.png">
-                                      </div>
-                                    </div>
-                                    <div class="frame" num="3" name="anniversary #02" data-src="/assets/images/persoanlisation/SVG/cus-birthday-4-4.svg">
-                                      <div class="inner">
-                                        <img src="/assets/images/persoanlisation/png/cus-birthday-4-4.png">
-                                      </div>
-                                    </div>
-                                    <div class="frame" num="4" name="anniversary #03" data-src="/assets/images/persoanlisation/SVG/cus-birthday-4-7.svg">
-                                      <div class="inner">
-                                        <img src="/assets/images/persoanlisation/png/cus-birthday-4-7.png">
-                                      </div>
-                                    </div>
-                                    <div class="frame" num="5" name="anniversary #04" data-src="/assets/images/persoanlisation/SVG/fin-christmas-6-1.svg">
-                                      <div class="inner">
-                                        <img src="/assets/images/persoanlisation/png/fin-christmas-6-1.png">
-                                      </div>
-                                    </div>
-                                    <div class="frame" num="6" name="anniversary #05" data-src="/assets/images/persoanlisation/SVG/fin-christmas-6-2.svg">
-                                      <div class="inner">
-                                        <img src="/assets/images/persoanlisation/png/fin-christmas-6-2.png">
-                                      </div>
-                                    </div>
+                                    
                                   </div>
                               </div>
                             </div>
@@ -338,7 +285,7 @@
                                     SELECTED STICKER
                                   </div>
                                   <hr style="width: 100%;margin: 10px 0;display: none;">
-                                  <div class="select-sticker"> 
+                                  <div class="select-sticker" id="sticker_category"> 
                                     <div class="sticker select" style="width: auto;">
                                       <div class="inner " style="margin-right: 5px;padding: 5px 15px;float: left;">
                                         <a href="javascript:;">
@@ -482,28 +429,31 @@
                       <div class="col-md-6">                          
                           <img src="" id="canvasImg" style="width: 100%;height: auto">
                       </div>
-                      <div class="col-md-6">
-                          <h3>ยินดีด้วย คุณสร้างเสร็จแล้ว</h3>
-                          <h4>ขั้นตอนต่อไป คือ</h4>
-                          <ul style="text-align: -webkit-auto;list-style: none;padding-left: 0;">
-                            <li> 1. เข้าเว็บ bewelry.com</li>
-                            <li> 2. เลือกสินค่าที่ต้องการ</li>
-                            <li> 3. อัปโหลดรูปที่ทำเสร็จ</li>
-                            <li> 4. สั้งซื้อสินค้า</li>
-                            <li> 5. รอรับของที่บ้านได้เลย</li>
-                          </ul>  
+                      <div class="col-md-6 text-center content-wrapper">
+                        <div class="content-wrapper">
+                            <h3>Congratulations, you're done.</h3>
+                            <h4>Next steps</h4>
+                            <ul style="text-align: -webkit-auto;list-style: none;padding-left: 0;">
+                              <li> 1. เข้าเว็บ bewelry.com</li>
+                              <li> 2. เลือกสินค่าที่ต้องการ</li>
+                              <li> 3. อัปโหลดรูปที่ทำเสร็จ</li>
+                              <li> 4. สั้งซื้อสินค้า</li>
+                              <li> 5. รอรับของที่บ้านได้เลย</li>
+                            </ul>  
 
-                          <div>
-                            <div class="">
-                              <a  href="" download id="lnkDownload" class="btn-outline" >DOWNLOAD FILE</a> 
-                            </div>   
+                            <div style="margin-top:10px;">
+                              <div class="">
+                                <a  href="" download id="lnkDownload" class="btn-outline" >DOWNLOAD FILE</a> 
+                              </div>   
 
-                            <div class="" style="margin-top: 15px;">
+                              <div class="" style="margin-top: 15px;">
 
-                              <button class="btn-outline"  data-dismiss="modal" aria-hidden="true">ทำต่อ</button> 
-                              <a href="/envelope" class="btn-outline" id="renew_btn">เริ่มใหม่</a> 
-                            </div> 
-                          </div>
+                                <button class="btn-outline"  data-dismiss="modal" aria-hidden="true">ทำต่อ</button> 
+                                <a href="/envelope" class="btn-outline" id="renew_btn">เริ่มใหม่</a> 
+                              </div> 
+                            </div>
+                        </div>
+                          
                                                     
                           
                       </div>
@@ -522,6 +472,7 @@
   <script src="assets/js/fabric.min.js"></script>
   <script src="assets/js/base64.js"></script>
   <script src="assets/js/canvas.js"></script>
+  <script src="assets/js/canvas-action.js"></script>
   <script>
 
     $(document).ready(function(){

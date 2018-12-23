@@ -10,7 +10,6 @@ var Canvas = {
     init: function() {
       this.bindEvents();
       this.fabricMyCanvas();
-      this.fabricViewCanvas("","ddd");
       // display/hide text controls
        
     },
@@ -138,7 +137,6 @@ var Canvas = {
       Canvas.viewCanvas.setWidth(500);
 
       updateModifications(true);  
-      Canvas.fabricViewCanvas("","ddd");
     },
     fabricViewCanvas: function(href,text_code) { 
       console.log(href,text_code);
@@ -171,10 +169,10 @@ var Canvas = {
         var src = "/assets/images/persoanlisation/back-envelope-white.png";
         fabric.Image.fromURL(src, function(img) {
           var oImg = img.set({
-            left: 20,
+            left: 30,
             top: 120,
             angle: 00
-          }).scale(.7);
+          }).scale(.77);
           Canvas.viewCanvas.add(oImg).renderAll();
         });
 
@@ -188,7 +186,7 @@ var Canvas = {
 
         fabric.Image.fromURL(href, function(img) {
           var oImg = img.set({
-            left: 30,
+            left: 35,
             top: 130,
             angle: 00
           }).scale(1);
