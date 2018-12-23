@@ -230,8 +230,9 @@ var Canvas = {
             "bear_order_id":Canvas.bear_order_id,
             "png" :file
           };
+          var data = JSON.stringify(obj);
           var form = new FormData();
-          form.append("data", obj);
+          form.append("data", data);
 
           $.ajax({
               url: "/createorder/updateOrder",
@@ -318,12 +319,13 @@ var Canvas = {
       var obj = {
         "frame_category_id" : Canvas.frame_category_id,
         "frame_list_id" : Canvas.frame_list_id,
-        "frame_category_code" : Canvas.frame_category_code
-
+        "frame_category_code" : Canvas.frame_category_code,
+        "svg" : 'data:image/svg+xml;utf8,' + encodeURIComponent(Canvas.myCanvas.toSVG())
       }
+
+      var data = JSON.stringify(obj);
       var form = new FormData();
-        form.append("file", 'data:image/svg+xml;utf8,' + encodeURIComponent(Canvas.myCanvas.toSVG()));
-        form.append("data", obj);
+        form.append("data", data);
 
       $.ajax({
           url: "/createorder/genOrderNumber/",
@@ -336,13 +338,13 @@ var Canvas = {
               var obj = CanvasAction.JsonParse(data);          
               console.log(obj);
     
-              Canvas.bear_order_number = obj.bear_order_number ;
-              Canvas.bear_order_id = obj.bear_order_id;
+              Canvas.bear_order_number = obj.result.bear_order_number ;
+              Canvas.bear_order_id = obj.result.bear_order_id;
               var href = Canvas.myCanvas.toDataURL({
                 format: 'png',
                 quality: 0.8
               });
-              Canvas.fabricViewCanvas(href , obj.bear_order_number);
+              Canvas.fabricViewCanvas(href , Canvas.bear_order_number);
           }
       });
     },

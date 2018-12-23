@@ -29,12 +29,18 @@
 
     <div class="brand">
         <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+            </button>
             <a href="/"><img src="/assets/images/beawelry_logo.png"></a>
         </div>
     </div>
     <nav class="menu">
         <div class="container">
-            <ul class="navbar-nav">
+            <div class="pagename">
+                personalisation
+            </div>
+            <ul class="navbar-nav" id="navbar">
                 <li>
                     <a href="/">Gallery</a>
                 </li>
@@ -89,7 +95,7 @@
                     </div>
                     <div class="col-xs-4">
                         <div class="popup" onclick="myFunction()">
-                            <img src="/assets/images/persoanlisation/frontview.png" style="width: 60px; height: auto;">
+                            <img src="/assets/images/persoanlisation/frontview.png" style="width: 75px; height: auto;">
                             <br>
                             <p style="margin-top:10px;">FRONT VIEW</p>
                             <span class="popuptext" id="myPopup"><img src="/assets/images/persoanlisation/frontview.png"
@@ -111,7 +117,7 @@
 
             <div class="tool-wrapper" id="tool">
                 <div class="canvas-tool open" id="canvas-tool">
-                    <div class="step select" mode="1">
+                    <div class="step" mode="1">
                         <div class="step-head select" mode="1">
                             <div class="img">
                                 <img src="/assets/images/persoanlisation/icon-active.png" class="icon-active">
@@ -157,7 +163,7 @@
                                 <i class="icon ion-ios-remove-circle-outline select"></i>
                             </div>
                         </div>
-                        <div class="step-detail" id="frame_category" style="display: none;">
+                        <div class="step-detail" id="frame_category">
                             <div class="row" style="margin-top: 10px;margin-bottom: 0;">
                                 <div class="col-md-12" style="font-family: Copperplate-Lig;color: #8a5d3b;">
                                     <div class="text-center">
@@ -213,7 +219,7 @@
                         <!-- header -->
                         <div class="step-detail" id="text-controls textControls" style="height: 325px;">
                             <div class="row" style="margin-top: 20px">
-                                <div class="col-md-12">
+                                <div class="col-md-12 text-center">
                                     <button style="font-weight: normal;margin-bottom: 0;" title="Add an image" class="select_design"
                                         id="Addtext_btn"><span class="mdi mdi-image"><i class="icon ion-ios-add-circle-outline normal"></i>
                                             Add Text</span></button>
@@ -431,34 +437,37 @@
             <div class="modal-content">
                 <div class="modal-body" style="padding : 0px;">
                     <div class="row">
-                        <div class="col-md-6">
-                            <img src="" id="canvasImg" style="width: 100%;height: auto">
-                        </div>
-                        <div class="col-md-6">
-                            <h3 class="copperplate-lig">ยินดีด้วย คุณสร้างเสร็จแล้ว</h3>
-                            <h4 class="copperplate-lig">ขั้นตอนต่อไป คือ</h4>
-                            <ul style="text-align: -webkit-auto;list-style: none;padding-left: 0;">
-                                <li class="libre-baskerville"> 1. เข้าเว็บ bewelry.com</li>
-                                <li class="libre-baskerville"> 2. เลือกสินค่าที่ต้องการ</li>
-                                <li class="libre-baskerville"> 3. อัปโหลดรูปที่ทำเสร็จ</li>
-                                <li class="libre-baskerville"> 4. สั้งซื้อสินค้า</li>
-                                <li class="libre-baskerville"> 5. รอรับของที่บ้านได้เลย</li>
-                            </ul>
+                      <div class="col-md-6">                          
+                          <img src="" id="canvasImg" style="width: 100%;height: auto">
+                      </div>
+                      <div class="col-md-6 text-center content-wrapper">
+                        <div class="content-wrapper">
+                            <h3>Congratulations, you're done.</h3>
+                            <h4>Next steps</h4>
+                            <ul style="text-align: -webkit-auto;list-style: none;">
+                              <li> 1. เข้าเว็บ bewelry.com</li>
+                              <li> 2. เลือกสินค่าที่ต้องการ</li>
+                              <li> 3. อัปโหลดรูปที่ทำเสร็จ</li>
+                              <li> 4. สั้งซื้อสินค้า</li>
+                              <li> 5. รอรับของที่บ้านได้เลย</li>
+                            </ul>  
 
-                            <div>
-                                <div class="">
-                                    <a href="" download id="lnkDownload" class="btn-outline">DOWNLOAD FILE</a>
-                                </div>
+                            <div style="margin-top:10px;">
+                              <div class="">
+                                <a  href="" download id="lnkDownload" class="btn-outline" >DOWNLOAD FILE</a> 
+                              </div>   
 
-                                <div class="" style="margin-top: 15px;">
+                              <div class="" style="margin-top: 15px;">
 
-                                    <button class="btn-outline" data-dismiss="modal" aria-hidden="true">ทำต่อ</button>
-                                    <a href="/envelope" class="btn-outline" id="renew_btn">เริ่มใหม่</a>
-                                </div>
+                                <button class="btn-outline"  data-dismiss="modal" aria-hidden="true">ทำต่อ</button> 
+                                <a href="/envelope" class="btn-outline" id="renew_btn">เริ่มใหม่</a> 
+                              </div> 
                             </div>
-
-
                         </div>
+                          
+                                                    
+                          
+                      </div>
                     </div>
                 </div>
             </div>
