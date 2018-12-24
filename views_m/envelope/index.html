@@ -3,126 +3,121 @@
 
 <head>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Beawelry reinvents the traditional perception of jewelry; from precious and valuable material to object of emotional representation. We strive to provide the most warming and beautiful experience of giving, receiving, and wearing">
-  <meta name="author" content="Beawelry">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Beawelry reinvents the traditional perception of jewelry; from precious and valuable material to object of emotional representation. We strive to provide the most warming and beautiful experience of giving, receiving, and wearing">
+    <meta name="author" content="Beawelry">
 
-  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-  <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
 
-  <title>Beawelry wishes to help you express your emotions to your loved ones for all your special occasions</title>
+    <title>Beawelry wishes to help you express your emotions to your loved ones for all your special occasions</title>
 
-  <!-- CSS -->
-  <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/assets/css/style.css" rel="stylesheet">
-  <link href="/assets/css/responsive.css" rel="stylesheet">
-  <link href="/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
-  <!-- <link href="https://unpkg.com/ionicons@4.2.5/dist/css/ionicons.min.css" rel="stylesheet">÷\ -->
-  <link href="/assets/css/canvas-mobile.css" rel="stylesheet">
+    <!-- CSS -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/style-mobile.css" rel="stylesheet">
+    <link href="/assets/css/responsive.css" rel="stylesheet">
+    <link href="/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <!-- <link href="https://unpkg.com/ionicons@4.2.5/dist/css/ionicons.min.css" rel="stylesheet">÷\ -->
+    <link href="/assets/css/canvas-mobile.css" rel="stylesheet">
 
 </head>
 
 <body>
 
-   <div class="brand">
+    <div class="brand">
         <div class="container">
-            <a href="/"><img src="/assets/images/beawelry_logo_02.png"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+            </button>
+            <a href="/"><img src="/assets/images/beawelry_logo.png"></a>
         </div>
     </div>
-
-    <menu>
-        <ul>
-          <li>
-            <a href="/">Gallery</a>
-          </li>
-          <li class="active">
-            <a href="/envelope">personalisation</a>
-          </li>
-          <li>
-            <a href="https://www.beawelry.com/personalisation/">Online Shop</a>
-          </li>
-          <li>
-            <a href="/howto">How to</a>
-          </li>
-          <li>
-            <a href="/contactus">Contact Us</a>
-          </li>
-        </ul>
-    </menu>
     <nav class="menu">
         <div class="container">
-            <ul class="navbar-nav">
-              <li>
-            <a href="/">Gallery</a>
-          </li>
-          <li class="active">
-            <a href="/envelope">personalisation</a>
-          </li>
-              <li>
-                <a href="https://www.beawelry.com/personalisation/">Online Shop</a>
-              </li>
-              <li>
-                <a href="/howto">How to</a>
-              </li>
-            <li>
-                <a href="/contactus">Contact Us</a>
-            </li>
-        </ul>
-    
-      </div>
+            <div class="pagename">
+                personalisation
+            </div>
+            <ul class="navbar-nav" id="navbar">
+                <li>
+                    <a href="/">Gallery</a>
+                </li>
+                <li class="active">
+                    <a href="/envelope">personalisation</a>
+                </li>
+                <li>
+                    <a href="https://www.beawelry.com/personalisation/">Online Shop</a>
+                </li>
+                <li>
+                    <a href="/howto">How to</a>
+                </li>
+                <li>
+                    <a href="/contactus">Contact Us</a>
+                </li>
+            </ul>
+
+        </div>
     </nav>
 
-    <section class="container">        
+    <section class="container">
         <div class="row">
             <div class="canvas-wrapper">
                 <div class="canvas-select" id="canvas-select">
                     <a href="#" class="btn-select" mode="minus"><i class="fa fa-caret-left"></i></a>
                     <span class="select_design text-center" current="0" min="0" max="6">
-                      blank
+                        blank
                     </span>
                     <a href="#" class="btn-select" mode="plus"><i class="fa fa-caret-right"></i></a>
                 </div>
 
                 <div class="canvas-bg" style="position: relative;">
-                  <canvas id="myCanvas" width="290" height="192"></canvas>
+                    <canvas id="myCanvas" width="290" height="192"></canvas>
                 </div>
 
                 <div style="display: none;">
-                  <canvas id="viewCanvas"></canvas>
+                    <canvas id="viewCanvas"></canvas>
                 </div>
 
-                <div class="tool-menu text-center" id="canvas-back" style="margin-top: 20px;">                      
-                      <div class="col-md-4" style="margin-top:15px;">
-                       <div class="popup" onclick="myFunction()">
-                       <img src="/assets/images/persoanlisation/frontview.png" style="width: 60px; height: auto;">
-                       <br><p style="margin-top:10px;">FRONT VIEW</p>
-                         <span class="popuptext" id="myPopup"><img src="/assets/images/persoanlisation/frontview.png" style="width: 300px; height: auto;"></span>
-                       </div>
-                     </div>
+                <div class="tool-menu text-center" id="canvas-back" style="margin-top: 20px;">
 
-                     <div class="col-md-8">
-                          <div class="row" style="margin-bottom: 10px">
-                                <button class="btn-reun col-md-6" id="undo_btn"> <i class="icon ion-ios-undo"></i> UNDO</button>
-                              <button class="btn-reun col-md-6" id="redo_btn"> <i class="icon ion-ios-redo"></i> REDO</button> 
-                       
-                          </div>
-                          <div class="row" style="margin-bottom: 10px">
-                            <button class="btn-reun col-md-6" data-src="null" id="reset_btn"> <i class="icon ion-ios-refresh"></i> RESET</button>
 
-                            <button class="btn-reun col-md-6" data-src="null" id="delSelect_btn"> <i class="icon ion-md-close-circle-outline"></i> DELETE SELECTED</button>
-                          </div>
-                       
-                     </div>
+                    <div class="col-xs-4">
+                        <div style="margin-bottom: 10px">
+                            <button class="btn-reun" data-src="null" id="reset_btn"> <i class="icon ion-ios-refresh"></i>
+                                RESET</button>
+                        </div>
+                        <div style="margin-bottom: 10px">
+                            <button class="btn-reun" data-src="null" id="delSelect_btn"> <i class="icon ion-md-close-circle-outline"></i>
+                                DELETE</button>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="popup" onclick="myFunction()">
+                            <img src="/assets/images/persoanlisation/frontview.png" style="width: 75px; height: auto;">
+                            <br>
+                            <p style="margin-top:10px;">FRONT VIEW</p>
+                            <span class="popuptext" id="myPopup"><img src="/assets/images/persoanlisation/frontview.png"
+                                    style="width: 300px; height: auto;"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-4">
+                        <div style="margin-bottom: 10px">
+                            <button class="btn-reun" id="undo_btn"> <i class="icon ion-ios-undo"></i> UNDO</button>
+                        </div>
+                        <div style="margin-bottom: 10px">
+                            <button class="btn-reun" id="redo_btn"> <i class="icon ion-ios-redo"></i> REDO</button>
+                        </div>
+                    </div>
 
                 </div>
             </div>
 
-            <div class="tool-wrapper" id="tool">    
+            <div class="tool-wrapper" id="tool">
                 <div class="canvas-tool open" id="canvas-tool">
-                    <div class="step select" mode="1">
+                    <div class="step" mode="1">
                         <div class="step-head select" mode="1">
                             <div class="img">
                                 <img src="/assets/images/persoanlisation/icon-active.png" class="icon-active">
@@ -134,11 +129,11 @@
                                 FRAME
                             </div>
                             <div class="icon-box">
-                               <i class="icon ion-ios-add-circle-outline normal"></i>
-                               <i class="icon ion-ios-remove-circle-outline select"></i>
+                                <i class="icon ion-ios-add-circle-outline normal"></i>
+                                <i class="icon ion-ios-remove-circle-outline select"></i>
                             </div>
                         </div>
-                        <div class="step-head"  mode="2">
+                        <div class="step-head" mode="2">
                             <div class="img">
                                 <img src="/assets/images/persoanlisation/icon-active.png" class="icon-active">
                                 <img src="/assets/images/persoanlisation/logo2.png" class="normal">
@@ -149,11 +144,11 @@
                                 MESSEAGE
                             </div>
                             <div class="icon-box">
-                               <i class="icon ion-ios-add-circle-outline normal"></i>
-                               <i class="icon ion-ios-remove-circle-outline select"></i>
+                                <i class="icon ion-ios-add-circle-outline normal"></i>
+                                <i class="icon ion-ios-remove-circle-outline select"></i>
                             </div>
                         </div>
-                        <div class="step-head"  mode="3">
+                        <div class="step-head" mode="3">
                             <div class="img">
                                 <img src="/assets/images/persoanlisation/icon-active.png" class="icon-active">
                                 <img src="/assets/images/persoanlisation/logo3.png" class="normal">
@@ -164,115 +159,125 @@
                                 STICKER
                             </div>
                             <div class="icon-box">
-                               <i class="icon ion-ios-add-circle-outline normal"></i>
-                               <i class="icon ion-ios-remove-circle-outline select"></i>
+                                <i class="icon ion-ios-add-circle-outline normal"></i>
+                                <i class="icon ion-ios-remove-circle-outline select"></i>
                             </div>
                         </div>
-                        <div class="step-detail" id="frame_category" style="display: none;" >
+                        <div class="step-detail" id="frame_category">
                             <div class="row" style="margin-top: 10px;margin-bottom: 0;">
-                              <div class="col-md-12" style="font-family: Copperplate-Lig;color: #8a5d3b;">
-                                  <div class="text-center">
-                                      <div>SELECT DESIGN #</div>
-                                      <ul  id="frame_category_ui" class="scroll">
-                                        <li>
-                                            <div>anniversary</div>
-                                        </li>
-                                        <li>
-                                            <div>beawelry classic</div>
-                                        </li>
-                                      </ul>
-                                  </div>
-                              </div>
+                                <div class="col-md-12" style="font-family: Copperplate-Lig;color: #8a5d3b;">
+                                    <div class="text-center">
+                                        <div>SELECT DESIGN #</div>
+                                        <ul id="frame_category_ui" class="scroll">
+                                            <li>
+                                                <div>anniversary</div>
+                                            </li>
+                                            <li>
+                                                <div>beawelry classic</div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
-                          </div>
-                          <div class="step-detail" id="frame_List">
-                              <div class="row" style="margin-top: 10px;margin-bottom: 0;">
+                        </div>
+                        <div class="step-detail" id="frame_List">
+                            <div class="row" style="margin-top: 10px;margin-bottom: 0;">
                                 <div class="col-md-12">
                                     <div class="text-center">
-                                      <div class="select_design" style="display: none;">
-                                          <label style="font-weight: normal;margin-bottom: 0;color: #8a5d3b;" title="Add an image" class="myFile"><span class="mdi mdi-image"><i class="icon ion-ios-add-circle-outline normal"></i> Add Photo</span>&nbsp;<input style="display: none;" type="file" id="file" /></label>
-                                      </div>
-                                      <div class="select_design text-center" id="frame_category_name">
-                                          BIRTHDAY
-                                      </div>
+                                        <div class="select_design" style="display: none;">
+                                            <label style="font-weight: normal;margin-bottom: 0;color: #8a5d3b;" title="Add an image"
+                                                class="myFile"><span class="mdi mdi-image"><i class="icon ion-ios-add-circle-outline normal"></i>
+                                                    Add Photo</span>&nbsp;<input style="display: none;" type="file" id="file" /></label>
+                                        </div>
+                                        <div class="select_design text-center" id="frame_category_name">
+                                            BIRTHDAY
+                                        </div>
                                     </div>
                                     <hr style="width: 100%;margin: 10px 0;">
                                 </div>
                                 <div id="frame_category_mode">
-                                  <div class="col-md-6" style="padding-right: 0;padding-left: 30px;">
-                                    <button class="btn-link select">CUSTOMISE DESIGNS</button>
-                                  </div>
-                                  <div class="col-md-6" style="border-left: 1px solid #ddd;">
-                                    <button class="btn-link">FINISHED DESIGNS</button>
-                                  </div>
+                                    <div class="col-md-6" style="padding-right: 0;padding-left: 30px;">
+                                        <button class="btn-link select">CUSTOMISE DESIGNS</button>
+                                    </div>
+                                    <div class="col-md-6" style="border-left: 1px solid #ddd;">
+                                        <button class="btn-link">FINISHED DESIGNS</button>
+                                    </div>
                                 </div>
-                                
-                              </div>
-                              <div class="row">
+
+                            </div>
+                            <div class="row">
                                 <div class="col-md-12">
                                     <hr style="width: 100%; margin: 10px 0;">
                                     <div class="frame-panel scroll" id="frame-panel">
-                                      
+
                                     </div>
                                 </div>
-                              </div>
-                          </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="step" mode="2">
                         <!-- header -->
-                        <div class="step-detail"  id="text-controls textControls" style="height: 325px;">
+                        <div class="step-detail" id="text-controls textControls" style="height: 325px;">
                             <div class="row" style="margin-top: 20px">
-                              <div class="col-md-12">
-                                 <button style="font-weight: normal;margin-bottom: 0;" title="Add an image" class="select_design" id="Addtext_btn"><span class="mdi mdi-image"><i class="icon ion-ios-add-circle-outline normal"></i> Add Text</span></button>
+                                <div class="col-md-12 text-center">
+                                    <button style="font-weight: normal;margin-bottom: 0;" title="Add an image" class="select_design"
+                                        id="Addtext_btn"><span class="mdi mdi-image"><i class="icon ion-ios-add-circle-outline normal"></i>
+                                            Add Text</span></button>
 
-                              </div>
-                            </div><hr style="width: 100%;margin: 10px 0;">
-                            <div class="row" style="margin-top: 20px">
-                              <div class="col-md-12">
-                                <!-- 2.1 -->
-                                <div class="col-md-12"  style="margin-bottom: 10px">
-                                  <div class="btn-type text-center">
-                                    <select class="select_design text-center" id="font-family" style="width: 95%;border: none;padding: 0;">
-                                      <optgroup label="Thai">
-                                        <option value="Quark">Quark</option>
-                                      </optgroup>
-                                      <optgroup label="English">
-                                        <option value="Copperplate-Lig" selected>Copperplate Lig</option>
-                                        <option value="Great Vibes">Great Vibes</option>
-                                        <option value="Libre Baskerville">Libre Baskerville</option>
-                                        <option value="HelveticaNeue">Helvetica Neue</option>
-                                      </optgroup>
-                                    </select>
-                                  </div>
                                 </div>
-                              </div>
-
-                              <div class="col-md-12">
-                                <hr style="width: 100%;margin: 10px 0;">
-                              </div>
                             </div>
-                            <div class="row">  
-                              <div class="col-md-12">
-                                <!-- 2.2 -->
-                                <div class="col-md-12" style="padding-left: 5px;margin-bottom: 10px">
-                                  <div class="btn-type number-box text-center" style="margin-bottom: 10px;">
-                                    <i class="fa fa-minus-circle pull-left" mode="minus"></i>
-                                    <span style="width: 120px;float: left; margin: 3px 15px;text-align: left;">LETTER SPACE :</span><input type="number" name="text-line-height" id="text-space" class="input-number" value="1" min="1" max="5"><span> em</span>
-                                    <i class="fa fa-plus-circle pull-right" mode="plus"></i>
-                                  </div>
-                                  <div class="btn-type number-box text-center" style="margin-bottom: 10px;">
-                                    <i class="fa fa-minus-circle pull-left" mode="minus"></i>
-                                    <span style="width: 120px;float: left; margin: 3px 15px;text-align: left;">LINE HEIGHT :</span><input type="number" name="text-line-height" id="text-line-height" class="input-number" value="1" min="1" max="40"><span> em</span>
-                                    <i class="fa fa-plus-circle pull-right" mode="plus"></i>
-                                  </div>
-                                  <div class="btn-type text-center align-text" id="text-align" style="margin-bottom: 10px;">
-                                    <span style="width: 120px;float: left; margin: 3px 15px;text-align: left;">TEXT ALIGN :</span>
-                                    <i class="fa fa-align-left pull-left" mode="left"></i>
-                                    <i class="fa fa-align-center" mode="center"></i>
-                                    <i class="fa fa-align-right pull-right" mode="right"></i>
-                                  </div>
+                            <hr style="width: 100%;margin: 10px 0;">
+                            <div class="row" style="margin-top: 20px">
+                                <div class="col-md-12">
+                                    <!-- 2.1 -->
+                                    <div class="col-md-12" style="margin-bottom: 10px">
+                                        <div class="btn-type text-center">
+                                            <select class="select_design text-center" id="font-family" style="width: 95%;border: none;padding: 0;">
+                                                <optgroup label="Thai">
+                                                    <option value="Quark">Quark</option>
+                                                </optgroup>
+                                                <optgroup label="English">
+                                                    <option value="Copperplate-Lig" selected>Copperplate Lig</option>
+                                                    <option value="Great Vibes">Great Vibes</option>
+                                                    <option value="Libre Baskerville">Libre Baskerville</option>
+                                                    <option value="HelveticaNeue">Helvetica Neue</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
-                              </div>
+
+                                <div class="col-md-12">
+                                    <hr style="width: 100%;margin: 10px 0;">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!-- 2.2 -->
+                                    <div class="col-md-12" style="padding-left: 5px;margin-bottom: 10px">
+                                        <div class="btn-type number-box text-center" style="margin-bottom: 10px;">
+                                            <i class="fa fa-minus-circle pull-left" mode="minus"></i>
+                                            <span style="width: 120px;float: left; margin: 3px 15px;text-align: left;">LETTER
+                                                SPACE :</span><input type="number" name="text-line-height" id="text-space"
+                                                class="input-number" value="1" min="1" max="5"><span> em</span>
+                                            <i class="fa fa-plus-circle pull-right" mode="plus"></i>
+                                        </div>
+                                        <div class="btn-type number-box text-center" style="margin-bottom: 10px;">
+                                            <i class="fa fa-minus-circle pull-left" mode="minus"></i>
+                                            <span style="width: 120px;float: left; margin: 3px 15px;text-align: left;">LINE
+                                                HEIGHT :</span><input type="number" name="text-line-height" id="text-line-height"
+                                                class="input-number" value="1" min="1" max="40"><span> em</span>
+                                            <i class="fa fa-plus-circle pull-right" mode="plus"></i>
+                                        </div>
+                                        <div class="btn-type text-center align-text" id="text-align" style="margin-bottom: 10px;">
+                                            <span style="width: 120px;float: left; margin: 3px 15px;text-align: left;">TEXT
+                                                ALIGN :</span>
+                                            <i class="fa fa-align-left pull-left" mode="left"></i>
+                                            <i class="fa fa-align-center" mode="center"></i>
+                                            <i class="fa fa-align-right pull-right" mode="right"></i>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -280,146 +285,152 @@
                         <!-- Headr-->
                         <div class="step-detail">
                             <div class="row" style="margin-top: 10px;margin-bottom: 0;">
-                              <div class="col-md-12">
-                                  <div class="text-center hide">
-                                    SELECTED STICKER
-                                  </div>
-                                  <hr style="width: 100%;margin: 10px 0;display: none;">
-                                  <div class="select-sticker" id="sticker_category"> 
-                                    <div class="sticker select" style="width: auto;">
-                                      <div class="inner " style="margin-right: 5px;padding: 5px 15px;float: left;">
-                                        <a href="javascript:;">
-                                            ALL
-                                        </a>
-                                      </div>
+                                <div class="col-md-12">
+                                    <div class="text-center hide">
+                                        SELECTED STICKER
                                     </div>
-                                    <div class="sticker" style="width: auto;">
-                                      <div class="inner " style="margin-right: 5px;padding: 5px 15px;float: left;">
-                                        <a href="javascript:;">
-                                            LOVE
-                                        </a>
-                                      </div>
+                                    <hr style="width: 100%;margin: 10px 0;display: none;">
+                                    <div class="select-sticker" id="sticker_category">
+                                        <div class="sticker select" style="width: auto;">
+                                            <div class="inner " style="margin-right: 5px;padding: 5px 15px;float: left;">
+                                                <a href="javascript:;">
+                                                    ALL
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="sticker" style="width: auto;">
+                                            <div class="inner " style="margin-right: 5px;padding: 5px 15px;float: left;">
+                                                <a href="javascript:;">
+                                                    LOVE
+                                                </a>
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    
-                                  </div>
-                              </div>
+                                </div>
                             </div>
                             <div class="row">
-                              <div class="col-md-12">
-                                  <hr style="width: 100%; margin: 10px 0;">
-                                  <div class="sticker-panel scroll" id="sticker-panel">
-                                    <div class="sticker" data-src="/assets/images/persoanlisation/sticker/sticker 1.svg">
-                                      <div class="inner">
-                                        <img src="/assets/images/persoanlisation/sticker/sticker 1.png">
-                                      </div>
+                                <div class="col-md-12">
+                                    <hr style="width: 100%; margin: 10px 0;">
+                                    <div class="sticker-panel scroll" id="sticker-panel">
+                                        <div class="sticker" data-src="/assets/images/persoanlisation/sticker/sticker 1.svg">
+                                            <div class="inner">
+                                                <img src="/assets/images/persoanlisation/sticker/sticker 1.png">
+                                            </div>
+                                        </div>
+                                        <div class="sticker" data-src="/assets/images/persoanlisation/sticker/sticker 2.svg">
+                                            <div class="inner">
+                                                <img src="/assets/images/persoanlisation/sticker/sticker 2.png">
+                                            </div>
+                                        </div>
+                                        <div class="sticker" data-src="/assets/images/persoanlisation/sticker/sticker 3.svg">
+                                            <div class="inner">
+                                                <img src="/assets/images/persoanlisation/sticker/sticker 3.png">
+                                            </div>
+                                        </div>
+                                        <div class="sticker" data-src="/assets/images/persoanlisation/sticker/sticker 4.svg">
+                                            <div class="inner">
+                                                <img src="/assets/images/persoanlisation/sticker/sticker 4.png">
+                                            </div>
+                                        </div>
+                                        <div class="sticker" data-src="/assets/images/persoanlisation/sticker/sticker 5.svg">
+                                            <div class="inner">
+                                                <img src="/assets/images/persoanlisation/sticker/sticker 5.png">
+                                            </div>
+                                        </div>
+                                        <div class="sticker" data-src="/assets/images/persoanlisation/sticker/sticker 6.svg">
+                                            <div class="inner">
+                                                <img src="/assets/images/persoanlisation/sticker/sticker 6.png">
+                                            </div>
+                                        </div>
+                                        <div class="sticker" data-src="/assets/images/persoanlisation/sticker/sticker 7.svg">
+                                            <div class="inner">
+                                                <img src="/assets/images/persoanlisation/sticker/sticker 7.png">
+                                            </div>
+                                        </div>
+                                        <div class="sticker" data-src="/assets/images/persoanlisation/sticker/sticker 8.svg">
+                                            <div class="inner">
+                                                <img src="/assets/images/persoanlisation/sticker/sticker 8.png">
+                                            </div>
+                                        </div>
+                                        <div class="sticker" data-src="/assets/images/persoanlisation/sticker/sticker 9.svg">
+                                            <div class="inner">
+                                                <img src="/assets/images/persoanlisation/sticker/sticker 9.png">
+                                            </div>
+                                        </div>
+                                        <div class="sticker" data-src="/assets/images/persoanlisation/sticker/sticker 10.svg">
+                                            <div class="inner">
+                                                <img src="/assets/images/persoanlisation/sticker/sticker 10.png">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="sticker" data-src="/assets/images/persoanlisation/sticker/sticker 2.svg">
-                                      <div class="inner">
-                                        <img src="/assets/images/persoanlisation/sticker/sticker 2.png">
-                                      </div>
-                                    </div>
-                                    <div class="sticker" data-src="/assets/images/persoanlisation/sticker/sticker 3.svg">
-                                      <div class="inner">
-                                        <img src="/assets/images/persoanlisation/sticker/sticker 3.png">
-                                      </div>
-                                    </div>
-                                    <div class="sticker" data-src="/assets/images/persoanlisation/sticker/sticker 4.svg">
-                                      <div class="inner">
-                                        <img src="/assets/images/persoanlisation/sticker/sticker 4.png">
-                                      </div>
-                                    </div>
-                                    <div class="sticker" data-src="/assets/images/persoanlisation/sticker/sticker 5.svg">
-                                      <div class="inner">
-                                        <img src="/assets/images/persoanlisation/sticker/sticker 5.png">
-                                      </div>
-                                    </div>
-                                    <div class="sticker" data-src="/assets/images/persoanlisation/sticker/sticker 6.svg">
-                                      <div class="inner">
-                                        <img src="/assets/images/persoanlisation/sticker/sticker 6.png">
-                                      </div>
-                                    </div>
-                                    <div class="sticker" data-src="/assets/images/persoanlisation/sticker/sticker 7.svg">
-                                      <div class="inner">
-                                        <img src="/assets/images/persoanlisation/sticker/sticker 7.png">
-                                      </div>
-                                    </div>
-                                    <div class="sticker" data-src="/assets/images/persoanlisation/sticker/sticker 8.svg">
-                                      <div class="inner">
-                                        <img src="/assets/images/persoanlisation/sticker/sticker 8.png">
-                                      </div>
-                                    </div>
-                                    <div class="sticker" data-src="/assets/images/persoanlisation/sticker/sticker 9.svg">
-                                      <div class="inner">
-                                        <img src="/assets/images/persoanlisation/sticker/sticker 9.png">
-                                      </div>
-                                    </div>
-                                    <div class="sticker" data-src="/assets/images/persoanlisation/sticker/sticker 10.svg">
-                                      <div class="inner">
-                                        <img src="/assets/images/persoanlisation/sticker/sticker 10.png">
-                                      </div>
-                                    </div>
-                                  </div>
-                              </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="btn-wrapper" >
+                <div class="btn-wrapper">
                     <button class="btn-brown" style="width: 100%;" id="complete_btn">COMPLETE</button>
                 </div>
             </div>
-            <div class="tool-wrapper" id="form-sendmail"  style="display: none;">
+            <div class="tool-wrapper" id="form-sendmail" style="display: none;">
                 <div class="canvas-comfirm" style=" margin-top: 50px;">
-                  <form>
-                    <div class="form-group">
-                       <input type="text" name="" class="form-control input-circle" placeholder="First name :" required="">
-                    </div>
-                    <div class="form-group">
-                       <input type="text" name="" class="form-control input-circle" placeholder="Last name :" required="">
-                    </div>
-                    <hr style="width: 100%;">
-                    <div class="form-group">
-                       <input type="text" name="" class="form-control input-circle" placeholder="Email :" required="">
-                    </div>
-                    <div class="form-group">
-                       <input type="text" name="" class="form-control input-circle" placeholder="RE-Enter Email :" required="">
-                    </div>
-                  </form>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" name="" class="form-control input-circle" placeholder="First name :"
+                                required="">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="" class="form-control input-circle" placeholder="Last name :"
+                                required="">
+                        </div>
+                        <hr style="width: 100%;">
+                        <div class="form-group">
+                            <input type="text" name="" class="form-control input-circle" placeholder="Email :" required="">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="" class="form-control input-circle" placeholder="RE-Enter Email :"
+                                required="">
+                        </div>
+                    </form>
                 </div>
                 <div class="btn-wrapper">
-                    <a  href="/assets/images/persoanlisation/back-envelope-white-02.png" download class="btn-brown" style="width: 100%;border-radius: 0;height: 40px;margin-bottom: 15px;background-color: #754729;border: 1px solid #754729;font-family: Copperplate-Lig;color: #ffffff;font-weight: bold;border-radius: 0;padding: 10px 15px;cursor: pointer;display: block;text-align: center;" id="lnkDownload2">DOWNLOAD FILE</a>  
-                    <button class="btn-outline" style="width: 100%;border-radius: 0;height: 40px;" id="complete_btn">SEND TO EMAIL</button>  
+                    <a href="/assets/images/persoanlisation/back-envelope-white-02.png" download class="btn-brown"
+                        style="width: 100%;border-radius: 0;height: 40px;margin-bottom: 15px;background-color: #754729;border: 1px solid #754729;font-family: Copperplate-Lig;color: #ffffff;font-weight: bold;border-radius: 0;padding: 10px 15px;cursor: pointer;display: block;text-align: center;"
+                        id="lnkDownload2">DOWNLOAD FILE</a>
+                    <button class="btn-outline" style="width: 100%;border-radius: 0;height: 40px;" id="complete_btn">SEND
+                        TO EMAIL</button>
                     <!--    -->
                 </div>
 
             </div>
         </div>
-     </section>
+    </section>
 
 
 
-   <footer>
-    <div class="container">
-      <div class="footer">
-        <div class="copyright">beawelry ® 2018 © </div>
-        <div class="social_box">
-          <ul class="social-footer">
-            <li>
-              <a href="https://www.facebook.com/Beawelry" target="_blank" title="Beawelry's facebook">
-                <i class="fa fa-facebook"></i>
-              </a>
-            </li>
-            <li>
-              <a href="http://instagram.com/beawelry" title="Beawelry's instagram">
-                <i class="fa fa-instagram"></i>
-              </a>
-            </li>
-          </ul>
+    <footer>
+        <div class="container">
+            <div class="footer">
+                <div class="copyright">beawelry ® 2018 © </div>
+                <div class="social_box">
+                    <ul class="social-footer">
+                        <li>
+                            <a href="https://www.facebook.com/Beawelry" target="_blank" title="Beawelry's facebook">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://instagram.com/beawelry" title="Beawelry's instagram">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
         </div>
-
-      </div>
-    </div>
-  </footer>
+    </footer>
 
     <div class="modal modal-scroll center fade" id="complete_modal" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
@@ -429,28 +440,31 @@
                       <div class="col-md-6">                          
                           <img src="" id="canvasImg" style="width: 100%;height: auto">
                       </div>
-                      <div class="col-md-6">
-                          <h3 class="copperplate-lig">ยินดีด้วย คุณสร้างเสร็จแล้ว</h3>
-                          <h4 class="copperplate-lig">ขั้นตอนต่อไป คือ</h4>
-                          <ul style="text-align: -webkit-auto;list-style: none;padding-left: 0;">
-                            <li class="libre-baskerville"> 1. เข้าเว็บ bewelry.com</li>
-                            <li class="libre-baskerville"> 2. เลือกสินค่าที่ต้องการ</li>
-                            <li class="libre-baskerville"> 3. อัปโหลดรูปที่ทำเสร็จ</li>
-                            <li class="libre-baskerville"> 4. สั้งซื้อสินค้า</li>
-                            <li class="libre-baskerville"> 5. รอรับของที่บ้านได้เลย</li>
-                          </ul>  
+                      <div class="col-md-6 text-center content-wrapper">
+                        <div class="content-wrapper">
+                            <h3>Congratulations, you're done.</h3>
+                            <h4>Next steps</h4>
+                            <ul style="text-align: -webkit-auto;list-style: none;">
+                              <li> 1. เข้าเว็บ bewelry.com</li>
+                              <li> 2. เลือกสินค่าที่ต้องการ</li>
+                              <li> 3. อัปโหลดรูปที่ทำเสร็จ</li>
+                              <li> 4. สั้งซื้อสินค้า</li>
+                              <li> 5. รอรับของที่บ้านได้เลย</li>
+                            </ul>  
 
-                          <div>
-                            <div class="">
-                              <a  href="" download id="lnkDownload" class="btn-outline" >DOWNLOAD FILE</a> 
-                            </div>   
+                            <div style="margin-top:10px;">
+                              <div class="">
+                                <a  href="" download id="lnkDownload" class="btn-outline" >DOWNLOAD FILE</a> 
+                              </div>   
 
-                            <div class="" style="margin-top: 15px;">
+                              <div class="" style="margin-top: 15px;">
 
-                              <button class="btn-outline"  data-dismiss="modal" aria-hidden="true">ทำต่อ</button> 
-                              <a href="/envelope" class="btn-outline" id="renew_btn">เริ่มใหม่</a> 
-                            </div> 
-                          </div>
+                                <button class="btn-outline"  data-dismiss="modal" aria-hidden="true">ทำต่อ</button> 
+                                <a href="/envelope" class="btn-outline" id="renew_btn">เริ่มใหม่</a> 
+                              </div> 
+                            </div>
+                        </div>
+                          
                                                     
                           
                       </div>
@@ -462,29 +476,29 @@
 
     <!-- jQuery Version 1.11.0 -->
     <script src="assets/js/jquery-3.1.1.min.js"></script>
-  <script src="assets/js/jquery.easing.1.3.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
-  <!-- <script src="https://cdn.rawgit.com/konvajs/konva/2.1.7/konva.min.js"></script> -->
-  <script src="assets/js/jquery.animate-enhanced.min.js"></script>
-  <script src="assets/js/fabric.min.js"></script>
-  <script src="assets/js/base64.js"></script>
-  <script src="assets/js/canvas-mobile.js"></script>
-  <script src="assets/js/canvas-action.js"></script>
-  <script>
+    <script src="assets/js/jquery.easing.1.3.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- <script src="https://cdn.rawgit.com/konvajs/konva/2.1.7/konva.min.js"></script> -->
+    <script src="assets/js/jquery.animate-enhanced.min.js"></script>
+    <script src="assets/js/fabric.min.js"></script>
+    <script src="assets/js/base64.js"></script>
+    <script src="assets/js/canvas-mobile.js"></script>
+    <script src="assets/js/canvas-action.js"></script>
+    <script>
 
-    $(document).ready(function(){
-      $('.menu-anchor').on('click touchstart', function(e){
-        $('html').toggleClass('menu-active');
-        e.preventDefault();
-      });
-    });
+        $(document).ready(function () {
+            $('.menu-anchor').on('click touchstart', function (e) {
+                $('html').toggleClass('menu-active');
+                e.preventDefault();
+            });
+        });
 
-    // When the user clicks on div, open the popup
-    function myFunction() {
-      var popup = document.getElementById("myPopup");
-      popup.classList.toggle("show");
-    }
-  </script>
+        // When the user clicks on div, open the popup
+        function myFunction() {
+            var popup = document.getElementById("myPopup");
+            popup.classList.toggle("show");
+        }
+    </script>
 
 </body>
 

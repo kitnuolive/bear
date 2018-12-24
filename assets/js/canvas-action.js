@@ -1,17 +1,16 @@
 var CanvasAction = {
     frameCategory : [],
     frameCategoryName : "",
+    frameCategoryMode : "CUSTOMISE DESIGNS",
     init: function() {
         this.bindEvents();
         this.postData("/frame/frameCategory/").done(function (data) {
             var obj = CanvasAction.JsonParse(data);
-            console.log("frameCategory",obj);
             CanvasAction.renderFrameCategory(obj);
         });
         this.postData("/frame/stickerCategory/").done(function (data) {
             var obj = CanvasAction.JsonParse(data);
             CanvasAction.renderStickerCategory(obj);
-            console.log("stickerCategory",obj);
         });
     },
     bindEvents: function() {   
@@ -29,11 +28,13 @@ var CanvasAction = {
         $.each(obj.view, function(key) {
             if(key == 0){
                 CanvasAction.frameCategoryName = this.frame_category_name;
+                Canvas.frame_category_id = this.frame_category_id;
+                Canvas.frame_category_code = this.frame_category_code;
             }
             if(this.frame_category_type == 1){
                 if(CanvasAction.frameCategory.filter(x => x.frame_category_name === this.frame_category_name).length == 0){
                     CanvasAction.frameCategory.push(this);
-                    $("#frame_category_ui").append('<li data-id="'+this.frame_category_id+'"><div>'+this.frame_category_name+'</div></li>');
+                    $("#frame_category_ui").append('<li data-id="'+this.frame_category_id+'" data-code="'+this.frame_category_code+'"><div>'+this.frame_category_name+'</div></li>');
                 }
                 else{
                     var index = CanvasAction.frameCategory.findIndex(x => x.frame_category_name === this.frame_category_name);
@@ -43,7 +44,7 @@ var CanvasAction = {
             else{
                 if(CanvasAction.frameCategory.filter(x => x.frame_category_name === this.frame_category_name).length == 0){
                     CanvasAction.frameCategory.push(this);
-                    $("#frame_category_ui").append('<li data-fin="'+this.frame_category_id+'"><div>'+this.frame_category_name+'</div></li>');
+                    $("#frame_category_ui").append('<li data-fin="'+this.frame_category_id+'" data-code="'+this.frame_category_code+'"><div>'+this.frame_category_name+'</div></li>');
                 }
                 else{
                     var index = CanvasAction.frameCategory.findIndex(x => x.frame_category_name === this.frame_category_name);
@@ -54,6 +55,7 @@ var CanvasAction = {
 
         var id = $("#frame_category_ui li").eq(0).data("id");
         var fin = $("#frame_category_ui li").eq(0).data("fin");
+        var code = $("#frame_category_ui li").eq(0).data("code");
         CanvasAction.postData("/frame/frameList/",{"search" :{"frame_category_id":id}}).done(function (data) {
             var obj = CanvasAction.JsonParse(data);
             $("#frame_category_name").text( CanvasAction.frameCategoryName);
@@ -62,17 +64,17 @@ var CanvasAction = {
 
             if(fin == undefined){
                 var field = '<div class="col-md-12" style="padding-right: 0;padding-left: 30px;">';
-                field += '<button class="btn-link select" data-id="'+id+'">CUSTOMISE DESIGNS</button>';
+                field += '<button class="btn-link select" data-id="'+id+'" data-code="'+code+'">CUSTOMISE DESIGNS</button>';
                 field += '</div>';
 
                 $("#frame_category_mode").html(field);
             }
             else{
                 var field = '<div class="col-md-6" style="padding-right: 0;padding-left: 30px;">';
-                field += '<button class="btn-link select" data-id="'+id+'">CUSTOMISE DESIGNS</button>';
+                field += '<button class="btn-link select" data-id="'+id+'" data-code="'+code+'">CUSTOMISE DESIGNS</button>';
                 field += '</div>';
                 field += '<div class="col-md-6" style="border-left: 1px solid #ddd;">';
-                field += '<button class="btn-link" data-id="'+fin+'">FINISHED DESIGNS</button>';
+                field += '<button class="btn-link" data-id="'+fin+'" data-code="'+code+'">FINISHED DESIGNS</button>';
                 field += '</div>';
 
                 $("#frame_category_mode").html(field);
@@ -84,6 +86,8 @@ var CanvasAction = {
         var id = $(this).data("id");
         var fin = $(this).data("fin");
         CanvasAction.frameCategoryName = $(this).find("div").text();
+        Canvas.frame_category_id = id;
+        Canvas.frame_category_code = $(this).data("code");
         CanvasAction.postData("/frame/frameList/",{"search" :{"frame_category_id":id}}).done(function (data) {
             var obj = CanvasAction.JsonParse(data);
             $("#frame_category_name").text( CanvasAction.frameCategoryName);
@@ -112,6 +116,16 @@ var CanvasAction = {
     },
     clickFrameMode: function() {   
         var id = $(this).data("id");
+        CanvasAction.frameCategoryMode = $(this).text();
+        Canvas.myCanvas.clear();
+        Canvas.state = [];
+
+        if(CanvasAction.frameCategoryMode == "CUSTOMISE DESIGNS"){
+            Canvas.Addtext();
+        }
+
+        Canvas.frame_category_id = id;
+        Canvas.frame_category_code = $(this).data("code");
         $("#frame_category_mode .btn-link").removeClass("select");
         $(this).addClass("select");
         CanvasAction.postData("/frame/frameList/",{"search" :{"frame_category_id":id}}).done(function (data) {
@@ -121,18 +135,26 @@ var CanvasAction = {
     },
     renderFrameList: function(obj) {   
         var num = 0;
-        var field = '<div class="frame select" num="0" data-src="null" name="blank">';
-            field += '<div class="inner">';
-            field += '<img src="/assets/images/persoanlisation/png/WHITE-PNG-00.png">';
-            field += '</div>';
-            field += '</div>';
-        $("#frame-panel").html(field);
+        if(CanvasAction.frameCategoryMode == "CUSTOMISE DESIGNS"){
+            var field = '<div class="frame select" data-id="0" num="0" data-src="null" name="blank">';
+                field += '<div class="inner">';
+                field += '<img src="/assets/images/persoanlisation/png/WHITE-PNG-00.png">';
+                field += '</div>';
+                field += '</div>';
+            $("#frame-panel").html(field);
+            $("#canvas-select").find(".select_design").attr("min",0).attr("max",obj.row_total).attr("current",0);
+        }
+        else{
+            $("#frame-panel").html("");
+            $("#canvas-select").find(".select_design").attr("min",1).attr("max",obj.row_total).attr("current",1);
+        }
+        
         // console.log(obj);
         $("#canvas-select").find(".select_design").attr("min",0).attr("max",obj.row_total).attr("current",0);
         $.each(obj.view, function() {
             num++;
             var name =  CanvasAction.frameCategoryName+" #"+num;
-            var field = '<div class="frame" num="'+num+'" data-src="'+this.frame_list_pic+'" name="'+name+'">';
+            var field = '<div class="frame" num="'+num+'" data-id="'+this.frame_list_id+'" data-src="'+this.frame_list_pic_svg+'" name="'+name+'">';
                 field += '<div class="inner">';
                 field += '<img src="'+this.frame_list_pic+'">';
                 field += '</div>';
@@ -170,7 +192,6 @@ var CanvasAction = {
     },
     renderStickerList: function(obj) { 
         $("#sticker-panel").html("");  
-        console.log(obj);
         $.each(obj.view, function() {
             var field ='<div class="sticker" data-src="'+this.sticker_list_pic_svg+'">';
                 field +='<div class="inner">';

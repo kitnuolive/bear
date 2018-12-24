@@ -18,14 +18,14 @@
 	float: left;
 	margin-right: 0;
 	margin-left: 0;
-	padding-top: 40px;
+	padding-top: 20px;
 }
 .tool-wrapper{
 	width: 100%;
 	float: left;
 	margin-left: 0;
 	margin-right: 0;
-	margin-top: 40px;
+	margin-top: 20px;
 }
 
 .select_design{
@@ -104,7 +104,7 @@
 }
 .canvas-tool .step .step-head .img{
 	width: 100%;
-	margin: 0 15px;
+	margin: 0 auto;
 	float: none;
 }
 .canvas-tool .step .step-head .img img.icon-active{
@@ -173,11 +173,11 @@
 	float: left;
 }
 .canvas-tool.open .step .step-head {
-    padding: 15px;
+    padding: 5px;
     text-align: center;
 }
 .canvas-tool.open .step .step-head  .img{
-    width: 70px;
+    width: 50px;
 }
 .canvas-tool.open .step .step-head  .img img{
     height: 35px;
