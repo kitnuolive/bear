@@ -69,11 +69,11 @@ var Canvas = {
         cornerSize: 12,
         padding:5
       });
-
+      
       Canvas.myCanvas.forEachObject(function(o){ 
-        o.setControlVisible('mt',false),
+        o.setControlVisible('mt',false);
         o.setControlVisible('mb',false);
-        o.setControlVisible('ml',false),
+        o.setControlVisible('ml',false);
         o.setControlVisible('mr',false);
       });
 
@@ -192,7 +192,7 @@ var Canvas = {
           fontFamily: 'Copperplate-Lig',
             fontSize: 18,
             fill: '#754729',
-            left: 150,
+            left: 130,
             top: 320
         }));
 
@@ -240,6 +240,13 @@ var Canvas = {
         $("#complete_modal").modal("show");
 
     },
+    updateModifications: function(savehistory) { 
+      if (savehistory === true) {
+        //myjson = JSON.stringify(canvas);
+        var myjson = Canvas.myCanvas.toJSON();
+        Canvas.state.push(myjson);
+      }
+    }, 
     undo: function(e) {
      if (Canvas.mods < Canvas.state.length) {
           Canvas.myCanvas.clear().renderAll();
@@ -284,6 +291,7 @@ var Canvas = {
 
       $("#frame_category").hide();
           $("#frame_List").hide();
+          Canvas.updateModifications(true); 
     },
     selectNumber: function(e) {
       $box = $(this).parents(".number-box");
@@ -305,6 +313,7 @@ var Canvas = {
 
       Canvas.setLineHeight();
       Canvas.setCharSpacing();
+      Canvas.updateModifications(true); 
     },
     complete: function(e) { 
       console.log('data:image/svg+xml;utf8,' + encodeURIComponent(Canvas.myCanvas.toSVG()));
@@ -344,24 +353,29 @@ var Canvas = {
       Canvas.myCanvas.clear();
       Canvas.state = [];
       Canvas.Addtext();
+      Canvas.updateModifications(true); 
     },    
     setFontFamily: function(e) {
         Canvas.myCanvas.getActiveObject().set("fontFamily", $(this).val());
         Canvas.myCanvas.renderAll();
+        Canvas.updateModifications(true); 
     },
     setLineHeight: function(e) {
         Canvas.myCanvas.getActiveObject().set("lineHeight", $("#text-line-height").val());
         Canvas.myCanvas.renderAll();
+        Canvas.updateModifications(true); 
     },
     setCharSpacing: function(e) {
         var spacing =  parseFloat($("#text-space").val())*100;
         Canvas.myCanvas.getActiveObject().set("charSpacing",spacing);
         Canvas.myCanvas.renderAll();
+        Canvas.updateModifications(true); 
     },
     setTextAlign: function(e) {
       var mode = $(this).attr("mode");
         Canvas.myCanvas.getActiveObject().set("textAlign", mode);
         Canvas.myCanvas.renderAll();
+        Canvas.updateModifications(true); 
     },
     Addtext: function(e){
         Canvas.myCanvas.add(new fabric.IText('YOUR MESSAGE', {
@@ -373,6 +387,14 @@ var Canvas = {
             left: 30,
             top: 40
         }).setShadow({ color: 'rgba(0,0,0,0.3)' }));
+
+        Canvas.myCanvas.forEachObject(function(o){ 
+          o.setControlVisible('mt',false);
+          o.setControlVisible('mb',false);
+          o.setControlVisible('ml',false);
+          o.setControlVisible('mr',false);
+        });
+        Canvas.updateModifications(true); 
     },
     addImage: function(e) {
         var file = e.target.files[0];
@@ -394,6 +416,7 @@ var Canvas = {
             });
           };
           reader.readAsDataURL(file);
+          Canvas.updateModifications(true); 
     },
     delSelect: function(e) {
       if (Canvas.myCanvas.getActiveObject()) {          
@@ -412,7 +435,7 @@ var Canvas = {
         $(".step[mode='"+mode+"']").removeClass("select");
         $("#canvas-tool").removeClass("open");
 
-        f(mode == 1){
+        if(mode == 1){
           $("#frame_category").hide();
           $("#frame_List").hide();
         }
@@ -476,6 +499,7 @@ var Canvas = {
             scaleY: parseFloat(Canvas.myCanvas.height) / parseFloat(img.height),
          });
       });
+      Canvas.updateModifications(true); 
     },
     selectIcon: function() {           
       var src = $(this).attr("data-src");
@@ -492,9 +516,9 @@ var Canvas = {
         Canvas.myCanvas.add(loadedObjects);
         Canvas.myCanvas.renderAll();
         Canvas.myCanvas.forEachObject(function(o){ 
-          o.setControlVisible('mt',false),
+          o.setControlVisible('mt',false);
           o.setControlVisible('mb',false);
-          o.setControlVisible('ml',false),
+          o.setControlVisible('ml',false);
           o.setControlVisible('mr',false);
         });
       },
@@ -502,6 +526,7 @@ var Canvas = {
         object.set('id', item.getAttribute('id'));
         group.push(object);
       });      
+      Canvas.updateModifications(true); 
     },
     selectIconOld: function() {           
       var src = $(this).find("img").attr("src");

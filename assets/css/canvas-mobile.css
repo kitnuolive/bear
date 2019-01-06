@@ -6,7 +6,7 @@
     width: 310px;
     height: 205px;
     padding: 5px 10px 8px;
-    margin: 20px auto;
+    margin: 15px auto;
     background-size: cover;
     background-image: url("/assets/images/persoanlisation/back-envelope-white.png");
 }
@@ -18,14 +18,14 @@
 	float: left;
 	margin-right: 0;
 	margin-left: 0;
-	padding-top: 20px;
+	padding-top: 10px;
 }
 .tool-wrapper{
 	width: 100%;
 	float: left;
 	margin-left: 0;
 	margin-right: 0;
-	margin-top: 20px;
+	margin-top: 10px;
 	position: fixed;
     bottom: 0;
 }
@@ -134,8 +134,8 @@
 	float:  left;
 	text-align: center;
 	vertical-align: middle;
-	padding-top: 10px;
-	font-size: 14px;
+	padding-top: 5px;
+	font-size: 12px;
 }
 
 .canvas-tool .step.active .step-head .title,
@@ -144,9 +144,9 @@
 	float:  left;
 	text-align: center;
 	vertical-align: middle;
-	padding-top: 10px;
+	padding-top: 5px;
 	font-weight: bold;
-	text-decoration: underline;
+	text-decoration: none;
 }
 .canvas-tool .step .step-head .icon-box{
 	font-size: 28px;
@@ -179,10 +179,10 @@
     text-align: center;
 }
 .canvas-tool .step .step-head  .img{
-    width: 50px;
+    width: 42px;
 }
 .canvas-tool .step .step-head  .img img{
-    height: 35px;
+    height: 25px;
 }
 .canvas-tool.open .step .step-head  .img img.icon-active{
     height: 20px;
@@ -190,7 +190,7 @@
 }
 .canvas-tool.open .step .step-head .title{
 	width: 100%;
-	padding-top: 8px;
+	padding-top: 5px;
 	text-align: center;
 }
 .canvas-tool.open .step .step-head .icon-box{
@@ -326,7 +326,7 @@ line-height: 35px;
 }
 
 .input-number{
-    width: 45px;
+    width: 40px;
     background: transparent;
     border: none;
 }

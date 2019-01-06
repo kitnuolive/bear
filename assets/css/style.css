@@ -268,7 +268,11 @@ nav.slide{
 .navbar-brand img{
     height: 100%;
 }
-.navbar-nav>li>a:hover,
+.navbar-nav>li>a:hover{
+  font-weight: normal;
+  background-color: transparent;
+  color: #d48c54;
+}
 .navbar-nav>li.active{
    font-weight: bold;
    background-color: transparent;
@@ -2361,7 +2365,7 @@ select .select_design{
   border-radius: 20px;
   padding: 5px;
   cursor: pointer;
-  margin: 0 5px;
+  margin: 0;
 }
 .btn-type span{
   font-size: 12px;
@@ -2423,6 +2427,9 @@ select .select_design{
     display: inline-block;
     cursor: pointer;
 }
+.select_design:hover{
+  color: #d48c54;
+}
 .select_design .icon{
 
 }
@@ -2439,7 +2446,8 @@ select .select_design{
   cursor: pointer;
 }
 #frame_category_ui li:hover{
-  font-weight: bold
+  color: #d48c54;
+  font-weight: normal;
 }
 #frame_category_ui li::brfore{
     background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…BoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
@@ -2457,10 +2465,14 @@ select .select_design{
 #frame_category_ui li:last-child{
   border-bottom: 1px solid #e4c2a8;
 }
-#frame_category_mode .btn-link:hover,#frame_category_mode  .btn-link:focus {
-  color: #2a6496;
-  text-decoration: underline;
+#frame_category_mode .btn-link{
+  text-decoration: none;
+}
+#frame_category_mode .btn-link:hover,
+#frame_category_mode  .btn-link:focus {
+  color: #d48c54;
   background-color: transparent;
+  font-weight: normal;
 }
 .ex3 {
     width: 100%;

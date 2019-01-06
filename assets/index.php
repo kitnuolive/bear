@@ -21,10 +21,11 @@ $http = "http://";
 if (strpos($server, 'localhost') !== FALSE)
 {
     $serverUrl = "localhost";
-} else if (strpos($server, 'lactoyen') !== FALSE)
+} else if (strpos($server, 'beawelrypersonalise') !== FALSE)
 {
-    $serverUrl = "lactoyen.com";
+    $serverUrl = "beawelrypersonalise.com";
 }
+$serverUrl = "beawelrypersonalise.com";
 $M = null;
 $detect = new Mobile_Detect();
 if ($detect->isTablet())
@@ -35,18 +36,18 @@ else if ($detect->isMobile())
 {
     $M = 'mobile';
 }
-if (!empty($M) && (strtolower($M) == 'mobile' || strtolower($M) == 'tablet'))
+/*if (!empty($M) && (strtolower($M) == 'mobile' || strtolower($M) == 'tablet'))
 {
     if (strpos($server, 'm.' . $serverUrl) === FALSE)
     {
-        ($url != '/') ? header("location:http://m." . $serverUrl . $url) : header("location:http://m." . $serverUrl); // redirect destop to mobile
+        ($url != '/') ? header("location:https://m." . $serverUrl . $url) : header("location:https://m." . $serverUrl); // redirect destop to mobile
     }
 } else if (empty($M))
 {
     if (strpos($server, 'm.' . $serverUrl) !== FALSE)
     {
-        ($url != '/') ? header("location:http://" . $serverUrl . $url) : header("location:http://" . $serverUrl); // redirect mobile to destop
+        ($url != '/') ? header("location:https://" . $serverUrl . $url) : header("location:https://" . $serverUrl); // redirect mobile to destop
     }
-}
+}*/
 
 App::run($url, $M);

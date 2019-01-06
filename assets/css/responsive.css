@@ -317,7 +317,7 @@
 	  padding: 15px;
 	}
 	footer{
-		position: inherit !important;
+		position: fixed !important;
 	}
 	
 	.box_height_380 .img-responsive {

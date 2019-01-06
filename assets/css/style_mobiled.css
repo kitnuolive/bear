@@ -213,7 +213,11 @@ nav.slide{
 .navbar-brand img{
     height: 100%;
 }
-.navbar-nav>li>a:hover,
+.navbar-nav>li>a:hover{
+  font-weight: normal;
+  background-color: transparent;
+  color: #d48c54;
+}
 .navbar-nav>li.active{
    font-weight: bold;
    background-color: transparent;

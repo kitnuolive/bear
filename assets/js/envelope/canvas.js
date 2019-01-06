@@ -69,11 +69,10 @@ var Canvas = {
         cornerSize: 12,
         padding:5
       });
-
       Canvas.myCanvas.forEachObject(function(o){ 
-        o.setControlVisible('mt',false),
+        o.setControlVisible('mt',false);
         o.setControlVisible('mb',false);
-        o.setControlVisible('ml',false),
+        o.setControlVisible('ml',false);
         o.setControlVisible('mr',false);
       });
 
@@ -178,7 +177,7 @@ var Canvas = {
           fontFamily: 'Copperplate-Lig',
             fontSize: 18,
             fill: '#754729',
-            left: 150,
+            left: 130,
             top: 320
         }));
 
@@ -372,6 +371,17 @@ var Canvas = {
             left: 50,
             top: 50
         }).setShadow({ color: 'rgba(0,0,0,0.3)' }));
+
+
+        Canvas.myCanvas.renderAll();
+        Canvas.myCanvas.forEachObject(function(o){ 
+          o.setControlVisible('mt',false);
+          o.setControlVisible('mb',false);
+          o.setControlVisible('ml',false);
+          o.setControlVisible('mr',false);
+        });
+
+        
         Canvas.updateModifications(true); 
     },
     addImage: function(e) {
@@ -477,9 +487,9 @@ var Canvas = {
         Canvas.myCanvas.add(loadedObjects);
         Canvas.myCanvas.renderAll();
         Canvas.myCanvas.forEachObject(function(o){ 
-          o.setControlVisible('mt',false),
+          o.setControlVisible('mt',false);
           o.setControlVisible('mb',false);
-          o.setControlVisible('ml',false),
+          o.setControlVisible('ml',false);
           o.setControlVisible('mr',false);
         });
       },

@@ -5,7 +5,19 @@ var OrderList = {
 
     },
     bindEvents: function() { 
+        $("#table_order").on('submit',".download_svg", this.downloadSvg);
+    },
+    downloadSvg: function() { 
+        var file = $(this).attr("data-file");
+        var name = $(this).attr("data-name");
 
+        var zip = new JSZip();
+        zip.file(name+".svg", file);
+        zip.generateAsync({type:"blob"})
+        .then(function(content) {
+            // see FileSaver.js
+            saveAs(content, name+".zip");
+        });
     },
     ViewOrderList: function() { 
         var obj= {
@@ -26,7 +38,7 @@ var OrderList = {
                         field += '<td><img style="width: 120px;" src="'+value.bear_order_path+'"></td>';
                         field += '<td>'+value.bear_order_number+'</td>';
                         field += '<td>'+value.create_date+'</td>';
-                        field += '<td><a href="'+value.bear_order_path_svg+'" download="'+value.bear_order_number+'">download</a></td>';
+                        field += '<td><button class="download_svg" data-file="'+value.bear_order_path_svg+'" data-name="'+value.bear_order_number+'">download</button></td>';
                         field += '</tr>';
                     $("#table_order tbody").append(field);
                 });

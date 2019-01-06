@@ -115,9 +115,13 @@ body::-webkit-scrollbar-thumb:hover {
   margin: 8px 0;
   text-align: center;
   height: 50px;
+  position: fixed;
+  width: 100%;
+  top: 0;
 }
 .brand img{
     height: 50px;
+    margin-left: -45px;
 }
 a{
     text-decoration: none;
@@ -181,6 +185,7 @@ nav.menu{
   padding: 6px 0 2px;
   border-top: 1px solid #F7EBE3;
   border-bottom: 1px solid #F7EBE3;
+  top: 65px;
 }
 nav.slide{
     height: 30px;
@@ -392,14 +397,14 @@ section{
 }
 footer {
   font-family: Copperplate-Lig;
-  position: fixed;
-  float: left;
-  width: 100%;
-  height: 46px;
-  padding-top: 10px;
-  bottom: 0;
-  background-color: #fff;
-  z-index: 99;
+    position: fixed;
+    float: left;
+    width: 100%;
+    height: 35px;
+    padding-top: 5px;
+    bottom: 0;
+    background-color: #fff;
+    z-index: 99;
 }
 .footer{
   float: none;
@@ -2304,7 +2309,7 @@ select .select_design{
   border-radius: 20px;
   padding: 5px;
   cursor: pointer;
-  margin: 0 5px;
+  margin: 0;
 }
 .btn-type span{
   font-size: 12px;
@@ -2366,6 +2371,9 @@ select .select_design{
     display: inline-block;
     cursor: pointer;
 }
+.select_design:hover{
+  color: #d48c54;
+}
 .select_design .icon{
 
 }
@@ -2386,7 +2394,8 @@ select .select_design{
   cursor: pointer;
 }
 #frame_category_ui li:hover{
-  font-weight: bold
+  color: #d48c54;
+  font-weight: normal;
 }
 #frame_category_ui li::brfore{
     background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…BoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
@@ -2404,10 +2413,14 @@ select .select_design{
 #frame_category_ui li:last-child{
   border-bottom: 1px solid #e4c2a8;
 }
-#frame_category_mode .btn-link:hover,#frame_category_mode  .btn-link:focus {
-  color: #2a6496;
-  text-decoration: underline;
+#frame_category_mode .btn-link{
+  text-decoration: none;
+}
+#frame_category_mode .btn-link:hover,
+#frame_category_mode  .btn-link:focus {
+  color: #d48c54;
   background-color: transparent;
+  font-weight: normal;
 }
 #frame_category_mode .col-md-6{
     width: 50% !important;
