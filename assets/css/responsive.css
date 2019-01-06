@@ -154,9 +154,6 @@
 	.modal-content{
 		width: 100%;
 	}
-	.modal-body img{
-		width: 100%;
-	}
 
 	#contact-wrap {
 	  font-family: Copperplate-Lig;
@@ -279,15 +276,18 @@
 	  margin-left: -50%;
 	}
 	.copyright{
-		width: 100%;
+		width: 50%;
 		text-align: center;
 	}
+	.footer {
+    margin: 0;
+    line-height: 18px;
+  }
 	.link_box{
-	  width: 100%;
+	  width: 50%;
 	}
 	.social_box{
-	  width: 100%;
-	  
+	  width: 50%;
 	}
 	.product_intro_box{
 		width: 100%;
@@ -319,9 +319,17 @@
 	footer{
 		position: inherit !important;
 	}
+	
+	.box_height_380 .img-responsive {
+	  width: 100%; 
+	  height: auto;
+	}
 	/*Header----------------------------------------*/
 	.navbar-nav{
 		display: none;
+	}
+	.menu.collapse.in .navbar-nav{
+		display: block;
 	}
 	.mobile-menu{
 		float: left;

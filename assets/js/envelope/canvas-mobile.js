@@ -54,8 +54,8 @@ var Canvas = {
             selectionBorderColor: 'green',
             backgroundColor: null
         });
-      Canvas.myCanvas.setHeight(265);
-      Canvas.myCanvas.setWidth(412);
+      Canvas.myCanvas.setHeight(192);
+      Canvas.myCanvas.setWidth(290);
 
       Canvas.Addtext();
 
@@ -96,20 +96,28 @@ var Canvas = {
       Canvas.myCanvas.on('object:selected', function(e) {
         var step = $(".step");
         $("#canvas-tool").addClass("open");
+        
 
         console.log("selected :" +e.target.type);
         if (e.target.type === 'i-text') {
           step.removeClass("select");
           $(".step[mode=2]").addClass("select");
+          $("#frame_category").hide();
+          $("#frame_List").hide();
         }
         else if (e.target.type === 'group') {
             // $('#textControls').hidden = true;
           step.removeClass("select");
           $(".step[mode=3]").addClass("select");
+          $("#frame_category").hide();
+          $("#frame_List").hide();
         }
         else{
           step.removeClass("select");
           $(".step[mode=1]").addClass("select");
+          $("#frame_category").hide();
+          $("#frame_List").show();
+
         }
       });
 
@@ -120,26 +128,32 @@ var Canvas = {
           // $('#textControls').hidden = true;
           step.removeClass("select");
           $(".step[mode=1]").addClass("select");
+          $("#frame_category").hide();
+          $("#frame_List").show();
         }
         else if (e.target.type === 'image') {
             // $('#textControls').hidden = true;
           step.removeClass("select");
           $(".step[mode=1]").addClass("select");
+          $("#frame_category").hide();
+          $("#frame_List").show();
         }
         else{
           step.removeClass("select");
           $(".step[mode=1]").addClass("select");
+          $("#frame_category").hide();
+          $("#frame_List").show();
         }
       });
 
-      Canvas.viewCanvas = new fabric.Canvas("viewCanvas", {
-            hoverCursor: 'pointer',
-            selection: true,
-            selectionBorderColor: 'green',
-            backgroundColor: null
-        });
-      Canvas.viewCanvas.setHeight(600);
-      Canvas.viewCanvas.setWidth(500);
+      // Canvas.viewCanvas = new fabric.Canvas("viewCanvas", {
+      //       hoverCursor: 'pointer',
+      //       selection: true,
+      //       selectionBorderColor: 'green',
+      //       backgroundColor: null
+      //   });
+      // Canvas.viewCanvas.setHeight(600);
+      // Canvas.viewCanvas.setWidth(500);
 
       updateModifications(true);  
     },
@@ -151,60 +165,35 @@ var Canvas = {
             selectionBorderColor: 'green',
             backgroundColor: "#ffffff"
         });
-      Canvas.viewCanvas.setHeight(600);
+      Canvas.viewCanvas.setHeight(350);
       Canvas.viewCanvas.setWidth(500);
-
-        var src = "/assets/images/canvas_logo.png";
-        fabric.Image.fromURL(src, function(img) {
-          var oImg = img.set({
-            left: 200,
-            top: 30,
-            angle: 00
-          }).scale(1);
-          Canvas.viewCanvas.add(oImg).renderAll();
-        });
-        Canvas.viewCanvas.add(new fabric.IText('personalisation', {
-          fontFamily: 'Copperplate-Lig',
-            fontSize: 18,
-            fill: '#754729',
-            left: 170,
-            top: 80
-        }));
 
         var src = "/assets/images/persoanlisation/back-envelope-white.png";
         fabric.Image.fromURL(src, function(img) {
           var oImg = img.set({
             left: 30,
-            top: 120,
+            top: 20,
             angle: 00
           }).scale(.77);
           Canvas.viewCanvas.add(oImg).renderAll();
         });
 
-        Canvas.viewCanvas.add(new fabric.IText('beawelry ® 2018 ©', {
-          fontFamily: 'Copperplate-Lig',
-            fontSize: 12,
-            fill: '#754729',
-            left: 20,
-            top: 570
-        }));
-
         fabric.Image.fromURL(href, function(img) {
           var oImg = img.set({
             left: 35,
-            top: 130,
+            top: 30,
             angle: 00
           }).scale(1);
           Canvas.viewCanvas.add(oImg).renderAll();
         });
 
         /* Code */
-        Canvas.viewCanvas.add(new fabric.IText('code :' + text_code, {
+        Canvas.viewCanvas.add(new fabric.IText('design id : ' + text_code, {
           fontFamily: 'Copperplate-Lig',
             fontSize: 18,
             fill: '#754729',
             left: 150,
-            top: 420
+            top: 320
         }));
 
         setTimeout(function(){ 
@@ -292,6 +281,9 @@ var Canvas = {
       }else{
         $input.attr("current" , old);
       }
+
+      $("#frame_category").hide();
+          $("#frame_List").hide();
     },
     selectNumber: function(e) {
       $box = $(this).parents(".number-box");
@@ -321,8 +313,8 @@ var Canvas = {
         "frame_list_id" : Canvas.frame_list_id,
         "frame_category_code" : Canvas.frame_category_code,
         "svg" : 'data:image/svg+xml;utf8,' + encodeURIComponent(Canvas.myCanvas.toSVG())
-      }
 
+      }
       var data = JSON.stringify(obj);
       var form = new FormData();
         form.append("data", data);
@@ -374,12 +366,12 @@ var Canvas = {
     Addtext: function(e){
         Canvas.myCanvas.add(new fabric.IText('YOUR MESSAGE', {
           fontFamily: 'Copperplate-Lig',
-            fontSize: 34,
+            fontSize: 26,
             stroke: '#999999',
             fill: '#ffffff',
             strokeWidth: 1,
-            left: 50,
-            top: 50
+            left: 30,
+            top: 40
         }).setShadow({ color: 'rgba(0,0,0,0.3)' }));
     },
     addImage: function(e) {
@@ -413,19 +405,37 @@ var Canvas = {
     },
     selectStep: function() {    
       var step = $(this).parents(".step");   
-      var mode = step.attr("mode");   
-      if (step.hasClass("select")) {
-        step.removeClass("select");
+      var mode = $(this).attr("mode");   
+      $(".step-head").removeClass("select");
+      $(".step[mode=1]").find(".step-head[mode='"+mode+"']").addClass("select");
+      if ($(".step[mode='"+mode+"']").hasClass("select")) {
+        $(".step[mode='"+mode+"']").removeClass("select");
         $("#canvas-tool").removeClass("open");
+
+        f(mode == 1){
+          $("#frame_category").hide();
+          $("#frame_List").hide();
+        }
       }
       else{
         $(".step").removeClass("select");
         $("#canvas-tool").addClass("open");
-        step.addClass("select");
+        $(".step[mode='"+mode+"']").addClass("select");
+
+        if(mode == 1){
+          $("#frame_category").show();
+          $("#frame_List").hide();
+        }else{
+          $("#frame_category").hide();
+          $("#frame_List").hide();
+        }
       }
+
+      $('html,body').animate({
+          scrollTop: $("#canvas-tool").offset().top
+      }, 100);
     },
     selectFrame: function(e) {    
-
       if (e.type == "click") {
         $frame = $(this);
       }
@@ -435,8 +445,6 @@ var Canvas = {
       var src = $frame.attr("data-src");
       var num = $frame.attr("num");
       var name = $frame.attr("name");
-      var id = $frame.attr("data-id");
-      Canvas.frame_list_id = id;
 
       var srcObj = $frame.find("img").attr("src");
 
@@ -450,6 +458,9 @@ var Canvas = {
       else{
         $('#frame-panel').find(".frame").eq(0).addClass("select");
       }
+
+      $("#frame_category").hide();
+          $("#frame_List").hide();
 
         // fabric.Image.fromURL(src, function($img) { 
         //         $img.set({width: Canvas.myCanvas.width, height: Canvas.myCanvas.height, originX: 'left', originY: 'top'});
@@ -476,8 +487,8 @@ var Canvas = {
         var loadedObjects = new fabric.Group(group);
         loadedObjects.set({
           left: 50,
-          top: 100
-        }).scale(10);
+          top: 80
+        }).scale(8);
         Canvas.myCanvas.add(loadedObjects);
         Canvas.myCanvas.renderAll();
         Canvas.myCanvas.forEachObject(function(o){ 
@@ -491,6 +502,28 @@ var Canvas = {
         object.set('id', item.getAttribute('id'));
         group.push(object);
       });      
+    },
+    selectIconOld: function() {           
+      var src = $(this).find("img").attr("src");
+      
+      var imgElement = $(this).find("img");
+      fabric.Image.fromURL(src, function(img) {
+        var oImg = img.set({
+          left: 50,
+          top: 80,
+          angle: 00,
+        }).scale(1);
+        Canvas.myCanvas.add(oImg).renderAll();
+        Canvas.myCanvas.forEachObject(function(o){ 
+          o.setControlVisible('mt',false),
+          o.setControlVisible('mb',false);
+          o.setControlVisible('ml',false),
+          o.setControlVisible('mr',false);
+        });
+      });
+      // Canvas.drawPhoto(src);
+
+      
     }
 };
 Canvas.init();

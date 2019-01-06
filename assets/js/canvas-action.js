@@ -59,8 +59,8 @@ var CanvasAction = {
         CanvasAction.postData("/frame/frameList/",{"search" :{"frame_category_id":id}}).done(function (data) {
             var obj = CanvasAction.JsonParse(data);
             $("#frame_category_name").text( CanvasAction.frameCategoryName);
-            $("#frame_category").hide();
-            $("#frame_List").fadeIn(0);
+            $("#frame_category").show();
+            $("#frame_List").hide();
 
             if(fin == undefined){
                 var field = '<div class="col-md-12" style="padding-right: 0;padding-left: 30px;">';

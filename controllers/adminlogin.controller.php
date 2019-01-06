@@ -15,7 +15,8 @@ class AdminloginController extends Controller
         if ($adminsid)
         {
             $session = $this->model->getAdminSession(NULL, $adminsid);
-            !empty($session) ? Router::redirect('/adminorder/orderList') : FALSE;
+            !empty($session) ? Router::redirect('/orderlist') : FALSE;
+            // !empty($session) ? Router::redirect('/adminorder/orderList') : FALSE;
         }
         if ($_POST)
         {

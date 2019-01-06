@@ -26,6 +26,8 @@
 	margin-left: 0;
 	margin-right: 0;
 	margin-top: 20px;
+	position: fixed;
+    bottom: 0;
 }
 
 .select_design{
@@ -47,7 +49,6 @@
 	width: 100%;
 	float: left;    
 	/*height: calc(100vh - 283px);*/
-    margin-bottom: 20px;
     /*overflow: auto;    */
     /*overflow-x: hidden;*/
 }
@@ -77,7 +78,7 @@
 	background: linear-gradient(to right, #ffeeea 0%,#fffcfa 50%,#ffeeea 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffeeea', endColorstr='#ffeeea',GradientType=1 ); /* IE6-9 */
 }
-.canvas-tool .step .step-head.select{
+.canvas-tool.open .step .step-head.select{
 	color: #FFFFFF;
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7c5b46+0,754729+100 */
 	background: rgb(124,91,70); /* Old browsers */
@@ -96,7 +97,7 @@
 .canvas-tool .step .step-head{
 	width: 33.33333333%;
 	float:  left;
-	padding: 15px;
+	padding: 5px 15px;
 	border-bottom: 1px solid #8a5d3b;
 	border-top: 1px solid #8a5d3b;
 	cursor: pointer;
@@ -115,15 +116,16 @@
 .canvas-tool .step .step-head .img img.normal,
 /*.canvas-tool .step.active .step-head .img img.active,*/
 .canvas-tool .step.active .step-head .img img.icon-active,
-.canvas-tool .step .step-head.select .img img.select{
+.canvas-tool .step .step-head.select .img img.normal,
+.canvas-tool.open .step .step-head.select .img img.select{
 	display: block;
 }
 /*.canvas-tool .step .step-head .img img.active,*/
 .canvas-tool .step .step-head .img img.select,
 /*.canvas-tool .step.active .step-head .img img.normal,*/
 /*.canvas-tool .step.active .step-head .img img.select,*/
-.canvas-tool .step .step-head.select .img img.normal,
-.canvas-tool .step .step-head.select .img img.active{
+.canvas-tool.open .step .step-head.select .img img.normal,
+.canvas-tool.open .step .step-head.select .img img.active{
 	display: none;
 }
 
@@ -176,10 +178,10 @@
     padding: 5px;
     text-align: center;
 }
-.canvas-tool.open .step .step-head  .img{
+.canvas-tool .step .step-head  .img{
     width: 50px;
 }
-.canvas-tool.open .step .step-head  .img img{
+.canvas-tool .step .step-head  .img img{
     height: 35px;
 }
 .canvas-tool.open .step .step-head  .img img.icon-active{

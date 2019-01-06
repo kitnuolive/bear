@@ -1,5 +1,133 @@
-<?PHP
+<!DOCTYPE html>
+<html lang="en">
 
-    echo "404";
+<head>
 
-?>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Beawelry reinvents the traditional perception of jewelry; from precious and valuable material to object of emotional representation. We strive to provide the most warming and beautiful experience of giving, receiving, and wearing">
+    <meta name="author" content="Beawelry">
+
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+    <title>Beawelry wishes to help you express your emotions to your loved ones for all your special occasions</title>
+
+    <!-- CSS -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/responsive.css" rel="stylesheet">
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTMฟL5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+    
+    <div class="brand">
+        <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars"></i>
+                </button>
+            <a href="/"><img src="/assets/images/beawelry_logo_02.png"></a>
+        </div>
+    </div>
+
+    <menu>
+        <ul>
+          <li>
+            <a href="/">Gallery</a>
+          </li>
+          <li>
+            <a href="/envelope">personalisation</a>
+          </li>
+          <li>
+            <a href="https://www.beawelry.com/personalisation/">Online Shop</a>
+          </li>
+          <li>
+            <a href="/howto">How to</a>
+          </li>
+          <li>
+            <a href="/contactus">Contact Us</a>
+          </li>
+        </ul>
+    </menu>
+    <nav class="menu" id="navbar">
+        <div class="container">
+            <div class="pagename">
+                Order
+            </div>
+            <ul class="navbar-nav">
+              <li>
+                    <a href="/">Gallery</a>
+                </li>
+                <li>
+                    <a href="/envelope">personalisation</a>
+                </li>
+                <li>
+                    <a href="https://www.beawelry.com/personalisation/">Online Shop</a>
+                </li>
+                <li>
+                    <a href="/howto">How to</a>
+                </li>
+                <li>
+                    <a href="/contactus">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row" style="margin-top:20px">
+            <div class="col-md-12" style="height: calc(100vh - 210px);padding-top: 50px;text-align:center;">
+                 <h1>ERROR 404</h1>
+                <h3>The page you are looking for is not here.</h3>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    <footer>
+        <div class="container">
+            <div class="footer">
+                <div class="copyright">beawelry ® 2015 © </div>
+                <div class="social_box">
+                    <ul class="social-footer">
+                        <li>
+                            <a href="https://www.facebook.com/Beawelry" target="_blank" title="Beawelry's facebook">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://instagram.com/beawelry" title="Beawelry's instagram">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery Version 1.11.0 
+    <script src="js/jquery-1.11.0.js"></script>-->
+
+    <script src="assets/js/plugin/jquery-3.1.1.min.js"></script>
+    <script src="assets/js/jquery.easing.1.3.js"></script>
+    <script src="assets/js/lib.js"></script>
+    <script src="assets/js/admin/orderlist.js"></script>
+
+</body>
+
+</html>

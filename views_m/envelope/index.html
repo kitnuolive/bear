@@ -36,7 +36,7 @@
         </div>
     </div>
     <nav class="menu">
-        <div class="container">
+        <div class="">
             <div class="pagename">
                 personalisation
             </div>
@@ -61,7 +61,7 @@
         </div>
     </nav>
 
-    <section class="container">
+    <section class="container" style="height: calc(100vh - 145px);margin-top: 40px;">
         <div class="row">
             <div class="canvas-wrapper">
                 <div class="canvas-select" id="canvas-select">
@@ -80,7 +80,7 @@
                     <canvas id="viewCanvas"></canvas>
                 </div>
 
-                <div class="tool-menu text-center" id="canvas-back" style="margin-top: 20px;">
+                <div class="tool-menu text-center" id="canvas-back" style="margin-top: 30px;">
 
 
                     <div class="col-xs-4">
@@ -113,112 +113,20 @@
                     </div>
 
                 </div>
+
+                <div class="col-sm-12">
+                    <div class="btn-wrapper" style="margin-top: 30px;">
+                        <button class="btn-brown" style="width: 100%;" id="complete_btn">COMPLETE</button>
+                    </div>
+                </div>
             </div>
 
             <div class="tool-wrapper" id="tool">
                 <div class="canvas-tool open" id="canvas-tool">
-                    <div class="step" mode="1">
-                        <div class="step-head select" mode="1">
-                            <div class="img">
-                                <img src="/assets/images/persoanlisation/icon-active.png" class="icon-active">
-                                <img src="/assets/images/persoanlisation/logo1.png" class="normal">
-                                <img src="/assets/images/persoanlisation/logo1-1.png" class="select">
-                                <!-- <img src="/assets/images/persoanlisation/logo1-active.png" class="active"> -->
-                            </div>
-                            <div class="title">
-                                FRAME
-                            </div>
-                            <div class="icon-box">
-                                <i class="icon ion-ios-add-circle-outline normal"></i>
-                                <i class="icon ion-ios-remove-circle-outline select"></i>
-                            </div>
-                        </div>
-                        <div class="step-head" mode="2">
-                            <div class="img">
-                                <img src="/assets/images/persoanlisation/icon-active.png" class="icon-active">
-                                <img src="/assets/images/persoanlisation/logo2.png" class="normal">
-                                <img src="/assets/images/persoanlisation/logo2-1.png" class="select">
-                                <!-- <img src="/assets/images/persoanlisation/logo2-active.png" class="active"> -->
-                            </div>
-                            <div class="title">
-                                MESSEAGE
-                            </div>
-                            <div class="icon-box">
-                                <i class="icon ion-ios-add-circle-outline normal"></i>
-                                <i class="icon ion-ios-remove-circle-outline select"></i>
-                            </div>
-                        </div>
-                        <div class="step-head" mode="3">
-                            <div class="img">
-                                <img src="/assets/images/persoanlisation/icon-active.png" class="icon-active">
-                                <img src="/assets/images/persoanlisation/logo3.png" class="normal">
-                                <img src="/assets/images/persoanlisation/logo3-1.png" class="select">
-                                <!-- <img src="/assets/images/persoanlisation/logo3-active.png" class="active"> -->
-                            </div>
-                            <div class="title">
-                                STICKER
-                            </div>
-                            <div class="icon-box">
-                                <i class="icon ion-ios-add-circle-outline normal"></i>
-                                <i class="icon ion-ios-remove-circle-outline select"></i>
-                            </div>
-                        </div>
-                        <div class="step-detail" id="frame_category">
-                            <div class="row" style="margin-top: 10px;margin-bottom: 0;">
-                                <div class="col-md-12" style="font-family: Copperplate-Lig;color: #8a5d3b;">
-                                    <div class="text-center">
-                                        <div>SELECT DESIGN #</div>
-                                        <ul id="frame_category_ui" class="scroll">
-                                            <li>
-                                                <div>anniversary</div>
-                                            </li>
-                                            <li>
-                                                <div>beawelry classic</div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="step-detail" id="frame_List">
-                            <div class="row" style="margin-top: 10px;margin-bottom: 0;">
-                                <div class="col-md-12">
-                                    <div class="text-center">
-                                        <div class="select_design" style="display: none;">
-                                            <label style="font-weight: normal;margin-bottom: 0;color: #8a5d3b;" title="Add an image"
-                                                class="myFile"><span class="mdi mdi-image"><i class="icon ion-ios-add-circle-outline normal"></i>
-                                                    Add Photo</span>&nbsp;<input style="display: none;" type="file" id="file" /></label>
-                                        </div>
-                                        <div class="select_design text-center" id="frame_category_name">
-                                            BIRTHDAY
-                                        </div>
-                                    </div>
-                                    <hr style="width: 100%;margin: 10px 0;">
-                                </div>
-                                <div id="frame_category_mode">
-                                    <div class="col-md-6" style="padding-right: 0;padding-left: 30px;">
-                                        <button class="btn-link select">CUSTOMISE DESIGNS</button>
-                                    </div>
-                                    <div class="col-md-6" style="border-left: 1px solid #ddd;">
-                                        <button class="btn-link">FINISHED DESIGNS</button>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <hr style="width: 100%; margin: 10px 0;">
-                                    <div class="frame-panel scroll" id="frame-panel">
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="step" mode="2">
                         <!-- header -->
-                        <div class="step-detail" id="text-controls textControls" style="height: 325px;">
-                            <div class="row" style="margin-top: 20px">
+                        <div class="step-detail" id="text-controls textControls" style="height: 300px;">
+                            <div class="row" style="margin-top: 15px">
                                 <div class="col-md-12 text-center">
                                     <button style="font-weight: normal;margin-bottom: 0;" title="Add an image" class="select_design"
                                         id="Addtext_btn"><span class="mdi mdi-image"><i class="icon ion-ios-add-circle-outline normal"></i>
@@ -227,7 +135,7 @@
                                 </div>
                             </div>
                             <hr style="width: 100%;margin: 10px 0;">
-                            <div class="row" style="margin-top: 20px">
+                            <div class="row" style="margin-top: 15px">
                                 <div class="col-md-12">
                                     <!-- 2.1 -->
                                     <div class="col-md-12" style="margin-bottom: 10px">
@@ -259,14 +167,14 @@
                                             <i class="fa fa-minus-circle pull-left" mode="minus"></i>
                                             <span style="width: 120px;float: left; margin: 3px 15px;text-align: left;">LETTER
                                                 SPACE :</span><input type="number" name="text-line-height" id="text-space"
-                                                class="input-number" value="1" min="1" max="5"><span> em</span>
+                                                class="input-number" value="1" min="1" max="2"><span> em</span>
                                             <i class="fa fa-plus-circle pull-right" mode="plus"></i>
                                         </div>
                                         <div class="btn-type number-box text-center" style="margin-bottom: 10px;">
                                             <i class="fa fa-minus-circle pull-left" mode="minus"></i>
                                             <span style="width: 120px;float: left; margin: 3px 15px;text-align: left;">LINE
                                                 HEIGHT :</span><input type="number" name="text-line-height" id="text-line-height"
-                                                class="input-number" value="1" min="1" max="40"><span> em</span>
+                                                class="input-number" value="1" min="1" max="2"><span> em</span>
                                             <i class="fa fa-plus-circle pull-right" mode="plus"></i>
                                         </div>
                                         <div class="btn-type text-center align-text" id="text-align" style="margin-bottom: 10px;">
@@ -368,9 +276,104 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="btn-wrapper">
-                    <button class="btn-brown" style="width: 100%;" id="complete_btn">COMPLETE</button>
+                    <div class="step" mode="1">
+                        <div class="step-detail" id="frame_category">
+                            <div class="row" style="margin-top: 10px;margin-bottom: 0;">
+                                <div class="col-md-12" style="font-family: Copperplate-Lig;color: #8a5d3b;">
+                                    <div class="text-center">
+                                        <div>SELECT DESIGN #</div>
+                                        <ul id="frame_category_ui" class="scroll">
+                                            <li>
+                                                <div>anniversary</div>
+                                            </li>
+                                            <li>
+                                                <div>beawelry classic</div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step-detail" id="frame_List">
+                            <div class="row" style="margin-top: 10px;margin-bottom: 0;">
+                                <div class="col-md-12">
+                                    <div class="text-center">
+                                        <div class="select_design" style="display: none;">
+                                            <label style="font-weight: normal;margin-bottom: 0;color: #8a5d3b;" title="Add an image"
+                                                class="myFile"><span class="mdi mdi-image"><i class="icon ion-ios-add-circle-outline normal"></i>
+                                                    Add Photo</span>&nbsp;<input style="display: none;" type="file" id="file" /></label>
+                                        </div>
+                                        <div class="select_design text-center" id="frame_category_name">
+                                            BIRTHDAY
+                                        </div>
+                                    </div>
+                                    <hr style="width: 100%;margin: 10px 0;">
+                                </div>
+                                <div id="frame_category_mode">
+                                    <div class="col-md-6" style="padding-right: 0;padding-left: 30px;">
+                                        <button class="btn-link select">CUSTOMISE DESIGNS</button>
+                                    </div>
+                                    <div class="col-md-6" style="border-left: 1px solid #ddd;">
+                                        <button class="btn-link">FINISHED DESIGNS</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <hr style="width: 100%; margin: 10px 0;">
+                                    <div class="frame-panel scroll" id="frame-panel">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step-head select" mode="1">
+                            <div class="img">
+                                <img src="/assets/images/persoanlisation/icon-active.png" class="icon-active">
+                                <img src="/assets/images/persoanlisation/logo1.png" class="normal">
+                                <img src="/assets/images/persoanlisation/logo1-1.png" class="select">
+                                <!-- <img src="/assets/images/persoanlisation/logo1-active.png" class="active"> -->
+                            </div>
+                            <div class="title">
+                                FRAME
+                            </div>
+                            <div class="icon-box">
+                                <i class="icon ion-ios-add-circle-outline normal"></i>
+                                <i class="icon ion-ios-remove-circle-outline select"></i>
+                            </div>
+                        </div>
+                        <div class="step-head" mode="2">
+                            <div class="img">
+                                <img src="/assets/images/persoanlisation/icon-active.png" class="icon-active">
+                                <img src="/assets/images/persoanlisation/logo2.png" class="normal">
+                                <img src="/assets/images/persoanlisation/logo2-1.png" class="select">
+                                <!-- <img src="/assets/images/persoanlisation/logo2-active.png" class="active"> -->
+                            </div>
+                            <div class="title">
+                                MESSEAGE
+                            </div>
+                            <div class="icon-box">
+                                <i class="icon ion-ios-add-circle-outline normal"></i>
+                                <i class="icon ion-ios-remove-circle-outline select"></i>
+                            </div>
+                        </div>
+                        <div class="step-head" mode="3">
+                            <div class="img">
+                                <img src="/assets/images/persoanlisation/icon-active.png" class="icon-active">
+                                <img src="/assets/images/persoanlisation/logo3.png" class="normal">
+                                <img src="/assets/images/persoanlisation/logo3-1.png" class="select">
+                                <!-- <img src="/assets/images/persoanlisation/logo3-active.png" class="active"> -->
+                            </div>
+                            <div class="title">
+                                STICKER
+                            </div>
+                            <div class="icon-box">
+                                <i class="icon ion-ios-add-circle-outline normal"></i>
+                                <i class="icon ion-ios-remove-circle-outline select"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="tool-wrapper" id="form-sendmail" style="display: none;">
@@ -398,7 +401,7 @@
                     <a href="/assets/images/persoanlisation/back-envelope-white-02.png" download class="btn-brown"
                         style="width: 100%;border-radius: 0;height: 40px;margin-bottom: 15px;background-color: #754729;border: 1px solid #754729;font-family: Copperplate-Lig;color: #ffffff;font-weight: bold;border-radius: 0;padding: 10px 15px;cursor: pointer;display: block;text-align: center;"
                         id="lnkDownload2">DOWNLOAD FILE</a>
-                    <button class="btn-outline" style="width: 100%;border-radius: 0;height: 40px;" id="complete_btn">SEND
+                    <button class="btn-outline" style="width: 100%;border-radius: 0;height: 40px;" id="complete_btnk">SEND
                         TO EMAIL</button>
                     <!--    -->
                 </div>
@@ -409,10 +412,10 @@
 
 
 
-    <footer>
+    <footer style="margin: 0;">
         <div class="container">
             <div class="footer">
-                <div class="copyright">beawelry ® 2018 © </div>
+                <div class="copyright">beawelry ® 2015 © </div>
                 <div class="social_box">
                     <ul class="social-footer">
                         <li>
@@ -437,37 +440,50 @@
             <div class="modal-content">
                 <div class="modal-body" style="padding : 0px;">
                     <div class="row">
-                      <div class="col-md-6">                          
-                          <img src="" id="canvasImg" style="width: 100%;height: auto">
-                      </div>
-                      <div class="col-md-6 text-center content-wrapper">
+                        <div class="col-sm-12">
+                            <div class="brand">
+                                <div class="container">
+                                    <a href="/"><img src="/assets/images/beawelry_logo_02.png"></a>
+                                </div>
+                            </div>
+                            <nav class="menu" id="navbar">
+                                <div class="container">
+                                    <div class="pagename" style="display:block">
+                                        PERSONALISATION DESIGN SUMMARY
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                        
+                        <div class="col-sm-6" style="padding-top:30px;padding-bottom: 30ox;">                          
+                            <img src="" id="canvasImg" style="width: 100%;height: auto">
+                        </div>
+                        <div class="col-sm-6 text-center content-wrapper">
                         <div class="content-wrapper">
-                            <h3>Congratulations, you're done.</h3>
-                            <h4>Next steps</h4>
-                            <ul style="text-align: -webkit-auto;list-style: none;">
-                              <li> 1. เข้าเว็บ bewelry.com</li>
-                              <li> 2. เลือกสินค่าที่ต้องการ</li>
-                              <li> 3. อัปโหลดรูปที่ทำเสร็จ</li>
-                              <li> 4. สั้งซื้อสินค้า</li>
-                              <li> 5. รอรับของที่บ้านได้เลย</li>
+                            <h3 style="border-bottom: 1px solid #d7ab99;">YOU ARE ALMOST DONE!</h3>
+                            <p style="color: #ff8d00;font-size: 14px;">*Please follow the steps below to complete your order.</p>
+                            <ul style="text-align: -webkit-auto;list-style: none;padding-left: 10px;padding-right: 10px;">
+                                <li> 1. Download your ‘Personalise File’ by clicking the Download button below.</li>
+                                <li> 2. Select the product you wish to purchase that has this icon labeled.</li>
+                                <li> 3. Upload your ‘Personalised File’ to your selected personalised product.</li>
+                                <li> 4. Add the product to cart and follow the final steps to complete your purchase.</li>
                             </ul>  
 
                             <div style="margin-top:10px;">
-                              <div class="">
-                                <a  href="" download id="lnkDownload" class="btn-outline" >DOWNLOAD FILE</a> 
-                              </div>   
+                                <div style="margin: 30px 0;">
+                                <a  href="" download id="lnkDownload" class="btn-brown" >DOWNLOAD</a> 
+                                </div>   
 
-                              <div class="" style="margin-top: 15px;">
-
-                                <button class="btn-outline"  data-dismiss="modal" aria-hidden="true">ทำต่อ</button> 
-                                <a href="/envelope" class="btn-outline" id="renew_btn">เริ่มใหม่</a> 
-                              </div> 
+                                <div class="" style="margin-top: 15px;">
+                                <a data-dismiss="modal" aria-hidden="true" style="padding: 0 15px;"><i class="fa fa-chevron-left" aria-hidden="true"></i> BACK</a>  |
+                                <a href="/envelope" class="btn-outline" id="renew_btn" style="padding: 0 15px;"><i class="fa fa-repeat" aria-hidden="true"></i> RESTART</a> 
+                                </div> 
                             </div>
                         </div>
-                          
+                            
                                                     
-                          
-                      </div>
+                            
+                        </div>
                     </div>
                 </div>
             </div>
@@ -475,14 +491,14 @@
     </div>
 
     <!-- jQuery Version 1.11.0 -->
-    <script src="assets/js/jquery-3.1.1.min.js"></script>
-    <script src="assets/js/jquery.easing.1.3.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/plugin/jquery-3.1.1.min.js"></script>
+    <script src="assets/js/plugin/jquery.easing.1.3.js"></script>
+    <script src="assets/js/plugin/bootstrap.min.js"></script>
     <!-- <script src="https://cdn.rawgit.com/konvajs/konva/2.1.7/konva.min.js"></script> -->
-    <script src="assets/js/jquery.animate-enhanced.min.js"></script>
-    <script src="assets/js/fabric.min.js"></script>
-    <script src="assets/js/base64.js"></script>
-    <script src="assets/js/canvas-mobile.js"></script>
+    <script src="assets/js/plugin/jquery.animate-enhanced.min.js"></script>
+    <script src="assets/js/plugin/fabric.min.js"></script>
+    <script src="assets/js/plugin/base64.js"></script>
+    <script src="assets/js/envelope/canvas-mobile.js"></script>
     <script src="assets/js/canvas-action.js"></script>
     <script>
 
