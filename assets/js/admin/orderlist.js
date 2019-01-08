@@ -5,14 +5,14 @@ var OrderList = {
 
     },
     bindEvents: function() { 
-        $("#table_order").on('submit',".download_svg", this.downloadSvg);
+        $("#table_order").on('click',".download_svg", this.downloadSvg);
     },
     downloadSvg: function() { 
         var file = $(this).attr("data-file");
         var name = $(this).attr("data-name");
 
         var zip = new JSZip();
-        zip.file(name+".svg", file);
+        zip.add(name+".svg", file);
         zip.generateAsync({type:"blob"})
         .then(function(content) {
             // see FileSaver.js
