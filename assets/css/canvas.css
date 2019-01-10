@@ -15,18 +15,19 @@
 }
 .canvas-wrapper{
 	width: 442px;
-    float: left;
-    margin-right: 50px;
-    margin-left: 20px;
-    padding-top: 20px;
+	float: none;
+	margin-right: auto;
+	margin-left: auto;
+	padding-top: 20px;
 }
 .tool-wrapper{
 	width: 442px;
-    float: left;
-    margin-left: 50px;
-    margin-right: 20px;
-    margin-top: 40px;
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
 }
+
 
 .canvas-tool{
 	display: block;
@@ -145,7 +146,11 @@
 .canvas-tool .step.select .step-head .icon-box i.normal{
 	display: none;
 }
-
+@media only screen and (max-width: 768px) {
+	.canvas-tool {
+		margin-top: 30px;
+	}
+  }
 
 .canvas-tool.open{
 

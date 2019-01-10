@@ -63,17 +63,17 @@ var CanvasAction = {
             $("#frame_List").hide();
 
             if(fin == undefined){
-                var field = '<div class="col-md-12" style="padding-right: 0;padding-left: 30px;">';
+                var field = '<div class="col-md-12" style="padding-right: 0;padding-left: 0;">';
                 field += '<button class="btn-link select" data-id="'+id+'" data-code="'+code+'">CUSTOMISE DESIGNS</button>';
                 field += '</div>';
 
                 $("#frame_category_mode").html(field);
             }
             else{
-                var field = '<div class="col-md-6" style="padding-right: 0;padding-left: 30px;">';
+                var field = '<div class="col-md-6" style="padding-right: 0;padding-left: 15px;">';
                 field += '<button class="btn-link select" data-id="'+id+'" data-code="'+code+'">CUSTOMISE DESIGNS</button>';
                 field += '</div>';
-                field += '<div class="col-md-6" style="border-left: 1px solid #ddd;">';
+                field += '<div class="col-md-6" style="border-left: 1px solid #ddd;padding-right: 15px;padding-left: 0;">';
                 field += '<button class="btn-link" data-id="'+fin+'" data-code="'+code+'">FINISHED DESIGNS</button>';
                 field += '</div>';
 

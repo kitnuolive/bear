@@ -30,7 +30,7 @@ $M = null;
 $detect = new Mobile_Detect();
 if ($detect->isTablet())
 {
-    $M = 'tablet';
+    $M = NULL;
 } // mobile content
 else if ($detect->isMobile())
 {

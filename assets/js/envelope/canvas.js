@@ -462,15 +462,23 @@ var Canvas = {
         //         Canvas.myCanvas.setBackgroundImage($img, Canvas.myCanvas.renderAll.bind(Canvas.myCanvas), {width: Canvas.myCanvas.width, height: Canvas.myCanvas.height, originX: 'left', originY: 'top'});
 
         // });
-
-      fabric.Image.fromURL(src, function(img) {
-        img.set({width: Canvas.myCanvas.width, height: Canvas.myCanvas.height, originX: 'left', originY: 'top'});
-         // add background image
-         Canvas.myCanvas.setBackgroundImage(img, Canvas.myCanvas.renderAll.bind(Canvas.myCanvas), {
-            scaleX: parseFloat(Canvas.myCanvas.width) / parseFloat(img.width),
-            scaleY: parseFloat(Canvas.myCanvas.height) / parseFloat(img.height),
+      fabric.loadSVGFromURL(src, function(objects, options) {
+          var obj = fabric.util.groupSVGElements(objects, options);
+          Canvas.myCanvas.setBackgroundImage(obj, Canvas.myCanvas.renderAll.bind(Canvas.myCanvas), {
+            scaleX: parseFloat(Canvas.myCanvas.width) / parseFloat(obj.width),
+            scaleY: parseFloat(Canvas.myCanvas.height) / parseFloat(obj.height),
          });
-      });
+        //   canvas.add(obj).renderAll();
+    });
+
+    //   fabric.Image.fromURL(src, function(img) {
+    //     img.set({width: Canvas.myCanvas.width, height: Canvas.myCanvas.height, originX: 'left', originY: 'top'});
+    //      // add background image
+    //      Canvas.myCanvas.setBackgroundImage(img, Canvas.myCanvas.renderAll.bind(Canvas.myCanvas), {
+    //         scaleX: parseFloat(Canvas.myCanvas.width) / parseFloat(img.width),
+    //         scaleY: parseFloat(Canvas.myCanvas.height) / parseFloat(img.height),
+    //      });
+    //   });
       Canvas.updateModifications(true); 
     },
     selectIcon: function() {           
@@ -485,6 +493,8 @@ var Canvas = {
           left: 50,
           top: 100
         }).scale(10);
+        loadedObjects.scaleToWidth(80);
+        loadedObjects.scaleToHeight(80);
         Canvas.myCanvas.add(loadedObjects);
         Canvas.myCanvas.renderAll();
         Canvas.myCanvas.forEachObject(function(o){ 

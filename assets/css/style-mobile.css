@@ -115,7 +115,7 @@ body::-webkit-scrollbar-thumb:hover {
   margin: 8px 0;
   text-align: center;
   height: 50px;
-  position: fixed;
+  position: relative;
   width: 100%;
   top: 0;
 }
@@ -176,7 +176,7 @@ p.text_justify {
 }
 /*Header----------------------------------------*/
 nav.menu{
-  position: fixed;
+  position: relative;
   z-index: 1000;
   min-height: 33px;
   width: 100%;
@@ -185,7 +185,6 @@ nav.menu{
   padding: 6px 0 2px;
   border-top: 1px solid #F7EBE3;
   border-bottom: 1px solid #F7EBE3;
-  top: 65px;
 }
 nav.slide{
     height: 30px;
@@ -225,10 +224,19 @@ nav.slide{
 .navbar-brand img{
     height: 100%;
 }
-.navbar-nav>li>a:hover,
+.navbar-nav>li>a:hover{
+  font-weight: normal;
+  background-color: transparent;
+  color: #d48c54;
+}
 .navbar-nav>li.active{
    font-weight: bold;
    background-color: transparent;
+}
+.navbar-nav>li.active>a:hover{
+  font-weight: bold;
+  background-color: transparent;
+  color: #d48c54;
 }
 .img-full {
     min-width: 100%;
@@ -2319,7 +2327,7 @@ select .select_design{
   line-height: 19px;
 }
 .btn-type.align-text{
-  padding: 7px 34px 2px;
+  padding: 7px 30px 2px;
 }
 .btn-type.align-text i{
   font-size: 19px;
@@ -2385,13 +2393,14 @@ select .select_design{
 #frame_category_ui{
   padding: 0 10px;
   margin-top: 10px;
-  height: 370px;
+  height: 258px;
 }
 #frame_category_ui li{
   list-style: none;
-  padding: 10px;
+  padding: 5px 10px;
   border-top: 1px solid #e4c2a8;
   cursor: pointer;
+  font-size: 13px;
 }
 #frame_category_ui li:hover{
   color: #d48c54;
@@ -2415,6 +2424,7 @@ select .select_design{
 }
 #frame_category_mode .btn-link{
   text-decoration: none;
+  padding: 3px 0;
 }
 #frame_category_mode .btn-link:hover,
 #frame_category_mode  .btn-link:focus {

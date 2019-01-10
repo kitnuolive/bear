@@ -26,8 +26,8 @@
 	margin-left: 0;
 	margin-right: 0;
 	margin-top: 10px;
-	position: fixed;
-    bottom: 0;
+	position: relative;
+	bottom: 0;
 }
 
 .select_design{
@@ -37,7 +37,7 @@
     color: #8a5d3b;
     /* font-weight: bold; */
     border-radius: 20px;
-    padding: 10px 25px;
+    padding: 6px 25px;
     cursor: pointer;
     margin: 0 5px;
     width: calc(100% - 100px);
@@ -69,7 +69,7 @@
 .canvas-tool.open .step .step-detail{
 	display: none;
 	color: #754729;
-	height: 425px;
+	height: 300px;
 	border: 1px solid #8a5d3b;
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffeeea+0,fffcfa+50,ffeeea+100 */
 	background: #ffeeea; /* Old browsers */
@@ -263,7 +263,7 @@ line-height: 35px;
 	width: 100%;
 	float: left;
 	padding: 0 10px;
-	height: 305px;
+	height: 230px;
 }
 .sticker-panel .sticker{
 	width: 25%;
@@ -297,7 +297,7 @@ line-height: 35px;
 	width: 100%;
 	float: left;
 	padding: 0 10px;
-	height: 270px;
+	height: 185px;
 }
 .frame-panel .frame{
 	width: 50%;

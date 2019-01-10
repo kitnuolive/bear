@@ -219,7 +219,7 @@ p.text_justify {
 }
 /*Header----------------------------------------*/
 nav.menu{
-  height: 33px;
+  height: 30px;
   background-color: #fff5f0;
   text-align: center;
   padding: 6px 0 2px;
@@ -276,6 +276,11 @@ nav.slide{
 .navbar-nav>li.active{
    font-weight: bold;
    background-color: transparent;
+}
+.navbar-nav>li.active>a:hover{
+  font-weight: bold;
+  background-color: transparent;
+  color: #d48c54;
 }
 .img-full {
     min-width: 100%;
@@ -2421,7 +2426,7 @@ select .select_design{
     font-family: Copperplate-Lig;
     color: #8a5d3b;
     border-radius: 20px;
-    padding: 10px 25px;
+    padding: 7px 25px;
     margin: 0 5px;
     width: 300px;
     display: inline-block;
