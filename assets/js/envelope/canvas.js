@@ -300,8 +300,8 @@ var Canvas = {
       Canvas.updateModifications(true); 
     },
     complete: function(e) { 
-      console.log(Canvas.myCanvas.toSVG());
-      console.log('data:image/svg+xml;utf8,' + btoa(Canvas.myCanvas.toSVG()));
+      // console.log(Canvas.myCanvas.toSVG());
+      // console.log('data:image/svg+xml;utf8,' + btoa(Canvas.myCanvas.toSVG()));
       var obj = {
         "frame_category_id" : Canvas.frame_category_id,
         "frame_list_id" : Canvas.frame_list_id,
@@ -490,11 +490,11 @@ var Canvas = {
       {
         var loadedObjects = new fabric.Group(group);
         loadedObjects.set({
-          left: 50,
+          left: 300,
           top: 100
         }).scale(10);
-        loadedObjects.scaleToWidth(80);
-        loadedObjects.scaleToHeight(80);
+        loadedObjects.scaleToWidth(110);
+        loadedObjects.scaleToHeight(110);
         Canvas.myCanvas.add(loadedObjects);
         Canvas.myCanvas.renderAll();
         Canvas.myCanvas.forEachObject(function(o){ 

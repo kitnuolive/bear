@@ -2,7 +2,6 @@ var OrderList = {
     init: function() {
         this.bindEvents();
         this.ViewOrderList();
-        _init.setPage($(".order_page"), "", $("#table_order"));
 
     },
     bindEvents: function() { 
@@ -12,15 +11,16 @@ var OrderList = {
     downloadSvg: function() { 
         var file = $(this).attr("data-file");
         var name = $(this).attr("data-name");
+        saveAs(file, name+".svg");
 
-        var zip = new JSZip();
-        // zip.add(name+".svg", file);
-        zip.fileURL(name+".svg", file);
-        zip.generateAsync({type:"blob"})
-        .then(function(content) {
-            // see FileSaver.js
-            saveAs(content, name+".zip");
-        });
+        // var zip = new JSZip();
+        // // zip.add(name+".svg", file);
+        // zip.fileURL(name+".svg", file);
+        // zip.generateAsync({type:"blob"})
+        // .then(function(content) {
+        //     // see FileSaver.js
+        //     saveAs(content, name+".zip");
+        // });
     },
     viewbyPage: function() {
         var ele = $(this).parents("ul.pagination");
@@ -77,6 +77,8 @@ var OrderList = {
                 var field = '<tr><td colspan="4"> no data</td></tr>';
                 $("#table_order tbody").html(field);
             }   
+
+        _init.setPage($(".order_page"), "", $("#table_order"));
         });
     }
 };

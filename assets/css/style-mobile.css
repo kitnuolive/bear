@@ -73,7 +73,7 @@ body::-webkit-scrollbar-thumb:hover {
   background-color: #aaa;
 }
 .row{
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
 }
 .container:before,
 .container:after,
@@ -114,14 +114,13 @@ body::-webkit-scrollbar-thumb:hover {
 .brand {
   margin: 8px 0;
   text-align: center;
-  height: 50px;
+  height: 45px;
   position: relative;
   width: 100%;
   top: 0;
 }
 .brand img{
-    height: 50px;
-    margin-left: -45px;
+    height: 45px;
 }
 a{
     text-decoration: none;
@@ -180,10 +179,11 @@ nav.menu{
   z-index: 1000;
   min-height: 33px;
   width: 100%;
-  background-color: #fff5f0;
+  background-color: rgba(251, 241, 231,0.80) !important;
   text-align: center;
   padding: 6px 0 2px;
   border-top: 1px solid #F7EBE3;
+  margin-top: 10px;
   border-bottom: 1px solid #F7EBE3;
 }
 nav.slide{
@@ -2264,6 +2264,34 @@ select .select_design{
     border-color: #ccc transparent transparent transparent;
 }
 
+/* The actual popup */
+.popup .popupImage {
+  visibility: hidden;
+  /*width: 160px;*/
+  background-color: #f5a170;
+  color: #fff;
+  text-align: center;
+  border-radius: 0px;
+  padding: 1px;
+  position: absolute;
+  z-index: 1;
+  bottom: 25px;
+  left:0;
+  margin-left: -115px;
+}
+
+/* Popup arrow */
+.popup .popupImage::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #f5a270 transparent transparent transparent;
+}
+
 /* Toggle this class - hide and show the popup */
 .popup .show {
     visibility: visible;
@@ -2332,6 +2360,10 @@ select .select_design{
 .btn-type.align-text i{
   font-size: 19px;
   line-height: 18px;
+  opacity: .5;
+}
+.btn-type.align-text i.select{
+  opacity: 1;
 }
 .btn-frame{
   width: 80%;
@@ -2392,8 +2424,7 @@ select .select_design{
 
 #frame_category_ui{
   padding: 0 10px;
-  margin-top: 10px;
-  height: 258px;
+  height: 247px;
 }
 #frame_category_ui li{
   list-style: none;
@@ -2419,11 +2450,16 @@ select .select_design{
     height: 1px;
     width: 80px;
 }
+#frame_category_ui li:first-child{
+  border-top: none;
+}
 #frame_category_ui li:last-child{
   border-bottom: 1px solid #e4c2a8;
 }
 #frame_category_mode .btn-link{
   text-decoration: none;
+  text-align: center;
+  width: 100%;
   padding: 3px 0;
 }
 #frame_category_mode .btn-link:hover,
@@ -2444,7 +2480,9 @@ select .select_design{
 
 .navbar-toggler {
     float: left;
-    margin-top: 12px;
+    margin-top: -1px;
+    margin-left: 15px;
+    padding: 2px 10px;
 }
 .navbar-nav {
   height: 207px;

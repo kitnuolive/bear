@@ -84,11 +84,11 @@
           <div class="col-md-6">
             <div class="canvas-wrapper">
                 <div class="canvas-select" id="canvas-select">
-                  <a href="#" class="btn-select" mode="minus"><i class="fa fa-caret-left"></i></a>
+                  <a href="#" class="btn-select" mode="minus"><i class="fa fa-angle-left"></i></a>
                   <span class="select_design text-center" current="0" min="0" max="6">
                     blank
                   </span>
-                  <a href="#" class="btn-select" mode="plus"><i class="fa fa-caret-right"></i></a>
+                  <a href="#" class="btn-select" mode="plus"><i class="fa fa-angle-right"></i></a>
                 </div>
 
                 <div class="canvas-bg" style="position: relative;">
@@ -150,6 +150,7 @@
                             <div class="col-sm-12" style="font-family: Copperplate-Lig;color: #8a5d3b;">
                                 <div class="text-center">
                                     <div>SELECT DESIGN #</div>
+                                    <hr style="width: 100%;margin: 5px 0 0;">
                                     <ul  id="frame_category_ui" class="scroll">
                                       <li>
                                           <div>anniversary</div>
@@ -214,7 +215,7 @@
                         <div class="step-detail"  id="text-controls textControls" style="height: 325px;">
                             <div class="row" style="margin-top: 20px">
                               <div class="col-sm-12 text-center">
-                                 <button style="font-weight: normal;margin-bottom: 0;" title="Add an image" class="select_design" id="Addtext_btn"><span class="mdi mdi-image"><i class="icon ion-ios-add-circle-outline normal"></i> Add Text</span></button>
+                                 <button style="font-weight: normal;margin-bottom: 0;width: calc(100% - 30px);" title="Add an image" class="select_design" id="Addtext_btn"><span class="mdi mdi-image"><i class="icon ion-ios-add-circle-outline normal"></i> Add Text</span></button>
 
                               </div>
                             </div><hr style="width: 100%;margin: 10px 0;">
@@ -453,13 +454,13 @@
                           <img src="" id="canvasImg" style="width: 100%;height: auto">
                       </div>
                       <div class="col-sm-6 text-center content-wrapper">
-                        <div class="content-wrapper">
-                            <h3 style="border-bottom: 1px solid #d7ab99;">YOU ARE ALMOST DONE!</h3>
+                        <div class="content-wrapper" style="padding: 10px;">
+                            <h3 style="border-bottom: 1px solid #d7ab99;font-size: 20px;">YOU ARE ALMOST DONE!</h3>
                             <p style="color: #ff8d00;font-size: 14px;">*Please follow the steps below to complete your order.</p>
                             <ul style="text-align: -webkit-auto;list-style: none;padding-left: 0;">
                               <li> 1. Download your ‘Personalise File’ by clicking the Download button below.</li>
-                              <li> 2. Select the product you wish to purchase that has this icon labeled.</li>
-                              <li> 3. Upload your ‘Personalised File’ to your selected personalised product.</li>
+                              <li> <span>2. Select the product you wish to purchase that has this icon labeled.</span> <img src="/assets/images/per_icon.png" style="width: 20px;"  /> <span class="popup" onclick="openFunction()"><i style="font-size: 16px; margin-left: 5px;" class="fa fa-info-circle" aria-hidden="true"></i> <span class="popupImage" id="twoPoint"><img src="/assets/images/popup01.jpg" style="width: 250px; height: auto;"></span></span> </li>
+                              <li> 3. Upload your ‘Personalised File’ to your selected personalised product. <span class="popup" onclick="openFunction2()"><i style="font-size: 16px; margin-left: 5px;" class="fa fa-info-circle" aria-hidden="true"></i> <span class="popupImage" id="threePoint"><img src="/assets/images/popup02.jpg" style="width: 250px; height: auto;"></span></span></li>
                               <li> 4. Add the product to cart and follow the final steps to complete your purchase.</li>
                             </ul>  
 
@@ -468,9 +469,9 @@
                                 <a  href="" download id="lnkDownload" class="btn-brown" >DOWNLOAD</a> 
                               </div>   
 
-                              <div class="" style="margin-top: 15px;">
-                                <a data-dismiss="modal" aria-hidden="true" style="padding: 0 15px;"><i class="fa fa-chevron-left" aria-hidden="true"></i> BACK</a>  |
-                                <a href="/envelope" class="btn-outline" id="renew_btn" style="padding: 0 15px;"><i class="fa fa-repeat" aria-hidden="true"></i> RESTART</a> 
+                              <div class="" style="margin: 15px; text-align: center">
+                                  <a data-dismiss="modal" aria-hidden="true" style="padding: 0 15px;"><i class="fa fa-chevron-left" aria-hidden="true"></i> BACK</a>
+                                <!-- <a href="/envelope" class="btn-outline" id="renew_btn" style="padding: 0 15px;"><i class="fa fa-repeat" aria-hidden="true"></i> RESTART</a>  -->
                               </div> 
                             </div>
                         </div>
@@ -507,6 +508,18 @@
     function myFunction() {
       var popup = document.getElementById("myPopup");
       popup.classList.toggle("show");
+    }
+    function openFunction() {
+      var popup = document.getElementById("twoPoint");
+      var popup2 = document.getElementById("threePoint");
+      popup.classList.toggle("show");
+      popup2.removeClass("show");
+    }
+    function openFunction2() {
+      var popup2 = document.getElementById("twoPoint");
+      var popup = document.getElementById("threePoint");
+      popup.classList.toggle("show");
+      popup2.removeClass("show");
     }
   </script>
 

@@ -220,7 +220,7 @@ p.text_justify {
 /*Header----------------------------------------*/
 nav.menu{
   height: 30px;
-  background-color: #fff5f0;
+  background-color: rgba(251, 241, 231,0.80) !important;
   text-align: center;
   padding: 6px 0 2px;
   border-top: 1px solid #F7EBE3;
@@ -2317,6 +2317,35 @@ select .select_design{
     border-color: #ccc transparent transparent transparent;
 }
 
+
+/* The actual popup */
+.popup .popupImage {
+  visibility: hidden;
+  /*width: 160px;*/
+  background-color: #f5a170;
+  color: #fff;
+  text-align: center;
+  border-radius: 0px;
+  padding: 1px;
+  position: absolute;
+  z-index: 1;
+  bottom: 25px;
+  left:0;
+  margin-left: -115px;
+}
+
+/* Popup arrow */
+.popup .popupImage::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #f5a270 transparent transparent transparent;
+}
+
 /* Toggle this class - hide and show the popup */
 .popup .show {
     visibility: visible;
@@ -2441,7 +2470,6 @@ select .select_design{
 
 #frame_category_ui{
   padding: 0 10px;
-  margin-top: 10px;
   height: 370px;
 }
 #frame_category_ui li{
@@ -2466,6 +2494,9 @@ select .select_design{
     border: none;
     height: 1px;
     width: 80px;
+}
+#frame_category_ui li:first-child{
+  border-top: none;
 }
 #frame_category_ui li:last-child{
   border-bottom: 1px solid #e4c2a8;

@@ -57,12 +57,12 @@
 	color: #754729;
 	height: 425px;
 	border: 1px solid #8a5d3b;
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffeeea+0,fffcfa+50,ffeeea+100 */
-	background: #ffeeea; /* Old browsers */
-	background: -moz-linear-gradient(left, #ffeeea 0%, #fffcfa 50%, #ffeeea 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(left, #ffeeea 0%,#fffcfa 50%,#ffeeea 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to right, #ffeeea 0%,#fffcfa 50%,#ffeeea 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffeeea', endColorstr='#ffeeea',GradientType=1 ); /* IE6-9 */
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/rgba(251, 244, 236)+0,fffcfa+50,ffeeea+100 */
+	background: rgba(251, 244, 236); /* Old browsers */
+	background: -moz-linear-gradient(left, rgba(251, 244, 236) 0%, #fffcfa 50%, rgba(251, 244, 236) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left, rgba(251, 244, 236) 0%,#fffcfa 50%,rgba(251, 244, 236) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right, rgba(251, 244, 236) 0%,#fffcfa 50%,rgba(251, 244, 236) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(251, 244, 236)', endColorstr='rgba(251, 244, 236)',GradientType=1 ); /* IE6-9 */
 }
 .canvas-tool .step.select .step-head{
 	color: #FFFFFF;
@@ -217,17 +217,33 @@ line-height: 35px;
 
 /* -- select-sticker --- */
 .select-sticker{
-	width: 100%;    
+	width: 100%;
 	height: 32px;
-    float: left;
-    padding: 0 10px;
-    overflow-y: auto;
-    overflow-x: hidden;
+	/* float: left; */
+	padding: 0 30px;
+	white-space: nowrap;
+	overflow-y: hidden;
+	overflow-x: auto;
+	position: relative;
+}
+.select-sticker:before{
+	content: "<";
+	position: absolute;
+	left: 9px;
+	font-size: 20px;
+	color: #764a2e7a;
+}
+.select-sticker:after{
+	content: ">";
+	position: absolute;
+	right: 9px;
+	font-size: 20px;
+	color: #764a2e7a;
 }
 .select-sticker .sticker{
 	width: 12.5%;
-	float: left;
 	padding: 0 5px 5px 0;
+	display: inline-block;
 }
 .select-sticker .sticker .inner{
 	border:  1px solid #ddd;

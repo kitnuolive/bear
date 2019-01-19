@@ -7,24 +7,6 @@ var _init = {
 
     },
     setPage : function($page, total, $table , page){
-        /*set search value*/
-        if (window.location.search != "") {
-            // $(".search_field").val("");
-            var pathname = window.location.search.split("?");
-            pathname = pathname[1].split("&");
-            $.each(pathname, function( i, v ) {
-                var name = v.split("=");
-
-                if (name[0] != "page") {
-                    var velue = "";
-                    if (name[1] != undefined) {
-                        var velue = name[1].replace(/%20/gi, " ");
-                    }
-                    
-                    $(".search_field[data-search='"+name[0]+"']").val(velue);
-                }
-            });
-        } 
         // if (total > 1) {
 
         // console.log($page);
@@ -54,6 +36,7 @@ var _init = {
             .on('page', function(event, num){
                // _init.postSearch($table, num, $table.data("option"));
             });
+        console.log(total);
         }else{
             $page.bootpag({maxVisible: 5,total: total,page: page});
         }

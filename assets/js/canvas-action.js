@@ -95,17 +95,17 @@ var CanvasAction = {
             $("#frame_List").fadeIn(0);
 
             if(fin == undefined){
-                var field = '<div class="col-md-12" style="padding-right: 0;padding-left: 30px;">';
+                var field = '<div class="col-md-12" style="padding-right: 0;padding-left: 0px;">';
                 field += '<button class="btn-link select" data-id="'+id+'">CUSTOMISE DESIGNS</button>';
                 field += '</div>';
 
                 $("#frame_category_mode").html(field);
             }
             else{
-                var field = '<div class="col-md-6" style="padding-right: 0;padding-left: 30px;">';
-                field += '<button class="btn-link select" data-id="'+id+'">CUSTOMISE DESIGNS</button>';
+                var field = '<div class="col-md-6" style="padding-right: 0;padding-left: 0px;">';
+                field += '<button class="btn-link select" data-id="'+id+'"  style="padding-left: 10px;">CUSTOMISE DESIGNS</button>';
                 field += '</div>';
-                field += '<div class="col-md-6" style="border-left: 1px solid #ddd;">';
+                field += '<div class="col-md-6" style="border-left: 1px solid #ddd;padding-left: 0px;">';
                 field += '<button class="btn-link" data-id="'+fin+'">FINISHED DESIGNS</button>';
                 field += '</div>';
 
@@ -117,12 +117,12 @@ var CanvasAction = {
     clickFrameMode: function() {   
         var id = $(this).data("id");
         CanvasAction.frameCategoryMode = $(this).text();
-        Canvas.myCanvas.clear();
-        Canvas.state = [];
+        // Canvas.myCanvas.clear();
+        // Canvas.state = [];
 
-        if(CanvasAction.frameCategoryMode == "CUSTOMISE DESIGNS"){
-            Canvas.Addtext();
-        }
+        // if(CanvasAction.frameCategoryMode == "CUSTOMISE DESIGNS"){
+        //     Canvas.Addtext();
+        // }
 
         Canvas.frame_category_id = id;
         Canvas.frame_category_code = $(this).data("code");
