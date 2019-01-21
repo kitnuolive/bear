@@ -164,25 +164,32 @@
                           </div>
                         </div>
                         <div class="step-detail" id="frame_List" style="display: none;">
-                            <div class="row" style="margin-top: 10px;margin-bottom: 0;">
-                              <div class="col-sm-12">
-                                  <div class="text-center">
-                                    <div class="select_design" style="display: none;">
-                                        <label style="font-weight: normal;margin-bottom: 0;color: #8a5d3b;" title="Add an image" class="myFile"><span class="mdi mdi-image"><i class="icon ion-ios-add-circle-outline normal"></i> Add Photo</span>&nbsp;<input style="display: none;" type="file" id="file" /></label>
-                                    </div>
-                                    <div class="select_design text-center" id="frame_category_name">
-                                        BIRTHDAY
-                                    </div>
-                                  </div>
-                                  <hr style="width: 100%;margin: 10px 0;">
-                              </div>
-                              <div id="frame_category_mode">
+                              <div id="frame_category_mode" style="margin-top: 10px;margin-bottom: 0;">
                                 <div class="col-sm-6" style="padding-right: 0;padding-left: 30px;">
                                   <button class="btn-link select">CUSTOMISE DESIGNS</button>
                                 </div>
                                 <div class="col-sm-6" style="border-left: 1px solid #ddd;">
                                   <button class="btn-link">FINISHED DESIGNS</button>
                                 </div>
+                              </div>
+                            <div class="row" style="margin-top: 00px;margin-bottom: 0;">
+                              <div class="col-sm-12">
+                                  <hr style="width: 100%;margin: 10px 0;">
+                                  <div class="text-center" style="display: none;">
+                                    <div class="select_design" style="display: none;">
+                                        <label style="font-weight: normal;margin-bottom: 0;color: #8a5d3b;" title="Add an image" class="myFile"><span class="mdi mdi-image"><i class="icon ion-ios-add-circle-outline normal"></i> Add Photo</span>&nbsp;<input style="display: none;" type="file" id="file" /></label>
+                                    </div>
+                                    <div class="select_design text-center" >
+                                        BIRTHDAY
+                                    </div>
+                                  </div>
+                                  <div class="canvas-select" id="canvas-select-category">
+                                      <a href="#" class="btn-select" mode="minus"><i class="fa fa-angle-left"></i></a>
+                                      <span class="select_design text-center" id="frame_category_name">
+                                        blank
+                                      </span>
+                                      <a href="#" class="btn-select" mode="plus"><i class="fa fa-angle-right"></i></a>
+                                  </div>
                               </div>
                               
                             </div>
@@ -215,16 +222,46 @@
                         <div class="step-detail"  id="text-controls textControls" style="height: 325px;">
                             <div class="row" style="margin-top: 20px">
                               <div class="col-sm-12 text-center">
-                                 <button style="font-weight: normal;margin-bottom: 0;width: calc(100% - 30px);" title="Add an image" class="select_design" id="Addtext_btn"><span class="mdi mdi-image"><i class="icon ion-ios-add-circle-outline normal"></i> Add Text</span></button>
+                                 <button style="font-weight: normal;margin-bottom: 0;width: calc(100% - 30px);" title="Add an image" class="select_design" id="Addtext_btn"><span class="mdi mdi-image"><i class="icon ion-ios-add-circle-outline normal"></i> add text box</span></button>
 
                               </div>
                             </div><hr style="width: 100%;margin: 10px 0;">
                             <div class="row" style="margin-top: 20px">
                               <div class="col-sm-12">
+                                <!-- 2.2 -->
+                                <div class="col-sm-12">
+                                  <div class="btn-type number-box text-center" mode="space" style="margin-bottom: 10px;">
+                                    <i class="fa fa-minus-circle pull-left" mode="minus"></i>
+                                    <span style="width: 120px;float: left; margin: 3px 15px;text-align: left;">LETTER SPACE :</span>
+                                    <input type="number" name="text-line-height" id="text-space" class="input-number" value="1" min="1" max="2"><span> em</span>
+                                    <i class="fa fa-plus-circle pull-right" mode="plus"></i>
+                                  </div>
+                                  <div class="btn-type number-box text-center" mode="height" style="margin-bottom: 10px;">
+                                    <i class="fa fa-minus-circle pull-left" mode="minus"></i>
+                                    <span style="width: 120px;float: left; margin: 3px 15px;text-align: left;">LINE HEIGHT :</span>
+                                    <input type="number" name="text-line-height" id="text-line-height" class="input-number" value="1" min="1" max="2"><span> em</span>
+                                    <i class="fa fa-plus-circle pull-right" mode="plus"></i>
+                                  </div>
+                                  <div class="btn-type number-box text-center" mode="size" style="margin-bottom: 10px;">
+                                    <i class="fa fa-minus-circle pull-left" mode="minus"></i>
+                                    <span style="width: 120px;float: left; margin: 3px 15px;text-align: left;">SIZE:</span>
+                                    <input type="number" name="text-size" id="text-size" class="input-number" value="34" min="34" max="150"><span> px</span>
+                                    <i class="fa fa-plus-circle pull-right" mode="plus"></i>
+                                  </div>
+                                  <div class="btn-type text-center align-text" id="text-align" style="margin-bottom: 10px;">
+                                    <span style="width: 120px;float: left; margin: 3px 15px;text-align: left;">TEXT ALIGN :</span>
+                                    <i class="fa fa-align-left pull-left select" mode="left"></i>
+                                    <i class="fa fa-align-center" mode="center"></i>
+                                    <i class="fa fa-align-right pull-right" mode="right"></i>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-sm-12">
                                 <!-- 2.1 -->
                                 <div class="col-sm-12"  style="margin-bottom: 10px">
-                                  <div class="btn-type text-center">
-                                    <select class="select_design text-center" id="font-family" style="width: 95%;border: none;padding: 0;">
+                                    <div class="btn-type">
+                                          <span style="width: 100px;float: left;margin: 3px 0 3px 45px;text-align: left;display: inline-block;">FONT :</span>
+                                          <select class="select_design text-center" id="font-family" style="width: auto;border: none;padding: 0;display: inline-block;">
                                       <optgroup label="Thai">
                                         <option value="Quark">Quark</option>
                                       </optgroup>
@@ -237,34 +274,7 @@
                                     </select>
                                   </div>
                                 </div>
-                              </div>
-
-                              <div class="col-sm-12">
-                                <hr style="width: 100%;margin: 10px 0;">
-                              </div>
-                            </div>
-                            <div class="row">  
-                              <div class="col-sm-12">
-                                <!-- 2.2 -->
-                                <div class="col-sm-12" style="margin-bottom: 10px">
-                                  <div class="btn-type number-box text-center" style="margin-bottom: 10px;">
-                                    <i class="fa fa-minus-circle pull-left" mode="minus"></i>
-                                    <span style="width: 120px;float: left; margin: 3px 15px;text-align: left;">LETTER SPACE :</span><input type="number" name="text-line-height" id="text-space" class="input-number" value="1" min="1" max="2"><span> em</span>
-                                    <i class="fa fa-plus-circle pull-right" mode="plus"></i>
-                                  </div>
-                                  <div class="btn-type number-box text-center" style="margin-bottom: 10px;">
-                                    <i class="fa fa-minus-circle pull-left" mode="minus"></i>
-                                    <span style="width: 120px;float: left; margin: 3px 15px;text-align: left;">LINE HEIGHT :</span><input type="number" name="text-line-height" id="text-line-height" class="input-number" value="1" min="1" max="2"><span> em</span>
-                                    <i class="fa fa-plus-circle pull-right" mode="plus"></i>
-                                  </div>
-                                  <div class="btn-type text-center align-text" id="text-align" style="margin-bottom: 10px;">
-                                    <span style="width: 120px;float: left; margin: 3px 15px;text-align: left;">TEXT ALIGN :</span>
-                                    <i class="fa fa-align-left pull-left" mode="left"></i>
-                                    <i class="fa fa-align-center" mode="center"></i>
-                                    <i class="fa fa-align-right pull-right" mode="right"></i>
-                                  </div>
-                                </div>
-                              </div>
+                              </div> 
                             </div>
                         </div>
                     </div>
@@ -291,22 +301,29 @@
                                     SELECTED STICKER
                                   </div>
                                   <hr style="width: 100%;margin: 10px 0;display: none;">
-                                  <div class="select-sticker" id="sticker_category"> 
-                                    <div class="sticker select" style="width: auto;">
-                                      <div class="inner " style="margin-right: 5px;padding: 5px 15px;float: left;">
-                                        <a href="javascript:;">
-                                            ALL
-                                        </a>
+                                  <div>
+                                      <div class="icon-sticker">
+                                          <i class="fa fa-angle-left"></i>
                                       </div>
-                                    </div>
-                                    <div class="sticker" style="width: auto;">
-                                      <div class="inner " style="margin-right: 5px;padding: 5px 15px;float: left;">
-                                        <a href="javascript:;">
-                                            LOVE
-                                        </a>
+                                      <div class="select-sticker" id="sticker_category">
+                                          <div class="sticker select" style="width: auto;">
+                                              <div class="inner " style="margin-right: 5px;padding: 5px 15px;float: left;">
+                                                  <a href="javascript:;">
+                                                      ALL
+                                                  </a>
+                                              </div>
+                                          </div>
+                                          <div class="sticker" style="width: auto;">
+                                              <div class="inner " style="margin-right: 5px;padding: 5px 15px;float: left;">
+                                                  <a href="javascript:;">
+                                                      LOVE
+                                                  </a>
+                                              </div>
+                                          </div>
                                       </div>
-                                    </div>
-                                    
+                                      <div class="icon-sticker">
+                                          <i class="fa fa-angle-right"></i>
+                                      </div>
                                   </div>
                               </div>
                             </div>
@@ -371,7 +388,7 @@
                     </div>
                 </div>
                 <div class="btn-wrapper" >
-                    <button class="btn-brown" style="width: 100%;" id="complete_btn">COMPLETE</button>
+                    <button class="btn-green" style="width: 100%;" id="complete_btn">COMPLETE</button>
                 </div>
             </div>
             <div class="tool-wrapper" id="form-sendmail"  style="display: none;">
@@ -393,7 +410,7 @@
                   </form>
                 </div>
                 <div class="btn-wrapper">
-                    <a  href="/assets/images/persoanlisation/back-envelope-white-02.png" download class="btn-brown" style="width: 100%;border-radius: 0;height: 40px;margin-bottom: 15px;background-color: #754729;border: 1px solid #754729;font-family: Copperplate-Lig;color: #ffffff;font-weight: bold;border-radius: 0;padding: 10px 15px;cursor: pointer;display: block;text-align: center;" id="lnkDownload2">DOWNLOAD FILE</a>  
+                    <a  href="/assets/images/persoanlisation/back-envelope-white-02.png" download class="btn-green" style="width: 100%;border-radius: 0;height: 40px;margin-bottom: 15px;bfont-family: Copperplate-Lig;font-weight: bold;border-radius: 0;padding: 10px 15px;cursor: pointer;display: block;text-align: center;" id="lnkDownload2">DOWNLOAD FILE</a>  
                     <button class="btn-outline" style="width: 100%;border-radius: 0;height: 40px;" id="complete_btn">SEND TO EMAIL</button>  
                     <!--    -->
                 </div>
@@ -457,16 +474,16 @@
                         <div class="content-wrapper" style="padding: 10px;">
                             <h3 style="border-bottom: 1px solid #d7ab99;font-size: 20px;">YOU ARE ALMOST DONE!</h3>
                             <p style="color: #ff8d00;font-size: 14px;">*Please follow the steps below to complete your order.</p>
-                            <ul style="text-align: -webkit-auto;list-style: none;padding-left: 0;">
-                              <li> 1. Download your ‘Personalise File’ by clicking the Download button below.</li>
-                              <li> <span>2. Select the product you wish to purchase that has this icon labeled.</span> <img src="/assets/images/per_icon.png" style="width: 20px;"  /> <span class="popup" onclick="openFunction()"><i style="font-size: 16px; margin-left: 5px;" class="fa fa-info-circle" aria-hidden="true"></i> <span class="popupImage" id="twoPoint"><img src="/assets/images/popup01.jpg" style="width: 250px; height: auto;"></span></span> </li>
-                              <li> 3. Upload your ‘Personalised File’ to your selected personalised product. <span class="popup" onclick="openFunction2()"><i style="font-size: 16px; margin-left: 5px;" class="fa fa-info-circle" aria-hidden="true"></i> <span class="popupImage" id="threePoint"><img src="/assets/images/popup02.jpg" style="width: 250px; height: auto;"></span></span></li>
-                              <li> 4. Add the product to cart and follow the final steps to complete your purchase.</li>
+                            <ul style="text-align: -webkit-auto;list-style: none;padding-left: 20px;padding-right: 20px;color: #825d3d;">
+                                <li style="margin-bottom:5px"> 1. Download your ‘Personalise File’ by clicking the Download button below.</li>
+                                <li style="margin-bottom:5px"> <span>2. Select the product you wish to purchase that has this icon labeled.</span> <img src="/assets/images/per_icon.png" style="width: 27px;"  /> <span class="popup" onclick="openFunction()"><i style="font-size: 16px; margin-left: 5px;" class="fa fa-info-circle" aria-hidden="true"></i> <span class="popupImage" id="twoPoint"><img src="/assets/images/popup01.jpg" style="width: 600px; height: auto;"></span></span> </li>
+                                <li style="margin-bottom:5px"> 3. Upload your ‘Personalised File’ to your selected personalised product. <span class="popup" onclick="openFunction2()"><i style="font-size: 16px; margin-left: 5px;" class="fa fa-info-circle" aria-hidden="true"></i> <span class="popupImage" id="threePoint"><img src="/assets/images/popup02.jpg" style="width: 600px; height: auto;"></span></span></li>
+                                <li> 4. Add the product to cart and follow the final steps to complete your purchase.</li>
                             </ul>  
 
                             <div style="margin-top:10px;">
                               <div style="margin: 30px 0;">
-                                <a  href="" download id="lnkDownload" class="btn-brown" >DOWNLOAD</a> 
+                                <a  href="" download id="lnkDownload" class="btn-green" >DOWNLOAD</a> 
                               </div>   
 
                               <div class="" style="margin: 15px; text-align: center">
@@ -493,8 +510,8 @@
     <script src="assets/js/plugin/jquery.animate-enhanced.min.js"></script>
     <script src="assets/js/plugin/fabric.min.js"></script>
     <script src="assets/js/plugin/base64.js"></script>
-    <script src="assets/js/envelope/canvas.js"></script>
     <script src="assets/js/canvas-action.js"></script>
+    <script src="assets/js/envelope/canvas.js"></script>
   <script>
 
     $(document).ready(function(){

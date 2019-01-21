@@ -14,7 +14,13 @@ var Canvas = {
     bear_order_id : 0,
     init: function() {
       this.bindEvents();
+
+      CanvasAction.postData("/frame/frameCategory/").done(function (data) {
+        var obj = CanvasAction.JsonParse(data);
+          CanvasAction.renderFrameCategory(obj);
+      });
       this.fabricMyCanvas();
+
       // display/hide text controls
        
     },
@@ -35,10 +41,12 @@ var Canvas = {
       $('#font-family').on('change',this.setFontFamily);
       $('#text-line-height').on('change',this.setLineHeight);
       $('#text-space').on('change',this.setCharSpacing);
+      $('#text-size').on('change',this.setFontSize);
       $('#text-align').on('click', 'i',this.setTextAlign);
 
       $(".number-box").on('click', 'i',this.selectNumber);
       $("#canvas-select").on('click', '.btn-select',this.selectnNextFrame);
+      $("#canvas-select-category").on('click', '.btn-select',this.selectnNextCat);
 
       // $('#lnkDownload').on('click',this.complete);
       $('#complete_btn').on('click',this.complete);
@@ -100,6 +108,7 @@ var Canvas = {
         if (e.target.type === 'i-text') {
           step.removeClass("select");
           $(".step[mode=2]").addClass("select");
+          $("#text-size").val(e.target.fontSize);
         }
         else if (e.target.type === 'group') {
             // $('#textControls').hidden = true;
@@ -118,7 +127,7 @@ var Canvas = {
         if (e.target.type === 'i-text') {
           // $('#textControls').hidden = true;
           step.removeClass("select");
-          $(".step[mode=1]").addClass("select");
+          $(".step[mode=2]").addClass("select");
         }
         else if (e.target.type === 'image') {
             // $('#textControls').hidden = true;
@@ -127,7 +136,7 @@ var Canvas = {
         }
         else{
           step.removeClass("select");
-          $(".step[mode=1]").addClass("select");
+          $(".step[mode=3]").addClass("select");
         }
       });
 
@@ -276,6 +285,54 @@ var Canvas = {
 
       Canvas.updateModifications(true); 
     },
+    selectnNextCat: function(e) {
+      $box = $(this).parents("#canvas-select-category");
+      $input = $box.find("#frame_category_name");
+      var old = parseFloat($input.attr("current"));
+      var mode = $(this).attr("mode");
+
+      var min = parseFloat($input.attr("min"));
+      var max = parseFloat($input.attr("max"));
+      var num = 0;
+
+      if (mode == "minus" && old > min) {
+        $input.attr("current" , old-1);
+        num = old-1;
+      }
+      else if (mode == "plus" && old < max) {
+        $input.attr("current" , old+1);
+        num = old+1;
+      }else{
+        $input.attr("current" , old);
+        num = old;
+      }
+
+      var id = $("#frame_category_ui").find("li[data-num='"+num+"']").attr("data-id");
+      var fin = $("#frame_category_ui").find("li[data-num='"+num+"']").attr("data-fin");
+      var code = $("#frame_category_ui").find("li[data-num='"+num+"']").attr("data-code");
+      var name = $("#frame_category_ui").find("li[data-num='"+num+"']").find("div").text();
+      if(fin == undefined){
+        fin = id;
+      }
+      $("#frame_category_name").text(name);
+
+      $("#frame_category_mode").find("div").eq(0).find(".btn-link").attr("data-id",id).attr("data-code,code");
+      $("#frame_category_mode").find("div").eq(1).find(".btn-link").attr("data-id",fin).attr("data-code,code");
+
+      if(CanvasAction.frameCategoryMode == "CUSTOMISE DESIGNS"){
+        CanvasAction.postData("/frame/frameList/",{"search" :{"frame_category_id":id}}).done(function (data) {
+            var obj = CanvasAction.JsonParse(data);
+            CanvasAction.renderFrameList(obj);
+        });
+      }
+      else{
+        CanvasAction.postData("/frame/frameList/",{"search" :{"frame_category_id":fin}}).done(function (data) {
+            var obj = CanvasAction.JsonParse(data);
+            CanvasAction.renderFrameList(obj);
+        });
+      }
+      
+    },
     selectNumber: function(e) {
       $box = $(this).parents(".number-box");
       $input = $box.find("input");
@@ -284,12 +341,16 @@ var Canvas = {
 
       var min = parseFloat($input.attr("min"));
       var max = parseFloat($input.attr("max"));
+      var number = 0.2;
+      if($box.attr("mode") == "size"){
+        number = 1;
+      }
 
       if (mode == "minus" && old > min) {
-        $input.val(old - 0.2);
+        $input.val(old - number);
       }
       else if (mode == "plus" && old < max) {
-        $input.val(old + 0.2);
+        $input.val(old + number);
       }
       else{
         $input.val(old);
@@ -297,6 +358,7 @@ var Canvas = {
 
       Canvas.setLineHeight();
       Canvas.setCharSpacing();
+      Canvas.setFontSize();
       Canvas.updateModifications(true); 
     },
     complete: function(e) { 
@@ -356,7 +418,15 @@ var Canvas = {
         Canvas.myCanvas.renderAll();
         Canvas.updateModifications(true); 
     },
+    setFontSize: function(e) {
+        var size =  parseFloat($("#text-size").val());
+        Canvas.myCanvas.getActiveObject().set("fontSize",size);
+        Canvas.myCanvas.renderAll();
+        Canvas.updateModifications(true); 
+    },
     setTextAlign: function(e) {
+      $("#text-align").find("i").removeClass("select");
+      $(this).addClass("select");
       var mode = $(this).attr("mode");
         Canvas.myCanvas.getActiveObject().set("textAlign", mode);
         Canvas.myCanvas.renderAll();
@@ -380,10 +450,17 @@ var Canvas = {
           o.setControlVisible('mb',false);
           o.setControlVisible('ml',false);
           o.setControlVisible('mr',false);
+          o.setControlVisible('tl',false);
+          o.setControlVisible('tr',false);
+          o.setControlVisible('bl',false);
+          o.setControlVisible('br',false);
         });
 
         
         Canvas.updateModifications(true); 
+        $('html, body').animate({
+          scrollTop: $("#canvas-select").offset().top
+        }, 1000);
     },
     addImage: function(e) {
         var file = e.target.files[0];
@@ -469,17 +546,21 @@ var Canvas = {
             scaleY: parseFloat(Canvas.myCanvas.height) / parseFloat(obj.height),
          });
         //   canvas.add(obj).renderAll();
-    });
+      });
 
-    //   fabric.Image.fromURL(src, function(img) {
-    //     img.set({width: Canvas.myCanvas.width, height: Canvas.myCanvas.height, originX: 'left', originY: 'top'});
-    //      // add background image
-    //      Canvas.myCanvas.setBackgroundImage(img, Canvas.myCanvas.renderAll.bind(Canvas.myCanvas), {
-    //         scaleX: parseFloat(Canvas.myCanvas.width) / parseFloat(img.width),
-    //         scaleY: parseFloat(Canvas.myCanvas.height) / parseFloat(img.height),
-    //      });
-    //   });
+      //   fabric.Image.fromURL(src, function(img) {
+      //     img.set({width: Canvas.myCanvas.width, height: Canvas.myCanvas.height, originX: 'left', originY: 'top'});
+      //      // add background image
+      //      Canvas.myCanvas.setBackgroundImage(img, Canvas.myCanvas.renderAll.bind(Canvas.myCanvas), {
+      //         scaleX: parseFloat(Canvas.myCanvas.width) / parseFloat(img.width),
+      //         scaleY: parseFloat(Canvas.myCanvas.height) / parseFloat(img.height),
+      //      });
+      //   });
       Canvas.updateModifications(true); 
+
+      $('html, body').animate({
+        scrollTop: $("#canvas-select").offset().top
+      }, 1000);
     },
     selectIcon: function() {           
       var src = $(this).attr("data-src");
@@ -509,6 +590,9 @@ var Canvas = {
         group.push(object);
       });   
       Canvas.updateModifications(true);    
+      $('html, body').animate({
+        scrollTop: $("#canvas-select").offset().top
+      }, 1000);
     }
 };
 Canvas.init();

@@ -14,6 +14,12 @@ var Canvas = {
     bear_order_id : 0,
     init: function() {
       this.bindEvents();
+
+      CanvasAction.postData("/frame/frameCategory/").done(function (data) {
+        var obj = CanvasAction.JsonParse(data);
+          // CanvasAction.renderFrameCategory(obj);
+          CanvasAction.renderFrameCategoryInline(obj);
+      });
       this.fabricMyCanvas();
       // display/hide text controls
        
@@ -35,6 +41,7 @@ var Canvas = {
       $('#font-family').on('change',this.setFontFamily);
       $('#text-line-height').on('change',this.setLineHeight);
       $('#text-space').on('change',this.setCharSpacing);
+      $('#text-size').on('change',this.setFontSize);
       $('#text-align').on('click', 'i',this.setTextAlign);
 
       $(".number-box").on('click', 'i',this.selectNumber);
@@ -94,26 +101,29 @@ var Canvas = {
 
       Canvas.myCanvas.on('object:selected', function(e) {
         var step = $(".step");
-        $("#canvas-tool").addClass("open");
-        
-
-        console.log("selected :" +e.target.type);
+        $("#canvas-tool").addClass("open"); 
+        $(".step-head").removeClass("select");
         if (e.target.type === 'i-text') {
+          console.log("text",e);
           step.removeClass("select");
           $(".step[mode=2]").addClass("select");
+          $(".step-head[mode=2]").addClass("select");
           $("#frame_category").hide();
           $("#frame_List").hide();
+          $("#text-size").val(e.target.fontSize);
         }
         else if (e.target.type === 'group') {
             // $('#textControls').hidden = true;
           step.removeClass("select");
           $(".step[mode=3]").addClass("select");
+          $(".step-head[mode=3]").addClass("select");
           $("#frame_category").hide();
           $("#frame_List").hide();
         }
         else{
           step.removeClass("select");
           $(".step[mode=1]").addClass("select");
+          $(".step-head[mode=1]").addClass("select");
           $("#frame_category").hide();
           $("#frame_List").show();
 
@@ -123,25 +133,30 @@ var Canvas = {
       Canvas.myCanvas.on('before:selection:cleared', function(e) {
         var step = $(".step");  
         console.log("cleared :" +e.target.type);
+
+        $(".step-head").removeClass("select");
         if (e.target.type === 'i-text') {
           // $('#textControls').hidden = true;
           step.removeClass("select");
-          $(".step[mode=1]").addClass("select");
+          $(".step[mode=2]").addClass("select");
+          $(".step-head[mode=2]").addClass("select");
           $("#frame_category").hide();
-          $("#frame_List").show();
+          $("#frame_List").hide();
         }
         else if (e.target.type === 'image') {
             // $('#textControls').hidden = true;
           step.removeClass("select");
           $(".step[mode=1]").addClass("select");
+          $(".step-head[mode=1]").addClass("select");
           $("#frame_category").hide();
           $("#frame_List").show();
         }
         else{
           step.removeClass("select");
-          $(".step[mode=1]").addClass("select");
+          $(".step[mode=3]").addClass("select");
+          $(".step-head[mode=3]").addClass("select");
           $("#frame_category").hide();
-          $("#frame_List").show();
+          $("#frame_List").hide();
         }
       });
 
@@ -157,7 +172,6 @@ var Canvas = {
       updateModifications(true);  
     },
     fabricViewCanvas: function(href,text_code) { 
-      console.log(href,text_code);
       Canvas.viewCanvas = new fabric.Canvas("viewCanvas", {
             hoverCursor: 'pointer',
             selection: true,
@@ -182,7 +196,7 @@ var Canvas = {
             left: 35,
             top: 30,
             angle: 00
-          }).scale(1);
+          }).scale(1.4);
           Canvas.viewCanvas.add(oImg).renderAll();
         });
 
@@ -289,8 +303,55 @@ var Canvas = {
       }
 
       $("#frame_category").hide();
-          $("#frame_List").hide();
+          $("#frame_List").show();
           Canvas.updateModifications(true); 
+    },
+    selectnNextCat: function(e) {
+      $box = $(this).parents("#canvas-select-category");
+      $input = $box.find("#frame_category_name");
+      var old = parseFloat($input.attr("current"));
+      var mode = $(this).attr("mode");
+
+      var min = parseFloat($input.attr("min"));
+      var max = parseFloat($input.attr("max"));
+      var num = 0;
+
+      if (mode == "minus" && old > min) {
+        $input.attr("current" , old-1);
+        num = old-1;
+      }
+      else if (mode == "plus" && old < max) {
+        $input.attr("current" , old+1);
+        num = old+1;
+      }else{
+        $input.attr("current" , old);
+        num = old;
+      }
+
+      var id = $("#frame_category_ui").find("li[data-num='"+num+"']").attr("data-id");
+      var fin = $("#frame_category_ui").find("li[data-num='"+num+"']").attr("data-fin");
+      var name = $("#frame_category_ui").find("li[data-num='"+num+"']").find("div").text();
+      if(fin == undefined){
+        fin = id;
+      }
+      $("#frame_category_name").text(name);
+
+      $("#frame_category_mode").find("div").eq(0).find(".btn-link").attr("data-id",id);
+      $("#frame_category_mode").find("div").eq(1).find(".btn-link").attr("data-id",fin);
+
+      if(CanvasAction.frameCategoryMode == "CUSTOMISE DESIGNS"){
+        CanvasAction.postData("/frame/frameList/",{"search" :{"frame_category_id":id}}).done(function (data) {
+            var obj = CanvasAction.JsonParse(data);
+            CanvasAction.renderFrameList(obj);
+        });
+      }
+      else{
+        CanvasAction.postData("/frame/frameList/",{"search" :{"frame_category_id":fin}}).done(function (data) {
+            var obj = CanvasAction.JsonParse(data);
+            CanvasAction.renderFrameList(obj);
+        });
+      }
+      
     },
     selectNumber: function(e) {
       $box = $(this).parents(".number-box");
@@ -300,18 +361,23 @@ var Canvas = {
 
       var min = parseFloat($input.attr("min"));
       var max = parseFloat($input.attr("max"));
+      var number = 0.1;
+      if($box.attr("mode") == "size"){
+        number = 1;
+      }
 
       if (mode == "minus" && old > min) {
-        $input.val(old-0.1);
+        $input.val(old-number);
       }
       else if (mode == "plus" && old < max) {
-        $input.val(old+0.1);
+        $input.val(old+number);
       }else{
         $input.val(old);
       }
 
       Canvas.setLineHeight();
       Canvas.setCharSpacing();
+      Canvas.setFontSize();
       Canvas.updateModifications(true); 
     },
     complete: function(e) { 
@@ -371,6 +437,12 @@ var Canvas = {
         Canvas.myCanvas.renderAll();
         Canvas.updateModifications(true); 
     },
+    setFontSize: function(e) {
+        var size =  parseFloat($("#text-size").val());
+        Canvas.myCanvas.getActiveObject().set("fontSize",size);
+        Canvas.myCanvas.renderAll();
+        Canvas.updateModifications(true); 
+    },
     setTextAlign: function(e) {
       $("#text-align").find("i").removeClass("select");
       $(this).addClass("select");
@@ -394,9 +466,16 @@ var Canvas = {
           o.setControlVisible('mt',false);
           o.setControlVisible('mb',false);
           o.setControlVisible('ml',false);
-          o.setControlVisible('mr',false);
+          o.setControlVisible('mr',false); 
+          o.setControlVisible('tl',false);
+          o.setControlVisible('tr',false);
+          o.setControlVisible('bl',false);
+          o.setControlVisible('br',false);
         });
         Canvas.updateModifications(true); 
+        $("text-size").val(24);
+        $("tline-height").val(1);
+        $("text-space").val(1);
     },
     addImage: function(e) {
         var file = e.target.files[0];
@@ -448,17 +527,13 @@ var Canvas = {
         $(".step[mode='"+mode+"']").addClass("select");
 
         if(mode == 1){
-          $("#frame_category").show();
-          $("#frame_List").hide();
+          $("#frame_category").hide();
+          $("#frame_List").show();
         }else{
           $("#frame_category").hide();
           $("#frame_List").hide();
         }
       }
-
-      $('html,body').animate({
-          scrollTop: $("#canvas-tool").offset().top
-      }, 100);
     },
     selectFrame: function(e) {    
       if (e.type == "click") {
@@ -502,7 +577,7 @@ var Canvas = {
       }, 1000);
     },
     selectIcon: function() {         
-      if($(this).attr("data-num") == 1){
+      // if($(this).attr("data-num") == 1){
         var src = $(this).attr("data-src");
         // var src = $(this).find("img").attr("src");
         console.log(src);
@@ -537,10 +612,10 @@ var Canvas = {
         $('html, body').animate({
           scrollTop: $("#canvas-select").offset().top
         }, 1000);
-      }
-      else{
-        $(this).attr("data-num",1);
-      }
+      // }
+      // else{
+      //   $(this).attr("data-num",1);
+      // }
          
     },
     selectIconOld: function() {           

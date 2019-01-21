@@ -879,7 +879,7 @@ hr{
 .modal-dialog {
   position: relative;
   width: auto;
-  margin: 10px;
+  margin:50px 10px;
 }
 .modal-content {
   margin: auto;

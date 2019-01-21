@@ -161,10 +161,10 @@ body::-webkit-scrollbar-thumb:hover {
 .brand {
   margin: 13px 0;
   text-align: center;
-  height: 74px;
+  height: 65px;
 }
 .brand img{
-    height: 75px;
+    height: 62px;
 }
 a{
     text-decoration: none;
@@ -292,6 +292,7 @@ nav.slide{
 }
 .pagename{
   font-family: Copperplate-Lig;
+  text-transform: lowercase;
   color: #8a5d3b;
   display: none;
 }
@@ -921,7 +922,24 @@ a.btn-brown:hover{
   background-color:transparent;
   color: #A78068;
 }
-
+button.btn-green,
+a.btn-green{
+  background-color: #39C168;
+  border: 1px solid #39C168;
+  font-family: Copperplate-Lig;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 8px 15px;
+  cursor: pointer;
+  margin: 0;
+  font-size: 12px;    
+  border-radius: 5px;
+}
+button.btn-green:hover,
+a.btn-green:hover{
+  background-color:#3ED67B;
+  color: #ffffff;
+}
 .btn-primary {
   color: #FFF5F0;
   border: none;
@@ -2330,7 +2348,7 @@ select .select_design{
   position: absolute;
   z-index: 1;
   bottom: 25px;
-  left:0;
+  left:-175px;
   margin-left: -115px;
 }
 
@@ -2375,7 +2393,7 @@ select .select_design{
     padding: 5px 5px;
     cursor: pointer;
     margin: 0 5px;
-    border-radius: 0px;
+    border-radius: 5px;
   }
 .btn-re{
   background-color: transparent;
@@ -2400,6 +2418,7 @@ select .select_design{
   padding: 5px;
   cursor: pointer;
   margin: 0;
+  height: 32px;
 }
 .btn-type span{
   font-size: 12px;
@@ -2414,6 +2433,10 @@ select .select_design{
 .btn-type.align-text i{
   font-size: 19px;
   line-height: 18px;
+  opacity: .5;
+}
+.btn-type.align-text i.select {
+  opacity: 1;
 }
 .btn-frame{
   width: 80%;
@@ -2503,6 +2526,10 @@ select .select_design{
 }
 #frame_category_mode .btn-link{
   text-decoration: none;
+  color: #c1a28e;
+}
+#frame_category_mode .btn-link.select{
+  color: #764a2d;
 }
 #frame_category_mode .btn-link:hover,
 #frame_category_mode  .btn-link:focus {

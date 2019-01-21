@@ -6,7 +6,7 @@
     width: 310px;
     height: 205px;
     padding: 5px 10px 8px;
-    margin: 10px auto;
+    margin: 5px auto;
     background-size: cover;
     background-image: url("/assets/images/persoanlisation/back-envelope-white.png");
 }
@@ -18,26 +18,27 @@
 	float: left;
 	margin-right: 0;
 	margin-left: 0;
-	padding-top: 10px;
+	padding-top: 5px;
 }
 .tool-wrapper{
-	width: 100%;
-	float: left;
-	margin-left: 0;
-	margin-right: 0;
-	margin-top: 10px;
-	position: relative;
-	bottom: 0;
+	width: calc(100% - 30px);
+    float: left;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 10px;
+    position: relative;
+    bottom: 0;
 }
 
 .select_design{
+	font-size: 13px;
     background-color: transparent;
-    border: 1px solid #8a5d3b;
+    border: 1px solid #8a5d3b63;
     font-family: Copperplate-Lig;
     color: #8a5d3b;
     /* font-weight: bold; */
     border-radius: 20px;
-    padding: 6px 25px;
+    padding: 3px 25px;
     cursor: pointer;
     margin: 0 5px;
     width: calc(100% - 88px);
@@ -59,6 +60,10 @@
 .canvas-tool .step .step-head{
 	color: #754729;
 	background: #FFFFFF;
+	border-left: 1px solid #754729;
+}
+.canvas-tool .step .step-head:last-child{
+	border-right: 1px solid #754729;
 }
 
 .canvas-tool .step .step-detail{
@@ -69,14 +74,18 @@
 .canvas-tool.open .step .step-detail{
 	display: none;
 	color: #754729;
-	height: 300px;
+	height: 350px;
 	border: 1px solid #8a5d3b;
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/rgba(251, 244, 236)+0,fffcfa+50,ffeeea+100 */
-	background: rgba(251, 244, 236); /* Old browsers */
+	background: #fbf4ec; /* Old browsers */
 	background: -moz-linear-gradient(left, rgba(251, 244, 236) 0%, #fffcfa 50%, rgba(251, 244, 236) 100%); /* FF3.6-15 */
 	background: -webkit-linear-gradient(left, rgba(251, 244, 236) 0%,#fffcfa 50%,rgba(251, 244, 236) 100%); /* Chrome10-25,Safari5.1-6 */
 	background: linear-gradient(to right, rgba(251, 244, 236) 0%,#fffcfa 50%,rgba(251, 244, 236) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(251, 244, 236)), color-stop(100%, rgba(251, 244, 236) 100%)); /* Chrome,Safari4+ */
+	background: -o-linear-gradient(left,  rgba(251, 244, 236) 0%, #fffcfa 50%, rgba(251, 244, 236) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  rgba(251, 244, 236) 0%, #fffcfa 50%, rgba(251, 244, 236) 100%); /* IE10+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(251, 244, 236)', endColorstr='rgba(251, 244, 236)',GradientType=1 ); /* IE6-9 */
+
 }
 .canvas-tool.open .step .step-head.select{
 	color: #FFFFFF;
@@ -86,6 +95,10 @@
 	background: -webkit-linear-gradient(left, rgba(124,91,70,1) 0%,rgba(117,71,41,1) 100%); /* Chrome10-25,Safari5.1-6 */
 	background: linear-gradient(to right, rgba(124,91,70,1) 0%,rgba(117,71,41,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7c5b46', endColorstr='#754729',GradientType=1 ); /* IE6-9 */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,(124,91,70,1)), color-stop(100%, rgba(117,71,41,1) 100%)); /* Chrome,Safari4+ */
+	background: -o-linear-gradient(left,  rgba(124,91,70,1) 0%, rgba(117,71,41,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left, rgba(124,91,70,1) 0%, rgba(117,71,41,1) 100%); /* IE10+ */
+	
 }
 .canvas-tool .step.active .step-head{
 	
@@ -97,7 +110,7 @@
 .canvas-tool .step .step-head{
 	width: 33.33333333%;
 	float:  left;
-	padding: 5px 15px;
+	padding: 5px;
 	border-bottom: 1px solid #8a5d3b;
 	border-top: 1px solid #8a5d3b;
 	cursor: pointer;
@@ -135,7 +148,7 @@
 	text-align: center;
 	vertical-align: middle;
 	padding-top: 5px;
-	font-size: 12px;
+	font-size: 10px;
 }
 
 .canvas-tool .step.active .step-head .title,
@@ -145,7 +158,7 @@
 	text-align: center;
 	vertical-align: middle;
 	padding-top: 5px;
-	font-weight: bold;
+	font-weight: normal;
 	text-decoration: none;
 }
 .canvas-tool .step .step-head .icon-box{
@@ -175,14 +188,14 @@
 	float: left;
 }
 .canvas-tool.open .step .step-head {
-    padding: 5px;
+    padding: 3px;
     text-align: center;
 }
 .canvas-tool .step .step-head  .img{
-    width: 42px;
+    width: 30px;
 }
 .canvas-tool .step .step-head  .img img{
-    height: 25px;
+    height: 20px;
 }
 .canvas-tool.open .step .step-head  .img img.icon-active{
     height: 20px;
@@ -190,7 +203,7 @@
 }
 .canvas-tool.open .step .step-head .title{
 	width: 100%;
-	padding-top: 5px;
+	padding-top: 1px;
 	text-align: center;
 }
 .canvas-tool.open .step .step-head .icon-box{
@@ -212,17 +225,18 @@ line-height: 35px;
 }
 
 .canvas-select{
-	width: 100%;
-	margin: 0 auto;
+	width: 310px;
+	max-width: 100%;
+    margin: 0 auto;
 	display: block;
 }
 .btn-select{
 	width: 35px;
-	padding: 5px 10px;
-	height: 40px;
-	vertical-align: middle;
-	display:  inline-block;
-	text-align:  center;
+    padding: 0px 10px;
+    height: 30px;
+    vertical-align: middle;
+    display: inline-block;
+    text-align: center;
 }
 .btn-select i{
   font-size: 30px;
@@ -230,39 +244,34 @@ line-height: 35px;
 }
 
 /* -- select-sticker --- */
+.icon-sticker{
+	width: 30px;
+    height: 27px;
+    font-size: 20px;
+    float: left;
+    text-align: center;
+}
 .select-sticker{
-	width: 100%;
+	width: calc(100% - 60px);
 	height: 32px;
-	/* float: left; */
-	padding: 0 30px;
+	float: left;
+	padding: 0;
 	white-space: nowrap;
 	overflow-y: hidden;
 	overflow-x: auto;
 	position: relative;
 }
-.select-sticker:before{
-	content: "<";
-	position: absolute;
-	left: 9px;
-	font-size: 20px;
-	color: #764a2e7a;
-}
-.select-sticker:after{
-	content: ">";
-	position: absolute;
-	right: 9px;
-	font-size: 20px;
-	color: #764a2e7a;
-}
 .select-sticker .sticker{
 	width: 12.5%;
 	padding: 0 5px 5px 0;
 	display: inline-block;
+	font-size: 11px;
 }
 .select-sticker .sticker .inner{
 	border:  1px solid #ddd;
 	padding: 5px;
 	cursor: pointer;
+	border-radius: 5px;
 }
 .select-sticker .sticker .inner:hover,
 .select-sticker .sticker.select .inner{
@@ -270,6 +279,13 @@ line-height: 35px;
     border-right-color:  #cc9966;
     border-bottom-color:  #ff9966;
     border-left-color:  #ffcc99;
+}
+.select-sticker .sticker.select .inner{
+	border-color: #764a2d;
+    background-color: #764a2d;
+}
+.select-sticker .sticker.select .inner a{
+	color: #FFFFFF
 }
 .select-sticker .sticker .inner img{
 	width: 100%;
@@ -279,7 +295,7 @@ line-height: 35px;
 	width: 100%;
 	float: left;
 	padding: 0 10px;
-	height: 230px;
+	height: 280px;
 }
 .sticker-panel .sticker{
 	width: 25%;
@@ -313,7 +329,7 @@ line-height: 35px;
 	width: 100%;
 	float: left;
 	padding: 0 10px;
-	height: 185px;
+	height: 260px;
 }
 .frame-panel .frame{
 	width: 50%;
@@ -347,5 +363,6 @@ line-height: 35px;
 .input-number{
     width: 40px;
     background: transparent;
-    border: none;
+	border: none;
+	height:  22px;
 }

@@ -2,12 +2,9 @@ var CanvasAction = {
     frameCategory : [],
     frameCategoryName : "",
     frameCategoryMode : "CUSTOMISE DESIGNS",
+    catTotal:0,
     init: function() {
         this.bindEvents();
-        this.postData("/frame/frameCategory/").done(function (data) {
-            var obj = CanvasAction.JsonParse(data);
-            CanvasAction.renderFrameCategory(obj);
-        });
         this.postData("/frame/stickerCategory/").done(function (data) {
             var obj = CanvasAction.JsonParse(data);
             CanvasAction.renderStickerCategory(obj);
@@ -15,6 +12,7 @@ var CanvasAction = {
     },
     bindEvents: function() {   
         $("#frame_category_ui").on("click","li",this.clickFrameCategory);
+        $("#frame_category_list").on("click",".sticker",this.clickFrameCategoryInline);
         $("#sticker_category").on("click",".sticker",this.clickStickerCategory);
         $("#frame_category_mode").on("click",".btn-link",this.clickFrameMode);
         $("#frame_category_name").on("click",this.clickFrameName);
@@ -25,6 +23,7 @@ var CanvasAction = {
     },
     renderFrameCategory: function(obj) {   
         $("#frame_category_ui").html("");
+        var num = 0;
         $.each(obj.view, function(key) {
             if(key == 0){
                 CanvasAction.frameCategoryName = this.frame_category_name;
@@ -32,9 +31,11 @@ var CanvasAction = {
                 Canvas.frame_category_code = this.frame_category_code;
             }
             if(this.frame_category_type == 1){
+                CanvasAction.catTotal++;
                 if(CanvasAction.frameCategory.filter(x => x.frame_category_name === this.frame_category_name).length == 0){
                     CanvasAction.frameCategory.push(this);
-                    $("#frame_category_ui").append('<li data-id="'+this.frame_category_id+'" data-code="'+this.frame_category_code+'"><div>'+this.frame_category_name+'</div></li>');
+                    $("#frame_category_ui").append('<li data-id="'+this.frame_category_id+'" data-num="'+num+'" data-code="'+this.frame_category_code+'"><div>'+this.frame_category_name+'</div></li>');
+                    num ++;
                 }
                 else{
                     var index = CanvasAction.frameCategory.findIndex(x => x.frame_category_name === this.frame_category_name);
@@ -44,7 +45,9 @@ var CanvasAction = {
             else{
                 if(CanvasAction.frameCategory.filter(x => x.frame_category_name === this.frame_category_name).length == 0){
                     CanvasAction.frameCategory.push(this);
-                    $("#frame_category_ui").append('<li data-fin="'+this.frame_category_id+'" data-code="'+this.frame_category_code+'"><div>'+this.frame_category_name+'</div></li>');
+                    $("#frame_category_ui").append('<li data-fin="'+this.frame_category_id+'" data-num="'+num+'" data-code="'+this.frame_category_code+'"><div>'+this.frame_category_name+'</div></li>');
+                    
+                    num ++;
                 }
                 else{
                     var index = CanvasAction.frameCategory.findIndex(x => x.frame_category_name === this.frame_category_name);
@@ -53,6 +56,7 @@ var CanvasAction = {
             }
         }); 
 
+        $("#frame_category_name").attr("min",0).attr("max",CanvasAction.catTotal-1).attr("current",0);
         var id = $("#frame_category_ui li").eq(0).data("id");
         var fin = $("#frame_category_ui li").eq(0).data("fin");
         var code = $("#frame_category_ui li").eq(0).data("code");
@@ -82,31 +86,144 @@ var CanvasAction = {
             CanvasAction.renderFrameList(obj);
         });
     },
+    renderFrameCategoryInline: function(obj) {
+        $("#frame_category_list").html("");
+        var num = 0;
+        $.each(obj.view, function(key) {
+            var select ="";
+            if(key == 0){select ="select";
+                CanvasAction.frameCategoryName = this.frame_category_name;
+                Canvas.frame_category_id = this.frame_category_id;
+                Canvas.frame_category_code = this.frame_category_code;
+            }
+            if(this.frame_category_type == 1){
+                CanvasAction.catTotal++;
+                if(CanvasAction.frameCategory.filter(x => x.frame_category_name === this.frame_category_name).length == 0){
+                    CanvasAction.frameCategory.push(this);
+                    var field ='<div class="sticker '+select+'" style="width: auto;" data-num="'+num+'" data-id="'+this.frame_category_id+'"  data-code="'+this.frame_category_code+'">';
+                        field +='<div class="inner " style="margin-right: 5px;padding: 5px 15px;float: left;">';
+                        field +='<a href="javascript:;">'+this.frame_category_name+'</a>';
+                        field +='</div>';
+                        field +='</div>';
+                    $("#frame_category_list").append(field);
+                    num ++;
+                }
+                else{
+                    var index = CanvasAction.frameCategory.findIndex(x => x.frame_category_name === this.frame_category_name);
+                    $("#frame_category_list .sticker").eq(index).attr("data-id",this.frame_category_id);
+                }
+            }
+            else{
+                if(CanvasAction.frameCategory.filter(x => x.frame_category_name === this.frame_category_name).length == 0){
+                    CanvasAction.frameCategory.push(this);
+
+                    var field ='<div class="sticker '+select+'" style="width: auto;" data-num="'+num+'" data-fin="'+this.frame_category_id+'"  data-code="'+this.frame_category_code+'">';
+                        field +='<div class="inner " style="margin-right: 5px;padding: 5px 15px;float: left;">';
+                        field +='<a href="javascript:;">'+this.frame_category_name+'</a>';
+                        field +='</div>';
+                        field +='</div>';
+                    $("#frame_category_list").append(field);
+                    num ++;
+                }
+                else{
+                    var index = CanvasAction.frameCategory.findIndex(x => x.frame_category_name === this.frame_category_name);
+                    $("#frame_category_list .sticker").eq(index).attr("data-fin",this.frame_category_id);
+                }
+            }
+        }); 
+        //$("#frame_category_name").attr("min",0).attr("max",CanvasAction.catTotal-1).attr("current",0);
+        var id = $("#frame_category_list .sticker").eq(0).data("id");
+        var fin = $("#frame_category_list .sticker").eq(0).data("fin");
+        var code = $("#frame_category_list .sticker").eq(0).data("code");
+        CanvasAction.postData("/frame/frameList/",{"search" :{"frame_category_id":id}}).done(function (data) {
+            var obj = CanvasAction.JsonParse(data);
+            $("#frame_category_name").text( CanvasAction.frameCategoryName);
+            $("#frame_category").hide();
+            $("#frame_List").show();
+
+            if(fin == undefined){
+                var field = '<div class="col-md-12" style="padding-right: 0;padding-left: 0;">';
+                field += '<button class="btn-link select" data-id="'+id+'" data-code="'+code+'">CUSTOMISE DESIGNS</button>';
+                field += '</div>';
+
+                $("#frame_category_mode").html(field);
+            }
+            else{
+                var field = '<div class="col-md-6" style="padding-right: 0;padding-left: 15px;">';
+                field += '<button class="btn-link select" data-id="'+id+'" data-code="'+code+'">CUSTOMISE DESIGNS</button>';
+                field += '</div>';
+                field += '<div class="col-md-6" style="border-left: 1px solid #ddd;padding-right: 15px;padding-left: 0;">';
+                field += '<button class="btn-link" data-id="'+fin+'" data-code="'+code+'">FINISHED DESIGNS</button>';
+                field += '</div>';
+
+                $("#frame_category_mode").html(field);
+            }
+            CanvasAction.renderFrameList(obj);
+        });
+    },
     clickFrameCategory: function() {   
         var id = $(this).data("id");
         var fin = $(this).data("fin");
+        var num = $(this).data("num");
         CanvasAction.frameCategoryName = $(this).find("div").text();
         Canvas.frame_category_id = id;
         Canvas.frame_category_code = $(this).data("code");
         CanvasAction.postData("/frame/frameList/",{"search" :{"frame_category_id":id}}).done(function (data) {
             var obj = CanvasAction.JsonParse(data);
-            $("#frame_category_name").text( CanvasAction.frameCategoryName);
+            $("#frame_category_name").text( CanvasAction.frameCategoryName).attr("current",num);
             $("#frame_category").hide();
             $("#frame_List").fadeIn(0);
 
             if(fin == undefined){
                 var field = '<div class="col-md-12" style="padding-right: 0;padding-left: 0px;">';
-                field += '<button class="btn-link select" data-id="'+id+'">CUSTOMISE DESIGNS</button>';
+                field += '<button class="btn-link select" data-id="'+id+'" data-code="'+Canvas.frame_category_code+'">CUSTOMISE DESIGNS</button>';
                 field += '</div>';
 
                 $("#frame_category_mode").html(field);
             }
             else{
                 var field = '<div class="col-md-6" style="padding-right: 0;padding-left: 0px;">';
-                field += '<button class="btn-link select" data-id="'+id+'"  style="padding-left: 10px;">CUSTOMISE DESIGNS</button>';
+                field += '<button class="btn-link select" data-id="'+id+'" data-code="'+Canvas.frame_category_code+'" style="padding-left: 10px;">CUSTOMISE DESIGNS</button>';
                 field += '</div>';
                 field += '<div class="col-md-6" style="border-left: 1px solid #ddd;padding-left: 0px;">';
-                field += '<button class="btn-link" data-id="'+fin+'">FINISHED DESIGNS</button>';
+                field += '<button class="btn-link" data-id="'+fin+'" data-code="'+Canvas.frame_category_code+'">FINISHED DESIGNS</button>';
+                field += '</div>';
+
+                $("#frame_category_mode").html(field);
+            }
+            CanvasAction.renderFrameList(obj);
+        });
+    },
+    clickFrameCategoryInline: function() {   
+        var id = $(this).data("id");
+        var fin = $(this).data("fin");
+        var num = $(this).data("num");
+
+        $("#frame_category_list .sticker").removeClass("select");
+        $(this).addClass("select");
+
+        CanvasAction.frameCategoryName = $(this).find("a").text();
+        Canvas.frame_category_id = id;
+        Canvas.frame_category_code = $(this).data("code");
+        CanvasAction.postData("/frame/frameList/",{"search" :{"frame_category_id":id}}).done(function (data) {
+            var obj = CanvasAction.JsonParse(data);
+            //$("#frame_category_name").text( CanvasAction.frameCategoryName).attr("current",num);
+            $("#frame_category").hide();
+            $("#frame_List").fadeIn(0);
+
+            if(fin == undefined){
+                var field = '<div class="col-md-12" style="padding-right: 0;padding-left: 0px;">';
+                field += '<button class="btn-link select" data-id="'+id+'" data-code="'+Canvas.frame_category_code+'">CUSTOMISE DESIGNS</button>';
+                field += '</div>';
+
+                $("#frame_category_mode").html(field);
+            }
+            else{
+                var field = '<div class="col-md-6" style="padding-right: 0;padding-left: 0px;">';
+                field += '<button class="btn-link select" data-id="'+id+'" data-code="'+Canvas.frame_category_code+'" style="padding-left: 10px;">CUSTOMISE DESIGNS</button>';
+                field += '</div>';
+                field += '<div class="col-md-6" style="border-left: 1px solid #ddd;padding-left: 0px;">';
+                field += '<button class="btn-link" data-id="'+fin+'" data-code="'+Canvas.frame_category_code+'">FINISHED DESIGNS</button>';
                 field += '</div>';
 
                 $("#frame_category_mode").html(field);
@@ -172,7 +289,7 @@ var CanvasAction = {
                     CanvasAction.renderStickerList(obj);
                 });
             }
-            var field ='<div class="sticker '+select+'" style="width: auto;" data-id="'+this.sticker_category_id+'">';
+            var field ='<div class="sticker '+select+'" style="width: auto;" data-num="'+key+'" data-id="'+this.sticker_category_id+'">';
             field +='<div class="inner " style="margin-right: 5px;padding: 5px 15px;float: left;">';
             field +='<a href="javascript:;">'+this.sticker_category_name+'</a>';
             field +='</div>';

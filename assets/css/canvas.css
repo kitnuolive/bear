@@ -57,20 +57,20 @@
 	color: #754729;
 	height: 425px;
 	border: 1px solid #8a5d3b;
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/rgba(251, 244, 236)+0,fffcfa+50,ffeeea+100 */
-	background: rgba(251, 244, 236); /* Old browsers */
-	background: -moz-linear-gradient(left, rgba(251, 244, 236) 0%, #fffcfa 50%, rgba(251, 244, 236) 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(left, rgba(251, 244, 236) 0%,#fffcfa 50%,rgba(251, 244, 236) 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to right, rgba(251, 244, 236) 0%,#fffcfa 50%,rgba(251, 244, 236) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(251, 244, 236)', endColorstr='rgba(251, 244, 236)',GradientType=1 ); /* IE6-9 */
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fbf4ec+0,fffcfa+50,ffeeea+100 */
+	background: #fbf4ec; /* Old browsers */
+	background: -moz-linear-gradient(left, #fbf4ec 0%, #fffcfa 50%, #fbf4ec 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left, #fbf4ec 0%,#fffcfa 50%,#fbf4ec 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right, #fbf4ec 0%,#fffcfa 50%,#fbf4ec 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbf4ec', endColorstr='#fbf4ec',GradientType=1 ); /* IE6-9 */
 }
 .canvas-tool .step.select .step-head{
 	color: #FFFFFF;
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7c5b46+0,754729+100 */
-	background: rgb(124,91,70); /* Old browsers */
-	background: -moz-linear-gradient(left, rgba(124,91,70,1) 0%, rgba(117,71,41,1) 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(left, rgba(124,91,70,1) 0%,rgba(117,71,41,1) 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to right, rgba(124,91,70,1) 0%,rgba(117,71,41,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	background: #7c5b46; /* Old browsers */
+	background: -moz-linear-gradient(left, #7c5b46 0%, #754729 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left, #7c5b46 0%,#754729 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right, #7c5b46 0%,#754729 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7c5b46', endColorstr='#754729',GradientType=1 ); /* IE6-9 */
 }
 .canvas-tool .step.active .step-head{
@@ -216,29 +216,22 @@ line-height: 35px;
 }
 
 /* -- select-sticker --- */
+.icon-sticker{
+	width: 30px;
+	height: 30px;
+	font-size: 22px;
+	float: left;
+	text-align: center;
+}
 .select-sticker{
-	width: 100%;
+	width: calc(100% - 60px);
 	height: 32px;
-	/* float: left; */
-	padding: 0 30px;
+	float: left;
+	padding: 0;
 	white-space: nowrap;
 	overflow-y: hidden;
 	overflow-x: auto;
 	position: relative;
-}
-.select-sticker:before{
-	content: "<";
-	position: absolute;
-	left: 9px;
-	font-size: 20px;
-	color: #764a2e7a;
-}
-.select-sticker:after{
-	content: ">";
-	position: absolute;
-	right: 9px;
-	font-size: 20px;
-	color: #764a2e7a;
 }
 .select-sticker .sticker{
 	width: 12.5%;
@@ -249,6 +242,7 @@ line-height: 35px;
 	border:  1px solid #ddd;
 	padding: 5px;
 	cursor: pointer;
+	border-radius:5px; 
 }
 .select-sticker .sticker .inner:hover,
 .select-sticker .sticker.select .inner{
@@ -256,6 +250,13 @@ line-height: 35px;
     border-right-color:  #cc9966;
     border-bottom-color:  #ff9966;
     border-left-color:  #ffcc99;
+}
+.select-sticker .sticker.select .inner{
+	border-color: #764a2d;
+    background-color: #764a2d;
+}
+.select-sticker .sticker.select .inner a{
+	color: #FFFFFF
 }
 .select-sticker .sticker .inner img{
 	width: 100%;
@@ -333,7 +334,8 @@ line-height: 35px;
 .input-number{
     width: 40px;
     background: transparent;
-    border: none;
+	border: none;
+	height: 20px;
 }
 
 .content-wrapper{
