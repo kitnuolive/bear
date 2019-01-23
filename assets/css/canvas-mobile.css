@@ -253,7 +253,7 @@ line-height: 35px;
 }
 .select-sticker{
 	width: calc(100% - 60px);
-	height: 32px;
+	height: auto;
 	float: left;
 	padding: 0;
 	white-space: nowrap;
