@@ -165,17 +165,17 @@ var Canvas = {
         var src = "/assets/images/persoanlisation/back-envelope-white.png";
         fabric.Image.fromURL(src, function(img) {
           var oImg = img.set({
-            left: 30,
+            left: 20,
             top: 20,
             angle: 00
-          }).scale(.77);
+          }).scale(.785);
           Canvas.viewCanvas.add(oImg).renderAll();
         });
 
         fabric.Image.fromURL(href, function(img) {
           var oImg = img.set({
             left: 35,
-            top: 30,
+            top: 35,
             angle: 00
           }).scale(1);
           Canvas.viewCanvas.add(oImg).renderAll();
@@ -362,13 +362,15 @@ var Canvas = {
       Canvas.updateModifications(true); 
     },
     complete: function(e) { 
-      // console.log(Canvas.myCanvas.toSVG());
-      // console.log('data:image/svg+xml;utf8,' + btoa(Canvas.myCanvas.toSVG()));
+      console.log(Canvas.myCanvas.toSVG());
+      //Encoder encoder = Base64.getEncoder();
+      var encodedString = btoa(unescape(encodeURIComponent(Canvas.myCanvas.toSVG())));
+      console.log('data:image/svg+xml;utf8,' + encodedString);
       var obj = {
         "frame_category_id" : Canvas.frame_category_id,
         "frame_list_id" : Canvas.frame_list_id,
         "frame_category_code" : Canvas.frame_category_code,
-        "svg" : 'data:image/svg+xml;utf8,' + btoa(Canvas.myCanvas.toSVG())
+        "svg" : 'data:image/svg+xml;utf8,' + encodedString
       }
 
       var data = JSON.stringify(obj);

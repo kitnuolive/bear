@@ -383,11 +383,13 @@ var Canvas = {
     complete: function(e) { 
       // console.log('data:image/svg+xml;utf8,' + encodeURIComponent(Canvas.myCanvas.toSVG()));
       // console.log('data:image/svg+xml;utf8,' + btoa(Canvas.myCanvas.toSVG()));
+
+      var encodedString = btoa(unescape(encodeURIComponent(Canvas.myCanvas.toSVG())));
       var obj = {
         "frame_category_id" : Canvas.frame_category_id,
         "frame_list_id" : Canvas.frame_list_id,
         "frame_category_code" : Canvas.frame_category_code,
-        "svg" : 'data:image/svg+xml;utf8,' + btoa(Canvas.myCanvas.toSVG())
+        "svg" : 'data:image/svg+xml;utf8,' + encodedString
 
       }
       var data = JSON.stringify(obj);
