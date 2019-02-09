@@ -104,11 +104,14 @@ var Canvas = {
         var step = $(".step");
         $("#canvas-tool").addClass("open");
 
-        console.log("selected :" +e.target.type);
+        //console.log("selected :", e.target);
         if (e.target.type === 'i-text') {
           step.removeClass("select");
           $(".step[mode=2]").addClass("select");
           $("#text-size").val(e.target.fontSize);
+          $("#font-family").val(e.target.fontFamily);
+          $("#text-space").val(e.target.charSpacing/100);
+          $("#text-line-height").val(e.target.lineHeight);
         }
         else if (e.target.type === 'group') {
             // $('#textControls').hidden = true;
@@ -123,7 +126,7 @@ var Canvas = {
 
       Canvas.myCanvas.on('before:selection:cleared', function(e) {
         var step = $(".step");  
-        console.log("cleared :" +e.target.type);
+        //console.log("cleared :" +e.target.type);
         if (e.target.type === 'i-text') {
           // $('#textControls').hidden = true;
           step.removeClass("select");
@@ -152,7 +155,7 @@ var Canvas = {
       updateModifications(true);  
     },
     fabricViewCanvas: function(href,text_code) { 
-      console.log(href,text_code);
+      //console.log(href,text_code);
       Canvas.viewCanvas = new fabric.Canvas("viewCanvas", {
             hoverCursor: 'pointer',
             selection: true,
@@ -174,8 +177,8 @@ var Canvas = {
 
         fabric.Image.fromURL(href, function(img) {
           var oImg = img.set({
-            left: 35,
-            top: 35,
+            left: 33,
+            top: 31,
             angle: 00
           }).scale(1);
           Canvas.viewCanvas.add(oImg).renderAll();
@@ -186,7 +189,7 @@ var Canvas = {
           fontFamily: 'Copperplate-Lig',
             fontSize: 18,
             fill: '#754729',
-            left: 130,
+            left: 125,
             top: 320
         }));
 
@@ -226,7 +229,7 @@ var Canvas = {
               data: form,
               success: function(data){
                   var obj = CanvasAction.JsonParse(data);          
-                  console.log(obj);
+                  //console.log(obj);
               }
           });
         
@@ -246,10 +249,10 @@ var Canvas = {
           Canvas.myCanvas.clear().renderAll();
           Canvas.myCanvas.loadFromJSON(Canvas.state[Canvas.state.length - 1 - Canvas.mods - 1]);
           Canvas.myCanvas.renderAll();
-          //console.log("geladen " + (state.length-1-mods-1));
-          //console.log("state " + state.length);
+          ////console.log("geladen " + (state.length-1-mods-1));
+          ////console.log("state " + state.length);
           Canvas.mods += 1;
-          //console.log("mods " + mods);
+          ////console.log("mods " + mods);
       }
     },
     redo: function(e) {
@@ -257,10 +260,10 @@ var Canvas = {
           Canvas.myCanvas.clear().renderAll();
           Canvas.myCanvas.loadFromJSON(Canvas.state[Canvas.state.length - 1 - Canvas.mods + 1]);
           Canvas.myCanvas.renderAll();
-          //console.log("geladen " + (state.length-1-mods+1));
+          ////console.log("geladen " + (state.length-1-mods+1));
           Canvas.mods -= 1;
-          //console.log("state " + state.length);
-          //console.log("mods " + mods);
+          ////console.log("state " + state.length);
+          ////console.log("mods " + mods);
       }
     },
     selectnNextFrame: function(e) {
@@ -362,10 +365,10 @@ var Canvas = {
       Canvas.updateModifications(true); 
     },
     complete: function(e) { 
-      console.log(Canvas.myCanvas.toSVG());
+      //console.log(Canvas.myCanvas.toSVG());
       //Encoder encoder = Base64.getEncoder();
       var encodedString = btoa(unescape(encodeURIComponent(Canvas.myCanvas.toSVG())));
-      console.log('data:image/svg+xml;utf8,' + encodedString);
+      //console.log('data:image/svg+xml;utf8,' + encodedString);
       var obj = {
         "frame_category_id" : Canvas.frame_category_id,
         "frame_list_id" : Canvas.frame_list_id,
@@ -386,7 +389,7 @@ var Canvas = {
           data: form,
           success: function(data){
               var obj = CanvasAction.JsonParse(data);          
-              console.log(obj);
+              //console.log(obj);
     
               Canvas.bear_order_number = obj.result.bear_order_number ;
               Canvas.bear_order_id = obj.result.bear_order_id;
@@ -438,6 +441,8 @@ var Canvas = {
         Canvas.myCanvas.add(new fabric.IText('YOUR MESSAGE', {
           fontFamily: 'Copperplate-Lig',
             fontSize: 34,
+            charSpacing: 100,
+            lineHeight:1,
             stroke: '#999999',
             fill: '#ffffff',
             strokeWidth: 1,
@@ -463,6 +468,10 @@ var Canvas = {
         $('html, body').animate({
           scrollTop: $("#canvas-select").offset().top
         }, 1000);
+        // $("text-size").val(34);
+        // $("tline-height").val(1);
+        // $("text-space").val(1);
+        // $("#font-family").val("Copperplate-Lig");
     },
     addImage: function(e) {
         var file = e.target.files[0];
@@ -541,14 +550,22 @@ var Canvas = {
         //         Canvas.myCanvas.setBackgroundImage($img, Canvas.myCanvas.renderAll.bind(Canvas.myCanvas), {width: Canvas.myCanvas.width, height: Canvas.myCanvas.height, originX: 'left', originY: 'top'});
 
         // });
-      fabric.loadSVGFromURL(src, function(objects, options) {
-          var obj = fabric.util.groupSVGElements(objects, options);
-          Canvas.myCanvas.setBackgroundImage(obj, Canvas.myCanvas.renderAll.bind(Canvas.myCanvas), {
-            scaleX: parseFloat(Canvas.myCanvas.width) / parseFloat(obj.width),
-            scaleY: parseFloat(Canvas.myCanvas.height) / parseFloat(obj.height),
-         });
-        //   canvas.add(obj).renderAll();
-      });
+
+      //console.log("src" ,src);
+
+      if(src != null && src != "null"){
+        fabric.loadSVGFromURL(src, function(objects, options) {
+            var obj = fabric.util.groupSVGElements(objects, options);
+            Canvas.myCanvas.setBackgroundImage(obj, Canvas.myCanvas.renderAll.bind(Canvas.myCanvas), {
+              scaleX: parseFloat(Canvas.myCanvas.width) / parseFloat(obj.width),
+              scaleY: parseFloat(Canvas.myCanvas.height) / parseFloat(obj.height),
+          });
+          //   canvas.add(obj).renderAll();
+        });
+      }
+      else{
+        Canvas.myCanvas.setBackgroundImage(0, Canvas.myCanvas.renderAll.bind(Canvas.myCanvas));
+      }
 
       //   fabric.Image.fromURL(src, function(img) {
       //     img.set({width: Canvas.myCanvas.width, height: Canvas.myCanvas.height, originX: 'left', originY: 'top'});
@@ -567,7 +584,7 @@ var Canvas = {
     selectIcon: function() {           
       var src = $(this).attr("data-src");
       // var src = $(this).find("img").attr("src");
-      console.log(src);
+      //console.log(src);
       var group = [];
       fabric.loadSVGFromURL(src,function(objects,options)
       {
@@ -576,8 +593,8 @@ var Canvas = {
           left: 300,
           top: 100
         }).scale(10);
-        loadedObjects.scaleToWidth(110);
-        loadedObjects.scaleToHeight(110);
+        loadedObjects.scaleToWidth(78);
+        loadedObjects.scaleToHeight(78);
         Canvas.myCanvas.add(loadedObjects);
         Canvas.myCanvas.renderAll();
         Canvas.myCanvas.forEachObject(function(o){ 

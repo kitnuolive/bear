@@ -52,6 +52,42 @@
     font-style: normal;
 
 }
+
+@font-face {
+  font-family: 'Quark';
+  src: url('../fonts/Thai/Quark/Quark-Bold.eot');
+  src: url('../fonts/Thai/Quark/Quark-Bold.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/Thai/Quark/Quark-Bold.woff2') format('woff2'),
+       url('../fonts/Thai/Quark/Quark-Bold.woff') format('woff'),
+       url('../fonts/Thai/Quark/Quark-Bold.ttf') format('truetype'),
+       url('../fonts/Thai/Quark/Quark-Bold.svg#proxima_novalight') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Great Vibes';
+  src: url('../fonts/English/GreatVibes/GreatVibes-Regular.eot');
+  src: url('../fonts/English/GreatVibes/GreatVibes-Regular.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/English/GreatVibes/GreatVibes-Regular.woff2') format('woff2'),
+       url('../fonts/English/GreatVibes/GreatVibes-Regular.woff') format('woff'),
+       url('../fonts/English/GreatVibes/GreatVibes-Regular.ttf') format('truetype'),
+       url('../fonts/English/GreatVibes/GreatVibes-Regular.svg#proxima_novalight') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  src: url('../fonts/English/GreatVibes/GreatVibes-Regular.eot');
+  src: url('../fonts/English/GreatVibes/GreatVibes-Regular.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/English/GreatVibes/GreatVibes-Regular.woff2') format('woff2'),
+       url('../fonts/English/GreatVibes/GreatVibes-Regular.woff') format('woff'),
+       url('../fonts/English/GreatVibes/GreatVibes-Regular.ttf') format('truetype'),
+       url('../fonts/English/GreatVibes/GreatVibes-Regular.svg#proxima_novalight') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 body {
     overflow-x: hidden;
     height: 100%;

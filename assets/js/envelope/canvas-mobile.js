@@ -104,13 +104,16 @@ var Canvas = {
         $("#canvas-tool").addClass("open"); 
         $(".step-head").removeClass("select");
         if (e.target.type === 'i-text') {
-          console.log("text",e);
+          //console.log("text",e);
           step.removeClass("select");
           $(".step[mode=2]").addClass("select");
           $(".step-head[mode=2]").addClass("select");
           $("#frame_category").hide();
           $("#frame_List").hide();
           $("#text-size").val(e.target.fontSize);
+          $("#font-family").val(e.target.fontFamily);
+          $("#text-space").val(e.target.charSpacing/100);
+          $("#text-line-height").val(e.target.lineHeight);
         }
         else if (e.target.type === 'group') {
             // $('#textControls').hidden = true;
@@ -132,7 +135,7 @@ var Canvas = {
 
       Canvas.myCanvas.on('before:selection:cleared', function(e) {
         var step = $(".step");  
-        console.log("cleared :" +e.target.type);
+        //console.log("cleared :" +e.target.type);
 
         $(".step-head").removeClass("select");
         if (e.target.type === 'i-text') {
@@ -193,7 +196,7 @@ var Canvas = {
 
         fabric.Image.fromURL(href, function(img) {
           var oImg = img.set({
-            left: 35,
+            left: 45,
             top: 30,
             angle: 00
           }).scale(1.4);
@@ -245,7 +248,7 @@ var Canvas = {
               data: form,
               success: function(data){
                   var obj = CanvasAction.JsonParse(data);          
-                  console.log(obj);
+                  //console.log(obj);
               }
           });
         
@@ -265,10 +268,10 @@ var Canvas = {
           Canvas.myCanvas.clear().renderAll();
           Canvas.myCanvas.loadFromJSON(Canvas.state[Canvas.state.length - 1 - Canvas.mods - 1]);
           Canvas.myCanvas.renderAll();
-          //console.log("geladen " + (state.length-1-mods-1));
-          //console.log("state " + state.length);
+          ////console.log("geladen " + (state.length-1-mods-1));
+          ////console.log("state " + state.length);
           Canvas.mods += 1;
-          //console.log("mods " + mods);
+          ////console.log("mods " + mods);
       }
     },
     redo: function(e) {
@@ -276,10 +279,10 @@ var Canvas = {
           Canvas.myCanvas.clear().renderAll();
           Canvas.myCanvas.loadFromJSON(Canvas.state[Canvas.state.length - 1 - Canvas.mods + 1]);
           Canvas.myCanvas.renderAll();
-          //console.log("geladen " + (state.length-1-mods+1));
+          ////console.log("geladen " + (state.length-1-mods+1));
           Canvas.mods -= 1;
-          //console.log("state " + state.length);
-          //console.log("mods " + mods);
+          ////console.log("state " + state.length);
+          ////console.log("mods " + mods);
       }
     },
     selectnNextFrame: function(e) {
@@ -381,8 +384,8 @@ var Canvas = {
       Canvas.updateModifications(true); 
     },
     complete: function(e) { 
-      // console.log('data:image/svg+xml;utf8,' + encodeURIComponent(Canvas.myCanvas.toSVG()));
-      // console.log('data:image/svg+xml;utf8,' + btoa(Canvas.myCanvas.toSVG()));
+      // //console.log('data:image/svg+xml;utf8,' + encodeURIComponent(Canvas.myCanvas.toSVG()));
+      // //console.log('data:image/svg+xml;utf8,' + btoa(Canvas.myCanvas.toSVG()));
 
       var encodedString = btoa(unescape(encodeURIComponent(Canvas.myCanvas.toSVG())));
       var obj = {
@@ -405,7 +408,7 @@ var Canvas = {
           data: form,
           success: function(data){
               var obj = CanvasAction.JsonParse(data);          
-              console.log(obj);
+              //console.log(obj);
     
               Canvas.bear_order_number = obj.result.bear_order_number ;
               Canvas.bear_order_id = obj.result.bear_order_id;
@@ -457,6 +460,8 @@ var Canvas = {
         Canvas.myCanvas.add(new fabric.IText('YOUR MESSAGE', {
           fontFamily: 'Copperplate-Lig',
             fontSize: 24,
+            charSpacing: 100,
+            lineHeight:1,
             stroke: '#999999',
             fill: '#ffffff',
             strokeWidth: 1,
@@ -475,9 +480,6 @@ var Canvas = {
           o.setControlVisible('br',false);
         });
         Canvas.updateModifications(true); 
-        $("text-size").val(24);
-        $("tline-height").val(1);
-        $("text-space").val(1);
     },
     addImage: function(e) {
         var file = e.target.files[0];
@@ -564,14 +566,21 @@ var Canvas = {
       // $("#frame_category").hide();
       // $("#frame_List").hide();
 
-      fabric.loadSVGFromURL(src, function(objects, options) {
-            var obj = fabric.util.groupSVGElements(objects, options);
-            Canvas.myCanvas.setBackgroundImage(obj, Canvas.myCanvas.renderAll.bind(Canvas.myCanvas), {
-              scaleX: parseFloat(Canvas.myCanvas.width) / parseFloat(obj.width),
-              scaleY: parseFloat(Canvas.myCanvas.height) / parseFloat(obj.height),
-           });
-          //   canvas.add(obj).renderAll();
-      });
+      //console.log("src" ,src);
+      if(src != null && src != "null"){
+        fabric.loadSVGFromURL(src, function(objects, options) {
+              var obj = fabric.util.groupSVGElements(objects, options);
+              Canvas.myCanvas.setBackgroundImage(obj, Canvas.myCanvas.renderAll.bind(Canvas.myCanvas), {
+                scaleX: parseFloat(Canvas.myCanvas.width) / parseFloat(obj.width),
+                scaleY: parseFloat(Canvas.myCanvas.height) / parseFloat(obj.height),
+            });
+            //   canvas.add(obj).renderAll();
+        });
+      }
+      else{
+        Canvas.myCanvas.setBackgroundImage(0, Canvas.myCanvas.renderAll.bind(Canvas.myCanvas));
+      }
+      
       Canvas.updateModifications(true); 
 
       $('html, body').animate({
@@ -582,7 +591,7 @@ var Canvas = {
       // if($(this).attr("data-num") == 1){
         var src = $(this).attr("data-src");
         // var src = $(this).find("img").attr("src");
-        console.log(src);
+        //console.log(src);
         var group = [];
         fabric.loadSVGFromURL(src,function(objects,options)
         {
@@ -592,8 +601,8 @@ var Canvas = {
             top: 80
           }).scale(8);
 
-          loadedObjects.scaleToWidth(70);
-          loadedObjects.scaleToHeight(70);
+          loadedObjects.scaleToWidth(54);
+          loadedObjects.scaleToHeight(54);
 
           Canvas.myCanvas.add(loadedObjects);
           Canvas.myCanvas.renderAll();
