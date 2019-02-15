@@ -438,6 +438,7 @@ var Canvas = {
         Canvas.updateModifications(true); 
     },
     Addtext: function(e){
+        var topText = Math.floor(Math.random() * 190) + 20;
         Canvas.myCanvas.add(new fabric.IText('YOUR MESSAGE', {
           fontFamily: 'Copperplate-Lig',
             fontSize: 34,
@@ -446,8 +447,8 @@ var Canvas = {
             stroke: '#999999',
             fill: '#ffffff',
             strokeWidth: 1,
-            left: 50,
-            top: 50
+            left: 35,
+            top: topText
         }).setShadow({ color: 'rgba(0,0,0,0.3)' }));
 
 
@@ -585,13 +586,17 @@ var Canvas = {
       var src = $(this).attr("data-src");
       // var src = $(this).find("img").attr("src");
       //console.log(src);
+
+      var topText = Math.floor(Math.random() * 190) + 20;
+      var leftText = Math.floor(Math.random() * 280) + 20;
+      
       var group = [];
       fabric.loadSVGFromURL(src,function(objects,options)
       {
         var loadedObjects = new fabric.Group(group);
         loadedObjects.set({
-          left: 300,
-          top: 100
+          left: leftText,
+          top: topText
         }).scale(10);
         loadedObjects.scaleToWidth(78);
         loadedObjects.scaleToHeight(78);

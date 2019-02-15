@@ -2396,7 +2396,7 @@ select .select_design{
   opacity: 1;
 }
 .btn-type .left{
-  width: 110px;float: left;margin: 3px;padding-left: 25px;text-align: left;
+  width: 104px;float: left;margin: 3px;padding-left: 25px;text-align: left;
 }
 .btn-type .right{
   width: auto;
