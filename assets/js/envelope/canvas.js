@@ -319,8 +319,8 @@ var Canvas = {
       }
       $("#frame_category_name").text(name);
 
-      $("#frame_category_mode").find("div").eq(0).find(".btn-link").attr("data-id",id).attr("data-code,code");
-      $("#frame_category_mode").find("div").eq(1).find(".btn-link").attr("data-id",fin).attr("data-code,code");
+      $("#frame_category_mode").find("div").eq(0).find(".btn-link").attr("data-id",id).attr("data-code",code);
+      $("#frame_category_mode").find("div").eq(1).find(".btn-link").attr("data-id",fin).attr("data-code",code);
 
       if(CanvasAction.frameCategoryMode == "CUSTOMISE DESIGNS"){
         CanvasAction.postData("/frame/frameList/",{"search" :{"frame_category_id":id}}).done(function (data) {
@@ -607,6 +607,10 @@ var Canvas = {
           o.setControlVisible('mb',false);
           o.setControlVisible('ml',false);
           o.setControlVisible('mr',false);
+          o.setControlVisible('tl',false);
+          o.setControlVisible('tr',false);
+          o.setControlVisible('bl',false);
+          o.setControlVisible('br',false);
         });
       },
       function(item, object) {

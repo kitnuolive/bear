@@ -15,10 +15,10 @@
     <title>Beawelry wishes to help you express your emotions to your loved ones for all your special occasions</title>
 
     <!-- CSS -->
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link href="assets/css/responsive.css" rel="stylesheet">
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/responsive.css" rel="stylesheet">
     <!-- Fonts -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
@@ -29,6 +29,19 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <style>
+        .modal-content{
+            width: 100%;
+            max-width: 600px;
+        }
+        input{
+            border: 1px solid #ddd;
+            width: 100%;
+            padding: 5px 15px;
+            border-radius: 5px;
+        }
+    </style>
 
 </head>
 
@@ -45,13 +58,13 @@
 
     <menu>
         <ul>
-          <li class="active">
+          <li>
             <a href="/orderlist">Order</a>
           </li>
-          <li>
+          <li >
               <a href="/framelist">Frame</a>
           </li>
-          <li>
+          <li class="active">
               <a href="/stickerlist">Sticker</a>
           </li>
           <li>
@@ -62,16 +75,16 @@
     <nav class="menu" id="navbar">
         <div class="container">
             <div class="pagename">
-                Order
+                Sticker
             </div>
             <ul class="navbar-nav">
-                <li class="active">
+                <li>
                     <a href="/orderlist">Order</a>
                 </li>
                 <li>
                     <a href="/framelist">Frame</a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="/stickerlist">Sticker</a>
                 </li>
                 <li>
@@ -83,20 +96,22 @@
     <div class="container">
         <div class="row" style="margin-top:20px">
             <div class="col-md-12">
-                <form class="form-inline" id="search_Code" method="POST" action="javascript:;">
+                <form class="form-inline" id="search_Code">
                     <div class="form-group mb-2">
-                      <label for="code_input">ค้นหาด้วย CODE : </label>
-                      <input type="text" class="form-control" id="code_input" placeholder="ev1555823940">
+                      <label for="code_input">เลือกหมวดหมู่ : </label>
+                      <select id="StickerCategory_select" class="form-control">
+                        <option>เลือกหมวดหมู่</option>
+                        <option>...</option>
+                      </select>
                     </div>
-                    <button type="submit" class="btn btn-primary mb-2">ค้นหา</button>
+                    <!-- <button type="submit" class="btn btn-primary mb-2">เพิ่ม</button> -->    
+                    <button type="button" id="add_sticker_btn" class="btn btn-primary mb-2 pull-right" style="display:none">เพิ่มสติกเกอร์</button>
                 </form>
-
                 <table class="table" id="table_order">
                     <thead>
-                        <th> Picture</th>
-                        <th> Code</th>
-                        <th> Create Date</th>
-                        <th> Download</th>
+                        <th style="width: 150px;"> Picture</th>
+                        <th> Name</th>
+                        <th style="width: 110px;"> Tools</th>
                     </thead>
                     <tbody>
 
@@ -104,9 +119,55 @@
                 </table>
 
                 <p class="page_list order_page" style="text-align: right;"></p>
+
+
+                <div style="display: none;">
+                    <canvas id="viewCanvas"></canvas>
+                </div>
             </div>
         </div>
     </div>
+
+    <div class="modal modal-scroll center fade" id="addsticker_modal" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body" style="padding : 0px;">
+                    <div class="row">
+                        <h3 class="text-center">เพิ่มสติกเกอร์</h3>
+                      <div class="col-sm-12 text-center">  
+                            <img src="" id="sticker_Img" style="width: 100px;height: auto;margin: 20px auto;">
+                      </div>
+                      <div class="col-sm-12" style="padding:0 50px">
+                            <form id="form_addsticker">
+                                <div class="form-group">
+                                    <label for="type">หมวดหมู่ :</label>
+                                    <input type="input" class="form-control-file" id="sticker_category_id" readonly>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="sticker_list_pic">รูปภาพ .png ขนาด 150x150 px</label>
+                                    <input type="file" class="form-control-file" id="sticker_list_pic">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="sticker_list_pic_svg">รูปภาพ .svg</label>
+                                    <input type="file" class="form-control-file" id="sticker_list_pic_svg">
+                                </div>
+                            </form>
+
+                            <div style="margin-top:20px;">
+                                <div class="" style="margin: 15px; text-align: center">
+                                <button type="button" id="save_sticker_btn" class="btn btn-green mb-2 pull-right">เพิ่มสติกเกอร์</button>
+                                <a data-dismiss="modal" aria-hidden="true" style="padding: 0 15px;float: left;"><i class="fa fa-chevron-left" aria-hidden="true"></i> BACK</a>
+                                </div> 
+                            </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <div class="container">
             <div class="footer">
@@ -135,11 +196,18 @@
 
     <script src="assets/js/plugin/jquery-3.1.1.min.js"></script>
     <script src="assets/js/plugin/jquery.easing.1.3.js"></script>
+    <script src="assets/js/plugin/bootstrap.min.js"></script>
     <script src="assets/js/plugin/JSZip/jszip.min.js"></script>
     <script src="assets/js/plugin/FileSaver/FileSaver.min.js"></script>
     <script src="assets/js/plugin/bootpag/jquery.bootpag.min.js"></script>
+
+    <!-- bootbox code -->
+    <script src="assets/js/plugin/bootbox/bootbox.min.js"></script>
+    <script src="assets/js/plugin/bootbox/bootbox.locales.min.js"></script>
+    <script src="assets/js/plugin/fabric.min.js"></script>
+    <script src="assets/js/plugin/base64.js"></script>
     <script src="assets/js/lib.js"></script>
-    <script src="assets/js/admin/orderlist.js"></script>
+    <script src="assets/js/admin/stickerlist.js"></script>
 
 </body>
 

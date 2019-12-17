@@ -535,7 +535,7 @@ ul.social-footer{
     color: #fff;
     list-style: none;
     height: 20px;
-    width: 51px;
+    width: 120px;
     padding: 0;
     margin: 0 auto;
 }
@@ -889,7 +889,7 @@ ul.link-footer li.active{
   margin: 0 auto;
 }
 .box_height_380 {
-  height: 426px;
+  height: 380px;
   overflow: hidden;
 }
 /*all

@@ -617,6 +617,10 @@ var Canvas = {
             o.setControlVisible('mb',false);
             o.setControlVisible('ml',false);
             o.setControlVisible('mr',false);
+            o.setControlVisible('tl',false);
+            o.setControlVisible('tr',false);
+            o.setControlVisible('bl',false);
+            o.setControlVisible('br',false);
           });
         },
         function(item, object) {
